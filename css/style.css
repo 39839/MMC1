@@ -171,12 +171,19 @@ section[data-aos], div[data-aos] {
     max-width: 100vw;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: var(--top-contact-bar-height, 56px);
+    top: 56px; /* Sticks below the blue contact bar */
     z-index: 99998;
     overflow: visible !important;
     box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
-    transition: box-shadow 0.3s ease, background 0.3s ease, top 0.3s ease;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
     will-change: transform;
+}
+
+/* Adjust for different contact bar heights on mobile */
+@media (max-width: 640px) {
+    .glass-effect {
+        top: 48px;
+    }
 }
 
 /* Enhanced sticky header when scrolled */
