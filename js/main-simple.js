@@ -89,13 +89,13 @@ function initHeaderEnhancements() {
     // Desktop: Show on hover
     if (dropdownWrapper) {
         dropdownWrapper.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 1024) {
+            if (window.innerWidth >= 1280) {
                 showDropdown();
             }
         });
-        
+
         dropdownWrapper.addEventListener('mouseleave', (event) => {
-            if (window.innerWidth > 1024) {
+            if (window.innerWidth >= 1280) {
                 const related = event.relatedTarget;
                 if (!servicesDropdown.contains(related)) {
                     hideDropdown();
@@ -106,14 +106,14 @@ function initHeaderEnhancements() {
 
     // Keep dropdown open when hovering over it
     servicesDropdown.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 1024) {
+        if (window.innerWidth >= 1280) {
             clearTimeout(closeTimer);
             isDropdownOpen = true;
         }
     });
-    
+
     servicesDropdown.addEventListener('mouseleave', (event) => {
-        if (window.innerWidth > 1024) {
+        if (window.innerWidth >= 1280) {
             const related = event.relatedTarget;
             if (!dropdownWrapper.contains(related)) {
                 hideDropdown();
@@ -126,7 +126,7 @@ function initHeaderEnhancements() {
         event.preventDefault();
         event.stopPropagation();
         
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth < 1280) {
             if (isDropdownOpen) {
                 hideDropdown();
             } else {
@@ -254,7 +254,7 @@ function initHeaderEnhancements() {
     });
 
     const handleViewportChange = () => {
-        if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+        if (window.innerWidth >= 1280 && !mobileMenu.classList.contains('hidden')) {
             closeMobileMenu();
         }
     };

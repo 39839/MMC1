@@ -353,8 +353,8 @@ header nav {
     }
 }
 
-/* Ensure logo scales properly on smaller screens */
-@media (max-width: 1024px) {
+/* Ensure logo scales properly before mobile menu breakpoint */
+@media (max-width: 1279px) {
     .logo-img {
         height: clamp(4rem, 6vw, 5rem) !important;
     }
@@ -1441,86 +1441,74 @@ html {
     z-index: auto; /* Don't create new stacking context */
 }
 
-/* ===== CONTACT MODAL ===== */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
+/* ===== CONTACT MODAL - SIMPLE & COMPACT ===== */
 .contact-modal {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 100001;
-    padding: clamp(1rem, 3vw, 2rem);
+    z-index: 9999999;
+    background: rgba(12, 23, 52, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     justify-content: center;
     align-items: center;
-    background: rgba(13, 71, 161, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    padding: 1rem;
 }
 
 .contact-modal.active {
     display: flex;
-    animation: contact-overlay-fade 0.3s ease;
+    animation: fadeIn 0.2s ease;
 }
 
 .contact-modal-content {
-    width: min(560px, 95%);
-    max-height: 90vh;
-    overflow-y: auto;
     background: #ffffff;
     border-radius: 14px;
-    padding: clamp(1.35rem, 1.8vw + 0.75rem, 1.75rem);
-    box-shadow: 0 10px 30px rgba(13, 71, 161, 0.15), 0 0 0 1px rgba(13, 71, 161, 0.08);
-    border: 1px solid rgba(13, 71, 161, 0.1);
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    max-width: 320px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.2);
     position: relative;
-    animation: contact-modal-rise 0.3s ease;
-}
-
-.contact-modal-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    margin-bottom: 0.85rem;
+    animation: slideUp 0.3s ease;
 }
 
 .contact-modal-title {
-    font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--dark-gray);
-    line-height: 1.15;
+    color: var(--medical-blue);
+    margin: 0 0 1rem 0;
+    padding-right: 2rem;
+    line-height: 1.2;
 }
 
-.contact-modal-subtitle {
+.contact-intro {
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: var(--medium-gray);
-    line-height: 1.4;
-    font-size: 0.82rem;
 }
 
 .contact-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(13, 71, 161, 0.15);
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--medium-gray);
+    background: #f5f5f5;
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    color: var(--dark-gray);
+}
+
+.contact-close:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
 }
 
 .contact-close svg {
@@ -1528,235 +1516,124 @@ html {
     height: 18px;
 }
 
-.contact-close:hover,
-.contact-close:focus-visible {
-    color: var(--medical-blue);
-    border-color: rgba(13, 71, 161, 0.3);
-    transform: translateY(-1px);
-}
-
-.contact-badge {
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--medical-blue);
-    background: rgba(13, 71, 161, 0.08);
-    border: 1px solid rgba(13, 71, 161, 0.15);
-}
-
 .contact-modal-body {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.6rem;
 }
 
-.contact-options-grid {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.contact-option {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+.contact-item {
+    display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.875rem;
+    background: #ffffff;
     border-radius: 10px;
-    border: 1px solid rgba(13, 71, 161, 0.1);
-    background: #fafafa;
     text-decoration: none;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.06);
+    border: 1px solid #e4ebf5;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
-.contact-option:hover,
-.contact-option:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.12);
+.contact-item:hover {
+    background: #f5f9ff;
     border-color: var(--medical-blue);
-    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(13, 71, 161, 0.14);
+    transform: translateY(-1px);
 }
 
-.contact-option-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
+.contact-item.contact-info {
+    pointer-events: none;
+    box-shadow: none;
+    background: #f8fbff;
 }
 
-.contact-option--call .contact-option-icon {
-    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
-}
-
-.contact-option--text .contact-option-icon {
-    background: linear-gradient(135deg, #ff8f00 0%, #ffb300 100%);
-}
-
-.contact-option--email .contact-option-icon {
-    background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
-}
-
-.contact-icon-shine {
-    display: none;
-}
-
-.contact-option-icon svg {
+.contact-icon {
     width: 20px;
     height: 20px;
+    color: var(--medical-blue);
+    flex-shrink: 0;
+    margin: 0;
 }
 
-.contact-option-text {
+.contact-text {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.25rem;
+    flex: 1;
 }
 
-.contact-option-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--medium-gray);
-}
-
-.contact-option-value {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--dark-gray);
-    letter-spacing: 0;
-}
-
-.contact-option-note {
+.contact-label {
     font-size: 0.7rem;
-    color: var(--medium-gray);
-    line-height: 1.3;
-}
-
-.contact-option-chevron svg {
-    width: 16px;
-    height: 16px;
-    color: var(--medium-gray);
-    transition: all 0.2s ease;
-}
-
-.contact-option:hover .contact-option-chevron svg,
-.contact-option:focus-visible .contact-option-chevron svg {
-    transform: translateX(3px);
+    font-weight: 600;
     color: var(--medical-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
-.contact-meta {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
+.contact-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    line-height: 1.35;
 }
 
-.contact-meta-card {
-    border-radius: 10px;
-    padding: 0.7rem 0.85rem;
-    border: 1px solid rgba(13, 71, 161, 0.1);
-    background: #fafafa;
-    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.06);
-}
-
-.contact-meta-card h3 {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--medical-blue);
-    margin-bottom: 0.4rem;
-}
-
-.contact-meta-card--hours {
-    background: #fafafa;
-}
-
-.contact-meta-card--visit {
-    background: #fafafa;
+.contact-subtext {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--medium-gray);
+    line-height: 1.4;
 }
 
 .contact-hours-list {
     list-style: none;
+    margin: 0.25rem 0 0.5rem 0;
     padding: 0;
-    margin: 0 0 0.45rem;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    font-size: 0.7rem;
-    color: var(--medium-gray);
+    gap: 0.45rem;
 }
 
 .contact-hours-list li {
     display: flex;
     justify-content: space-between;
-    gap: 0.4rem;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--dark-gray);
 }
 
 .contact-hours-list li span:first-child {
     font-weight: 600;
 }
 
-.contact-meta-note {
-    font-size: 0.65rem;
+.contact-note {
+    font-size: 0.78rem;
     color: var(--medium-gray);
-    line-height: 1.3;
+    line-height: 1.4;
+    margin-top: 0.35rem;
 }
 
-.contact-meta-card address {
-    font-style: normal;
-    font-size: 0.7rem;
-    color: var(--medium-gray);
-    line-height: 1.35;
-    margin-bottom: 0.45rem;
-}
-
-.contact-meta-link {
+.contact-directions {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    padding: 0.32rem 0.65rem;
-    border-radius: 7px;
-    background: rgba(13, 71, 161, 0.08);
-    color: var(--medical-blue);
+    font-size: 0.82rem;
     font-weight: 600;
-    font-size: 0.7rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
+    color: var(--medical-blue);
+    margin-top: 0.35rem;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 
-.contact-meta-link svg {
-    width: 11px;
-    height: 11px;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.contact-meta-link:hover,
-.contact-meta-link:focus-visible {
-    background: rgba(13, 71, 161, 0.15);
-    transform: translateY(-1px);
-}
-
-@keyframes contact-overlay-fade {
+@keyframes slideUp {
     from {
         opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes contact-modal-rise {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -1764,59 +1641,21 @@ html {
     }
 }
 
-@media (max-width: 768px) {
-    .contact-modal-content {
-        width: min(95%, 480px);
-        padding: 1.5rem;
-    }
-
-    .contact-options-grid {
-        gap: 0.6rem;
-    }
-
-    .contact-option {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-        align-items: flex-start;
-        padding: 0.9rem 1rem;
-    }
-
-    .contact-option-chevron {
-        display: none;
-    }
-
-    .contact-meta {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-    }
-}
-
 @media (max-width: 480px) {
-    .contact-modal {
-        padding: 0.75rem;
-    }
-
     .contact-modal-content {
-        border-radius: 14px;
-        padding: 1.35rem 1.15rem;
+        padding: 1.1rem 1.25rem;
+        max-width: calc(100% - 2rem);
     }
 
-    .contact-option {
-        padding: 0.85rem 1rem;
-        gap: 0.85rem;
+    .contact-modal-title {
+        font-size: 1.25rem;
     }
 
-    .contact-option-value {
-        font-size: 1rem;
+    .contact-item {
+        padding: 0.75rem 0.875rem;
     }
-    
-    .contact-option-icon {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .contact-option-icon svg {
-        width: 20px;
-        height: 20px;
+
+    .contact-value {
+        font-size: 0.9rem;
     }
 }
