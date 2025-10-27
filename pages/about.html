@@ -147,36 +147,65 @@
         </div>
     </section>
 
-    <section id="mission" data-page-nav data-page-nav-title="Mission" class="py-24 lg:py-32 bg-white">
+    <section id="mission" data-page-nav data-page-nav-title="Mission" class="py-24 lg:py-32 bg-white overflow-visible">
         <div class="container mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div data-aos="fade-right">
-                    <img src="../images/CurrentPhoto1.png" alt="Team of doctors at Montgomery Medical Clinic" class="rounded-3xl shadow-2xl w-full h-auto">
-                </div>
-                <div class="space-y-8" data-aos="fade-left">
-                    <div>
-                        <span class="text-brand-blue font-bold uppercase tracking-widest text-sm">OUR MISSION</span>
-                        <h2 class="text-4xl font-black mt-2">A Legacy of Compassionate Care</h2>
+            <!-- Header Section -->
+            <div class="text-center mb-16 max-w-4xl mx-auto" data-aos="fade-up">
+                <span class="text-brand-blue font-bold uppercase tracking-widest text-sm">OUR MISSION</span>
+                <h2 class="text-4xl lg:text-5xl font-black mt-4 mb-8 pb-2">A Legacy of Compassionate Care</h2>
+            </div>
+
+            <!-- Content Section -->
+            <div class="max-w-6xl mx-auto space-y-8" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-lg text-medium-gray leading-relaxed">
+                    When it comes to your health, you deserve exceptional care from a team you can trust. At Montgomery Medical Clinic, our experienced physicians are dedicated to keeping you and your family healthy—today and for years to come. With over five decades of combined experience, our team provides compassionate, comprehensive care tailored to your unique needs.
+                </p>
+                <p class="text-lg text-medium-gray leading-relaxed">
+                    Whether you need immediate medical attention, a routine vaccination, or your yearly annual, we're here when you need us most. In addition to our outstanding primary care services, our Dermatology Department offers specialized expertise in diagnosing and treating a wide range of skin conditions. With a wealth of knowledge and experience, our dermatology specialists are committed to helping you achieve healthy, confident skin.
+                </p>
+            </div>
+
+            <!-- Image and Benefits Section -->
+            <div class="mt-16 max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-5 gap-12 items-center">
+                    <!-- Image Column -->
+                    <div class="lg:col-span-2" data-aos="fade-right" data-aos-delay="200">
+                        <img src="../images/CurrentPhoto1.png" alt="Team of doctors at Montgomery Medical Clinic" class="rounded-3xl shadow-2xl w-full h-auto">
                     </div>
-                    <p class="text-lg text-medium-gray leading-relaxed">
-                        When it comes to your health, you deserve exceptional care from a team you can trust. At Montgomery Medical Clinic, our experienced physicians are dedicated to keeping you and your family healthy—today and for years to come. With over five decades of combined experience, our team provides compassionate, comprehensive care tailored to your unique needs.
-                    </p>
-                    <p class="text-lg text-medium-gray leading-relaxed">
-                        Whether you need immediate medical attention, a routine vaccination, or your yearly annual, we're here when you need us most. In addition to our outstanding primary care services, our Dermatology Department offers specialized expertise in diagnosing and treating a wide range of skin conditions. With a wealth of knowledge and experience, our dermatology specialists are committed to helping you achieve healthy, confident skin.
-                    </p>
-                    <p class="text-lg text-medium-gray leading-relaxed">
-                        By choosing one of our physicians as your primary care provider, you'll benefit from:
-                    </p>
-                    <ul class="space-y-3 text-lg text-medium-gray">
-                        <li class="flex items-start gap-3"><svg class="w-6 h-6 text-brand-orange shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Personalized attention and continuity of care</span></li>
-                        <li class="flex items-start gap-3"><svg class="w-6 h-6 text-brand-orange shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Advanced treatments using the latest medical technology</span></li>
-                        <li class="flex items-start gap-3"><svg class="w-6 h-6 text-brand-orange shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Expert dermatology care for all your skin health needs</span></li>
-                        <li class="flex items-start gap-3"><svg class="w-6 h-6 text-brand-orange shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>A lasting relationship with trusted healthcare professionals</span></li>
-                        <li class="flex items-start gap-3"><svg class="w-6 h-6 text-brand-orange shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Convenient access to a full range of medical services</span></li>
-                    </ul>
-                    <p class="text-lg text-medium-gray leading-relaxed font-semibold">
-                        At Montgomery Medical Clinic, your health—and your confidence—are our top priorities.
-                    </p>
+
+                    <!-- Benefits Column -->
+                    <div class="lg:col-span-3 flex flex-col justify-center" data-aos="fade-left" data-aos-delay="200">
+                        <p class="text-lg text-medium-gray leading-relaxed font-semibold mb-4">
+                            By choosing one of our physicians as your primary care provider, you'll benefit from:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-base text-dark-gray font-medium">Personalized attention and continuity of care</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-base text-dark-gray font-medium">Advanced treatments using the latest medical technology</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-base text-dark-gray font-medium">Expert dermatology care for all your skin health needs</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-base text-dark-gray font-medium">A lasting relationship with trusted healthcare professionals</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-base text-dark-gray font-medium">Convenient access to a full range of medical services</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 p-5 bg-gradient-to-r from-brand-blue to-blue-600 rounded-2xl">
+                            <p class="text-lg text-white font-bold text-center">
+                                At Montgomery Medical Clinic, your health—and your confidence—are our top priorities.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
