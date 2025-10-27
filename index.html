@@ -149,204 +149,267 @@
         }
         
         @media (max-width: 640px) {
+            /* Mobile Banner Container - Clean Apple-Style Design */
             .slideshow-container {
-                padding: 0 !important;
-                margin: 0;
-                border: none;
-                box-shadow: none;
-                background: transparent;
+                padding: 0 1rem !important;
+                margin: 0 auto;
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                max-width: 100%;
             }
 
+            /* Hide navigation arrows on mobile */
             .slideshow-container button {
                 display: none;
             }
 
+            /* Mobile Slide Card - Clean & Simple */
             .slideshow-container .slide {
-                --slide-primary: #0d47a1;
-                --slide-secondary: #1976d2;
-                --slide-accent: rgba(255, 255, 255, 0.6);
-                --slide-glow: rgba(255, 143, 0, 0.45);
                 position: relative;
-                padding: 2rem 1.65rem !important;
-                border-radius: 28px;
-                align-items: flex-start !important;
-                justify-content: flex-end;
-                gap: 1.5rem;
-                text-align: left !important;
-                background: linear-gradient(140deg, var(--slide-primary), var(--slide-secondary));
-                box-shadow: 0 32px 60px -32px rgba(4, 26, 73, 0.68);
-                min-height: 320px !important;
+                padding: 2rem 1.5rem !important;
+                border-radius: 18px;
+                align-items: center !important;
+                justify-content: center;
+                flex-direction: column !important;
+                gap: 1rem;
+                text-align: center !important;
+
+                /* Simple solid gradient - no complex effects */
+                background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+
+                /* Clean, minimal shadow */
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+
+                min-height: 360px !important;
                 overflow: hidden;
-                isolation: isolate;
             }
 
-            .slideshow-container .slide::before,
-            .slideshow-container .slide::after {
-                content: "";
-                position: absolute;
-                z-index: 0;
-                pointer-events: none;
-                opacity: 0.68;
-            }
+            /* No ambient effects - keep it clean */
 
-            .slideshow-container .slide::before {
-                inset: -55% -45% auto -35%;
-                height: 70%;
-                background: radial-gradient(circle at top, var(--slide-accent), transparent 65%);
-            }
-
-            .slideshow-container .slide::after {
-                inset: auto -40% -60% 40%;
-                height: 65%;
-                background: radial-gradient(circle at bottom, var(--slide-glow), transparent 70%);
-                filter: blur(6px);
-            }
-
+            /* Simple gradient variations per slide */
             .slideshow-container .slide:nth-of-type(1) {
-                --slide-primary: #002171;
-                --slide-secondary: #0d47a1;
-                --slide-accent: rgba(242, 242, 255, 0.75);
-                --slide-glow: rgba(255, 183, 77, 0.45);
+                background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
             }
 
             .slideshow-container .slide:nth-of-type(2) {
-                --slide-primary: #0d47a1;
-                --slide-secondary: #1565c0;
-                --slide-accent: rgba(236, 248, 255, 0.75);
-                --slide-glow: rgba(160, 215, 255, 0.45);
+                background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
             }
 
             .slideshow-container .slide:nth-of-type(3) {
-                --slide-primary: #002766;
-                --slide-secondary: #0d47a1;
-                --slide-accent: rgba(255, 255, 255, 0.75);
-                --slide-glow: rgba(255, 143, 0, 0.55);
+                background: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
             }
 
             .slideshow-container .slide:nth-of-type(4) {
-                --slide-primary: #0c355e;
-                --slide-secondary: #0d47a1;
-                --slide-accent: rgba(255, 255, 255, 0.65);
-                --slide-glow: rgba(135, 235, 255, 0.45);
+                background: linear-gradient(135deg, #1976d2 0%, #64b5f6 100%);
             }
 
-            .slideshow-container .slide > * {
-                position: relative;
-                z-index: 1;
-            }
-
+            /* Icon Container - Centered Above Content */
             .slideshow-container .slide .shrink-0.relative {
-                position: absolute;
-                top: 1.6rem;
-                right: 1.6rem;
-                width: 88px;
-                height: 88px;
-                border-radius: 24px;
-                background: rgba(255, 255, 255, 0.16);
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 64px;
+                height: 64px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.2);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+                border: none;
+                box-shadow: none;
+                margin: 0 auto 1rem auto;
             }
 
+            /* Hide gradient blur background behind icon */
             .slideshow-container .slide .shrink-0.relative > .absolute {
                 display: none;
             }
 
+            /* Inner icon container - simplified */
             .slideshow-container .slide .shrink-0.relative > div:last-child {
-                width: 64px !important;
-                height: 64px !important;
-                border-radius: 20px;
-                background: rgba(255, 255, 255, 0.22);
+                width: 48px !important;
+                height: 48px !important;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.25);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                box-shadow: 0 18px 32px -22px rgba(0, 0, 0, 0.6);
-            }
-
-            .slideshow-container .slide .shrink-0.relative svg,
-            .slideshow-container .slide .shrink-0.relative img {
-                width: 38px !important;
-                height: 38px !important;
-                color: #ffffff;
-            }
-
-            .slideshow-container .slide span.inline-flex {
-                background: rgba(255, 255, 255, 0.18);
-                border: 1px solid rgba(255, 255, 255, 0.22);
-                color: #ffffff;
-                font-size: 0.8rem;
-                font-weight: 600;
-                letter-spacing: 0.1em;
-                padding: 0.4rem 0.9rem;
-                border-radius: 999px;
                 box-shadow: none;
             }
 
+            /* Icon sizing */
+            .slideshow-container .slide .shrink-0.relative svg,
+            .slideshow-container .slide .shrink-0.relative img {
+                width: 28px !important;
+                height: 28px !important;
+                color: #ffffff;
+                filter: none;
+            }
+
+            /* Badge/Label Styling - Cleaner */
+            .slideshow-container .slide span.inline-flex {
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: #ffffff;
+                font-size: 0.6875rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                padding: 0.4rem 0.85rem;
+                border-radius: 100px;
+                box-shadow: none;
+                backdrop-filter: none;
+                display: inline-block;
+                margin: 0 auto;
+            }
+
+            /* Heading Styling - Better Typography */
             .slideshow-container .slide h3 {
                 font-size: 1.5rem !important;
                 line-height: 1.3 !important;
+                font-weight: 700 !important;
                 color: #ffffff;
+                margin-top: 0.5rem;
+                margin-bottom: 0.75rem;
+                letter-spacing: -0.01em;
+                text-shadow: none;
+                text-align: center !important;
             }
 
+            /* Accent text in headings - Softer color */
             .slideshow-container .slide h3 span {
-                color: #ffe082;
+                color: rgba(255, 255, 255, 0.95);
                 background: none;
+                font-weight: 700;
             }
 
+            /* Description text - Better readability */
             .slideshow-container .slide p {
-                color: rgba(248, 250, 255, 0.85) !important;
-                font-size: 1rem !important;
-                margin-bottom: 1.35rem !important;
+                color: rgba(255, 255, 255, 0.85) !important;
+                font-size: 0.9375rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.25rem !important;
+                font-weight: 400;
+                text-align: center !important;
             }
 
+            /* Content wrapper adjustments */
             .slideshow-container .slide .flex.items-center {
                 width: 100%;
-                justify-content: flex-start !important;
+                justify-content: center !important;
+                flex-direction: column !important;
             }
 
+            /* Feature list styling */
             .slideshow-container .slide .flex.items-center.flex-wrap {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.85rem;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            /* Individual feature items with checkmarks */
+            .slideshow-container .slide .flex.items-center.flex-wrap > div {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                justify-content: center !important;
+            }
+
+            .slideshow-container .slide .flex.items-center.flex-wrap svg {
+                flex-shrink: 0 !important;
+                width: 18px !important;
+                height: 18px !important;
             }
 
             .slideshow-container .slide .flex.items-center.flex-wrap span {
-                color: rgba(248, 250, 255, 0.72) !important;
-                font-size: 0.95rem !important;
-                text-align: left;
+                color: rgba(255, 255, 255, 0.85) !important;
+                font-size: 0.875rem !important;
+                text-align: left !important;
+                line-height: 1.4 !important;
+                flex: 1 !important;
             }
 
+            /* CTA Button - Clean iOS Style */
             .slideshow-container .slide .flex.items-center a,
             .slideshow-container .slide a {
                 width: 100%;
                 justify-content: center;
-                border-radius: 999px !important;
+                align-items: center;
+                display: inline-flex;
+                gap: 0.5rem;
+
+                border-radius: 12px !important;
                 background: #ffffff !important;
                 color: #0d47a1 !important;
                 border: none !important;
-                font-size: 1.05rem !important;
-                padding: 0.9rem 1.15rem !important;
-                box-shadow: 0 24px 42px -26px rgba(255, 255, 255, 0.9), 0 20px 40px -28px rgba(1, 20, 55, 0.58);
+
+                font-size: 0.9375rem !important;
+                font-weight: 600 !important;
+                padding: 0.875rem 1.25rem !important;
+
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+                transition: all 0.2s ease;
             }
 
+            /* Button icon */
             .slideshow-container .slide a svg {
-                width: 20px !important;
-                height: 20px !important;
+                width: 16px !important;
+                height: 16px !important;
             }
 
+            /* Slideshow dots - Clean minimal design */
             .slideshow-dots {
-                gap: 10px;
-                margin-top: 1.75rem;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px !important;
+                margin-top: 1.5rem !important;
+                padding: 0.5rem 1rem !important;
+                position: relative !important;
+                z-index: 10 !important;
             }
 
             .slideshow-dot {
-                width: 12px;
-                height: 12px;
+                width: 8px !important;
+                height: 8px !important;
+                border-radius: 50% !important;
+                background: rgba(13, 71, 161, 0.3) !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                min-width: 8px !important;
+                min-height: 8px !important;
+                flex-shrink: 0 !important;
             }
 
+            .slideshow-dot.active {
+                background: #0d47a1 !important;
+                transform: scale(1.25) !important;
+                box-shadow: none !important;
+            }
+
+            /* Breadcrumb text sizing */
             .breadcrumb {
                 font-size: 0.875rem;
+            }
+
+            /* Slide content wrapper for proper spacing */
+            .slideshow-container .slide .flex-1 {
+                padding-right: 0;
+                max-width: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Center all child divs in flex-1 */
+            .slideshow-container .slide .flex-1 > * {
+                text-align: center;
+                width: 100%;
             }
         }
         
