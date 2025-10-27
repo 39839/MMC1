@@ -181,6 +181,12 @@ section[data-aos], div[data-aos] {
     -webkit-backdrop-filter: blur(10px);
 }
 
+/* Keep contact links compact even when pages add global min-height rules */
+.top-contact-bar a {
+    min-height: unset !important;
+    line-height: 1.4;
+}
+
 /* Ensure contact bar text color */
 .bg-brand-blue {
     background-color: #0d47a1 !important;
