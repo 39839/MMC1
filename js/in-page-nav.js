@@ -167,13 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
         handleScroll();
     }
 
+    // Enhanced footer detection - hide nav when footer reaches 50% of viewport
     if (stopSections.length) {
         const stopVisibility = new Map(stopSections.map((section) => [section, false]));
 
         const stopObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    stopVisibility.set(entry.target, entry.isIntersecting);
+                    // Check if footer has reached 50% of the viewport
+                    const footerTop = entry.target.getBoundingClientRect().top;
+                    const viewportHeight = window.innerHeight;
+                    const footerAt50Percent = footerTop <= viewportHeight * 0.5;
+                    
+                    stopVisibility.set(entry.target, footerAt50Percent);
                 });
 
                 stopVisible = Array.from(stopVisibility.values()).some(Boolean);
@@ -182,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0,
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
             }
         );
 
@@ -256,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             accordionIcon.classList.add('active');
                         }
                     }
-                }, 600); // Increased timeout to account for scroll animation
+                }, 600);
             }
         });
     });

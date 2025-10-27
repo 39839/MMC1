@@ -1,4 +1,4 @@
-/* In-Page Navigation Styles - Consistent across all pages */
+/* In-Page Navigation Styles - Enhanced Aesthetic Design */
 
 /* Main navigation container */
 #page-nav {
@@ -6,10 +6,11 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
+    max-height: 70vh;
 }
 
 /* When visible */
@@ -18,18 +19,43 @@
     pointer-events: auto;
 }
 
-/* The actual navigation panel */
+/* The actual navigation panel - Beautiful & Clean */
 .page-nav-inner {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 0.75rem 0.15rem 0.75rem 0.6rem;
-    border-radius: 0 1rem 1rem 0;
-    box-shadow: 0 8px 32px -8px rgba(13, 71, 161, 0.15);
-    border: 1px solid rgba(13, 71, 161, 0.08);
-    border-left: none;
-    width: 140px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    padding: 1.25rem 0.3rem 1.25rem 0.8rem;
+    border-radius: 0 16px 16px 0;
+    box-shadow: 0 4px 24px -4px rgba(13, 71, 161, 0.12),
+                0 8px 16px -8px rgba(13, 71, 161, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(13, 71, 161, 0.1);
+    border-left: 3px solid rgba(13, 71, 161, 0.4);
+    width: 156px;
     transform: translateX(0);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar for navigation */
+.page-nav-inner::-webkit-scrollbar {
+    width: 4px;
+}
+
+.page-nav-inner::-webkit-scrollbar-track {
+    background: rgba(13, 71, 161, 0.05);
+    border-radius: 4px;
+}
+
+.page-nav-inner::-webkit-scrollbar-thumb {
+    background: rgba(13, 71, 161, 0.2);
+    border-radius: 4px;
+}
+
+.page-nav-inner::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 71, 161, 0.3);
 }
 
 /* When collapsed */
@@ -38,10 +64,11 @@
     padding-left: 0;
     padding-right: 0;
     opacity: 0;
-    transform: translateX(-140px);
+    transform: translateX(-156px);
     box-shadow: none;
     background: transparent;
     backdrop-filter: blur(0);
+    border-left: none;
 }
 
 /* Navigation list */
@@ -49,7 +76,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    min-width: 120px;
+    min-width: 135px;
     opacity: 1;
     transition: opacity 0.5s ease;
 }
@@ -58,65 +85,70 @@
     opacity: 0;
 }
 
-/* Navigation list items - UNIFORM SPACING */
+/* Navigation list items - Increased spacing for taller design */
 #page-nav .page-nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+#page-nav .page-nav-list li:last-child {
     margin-bottom: 0;
 }
 
-/* Navigation links */
+/* Navigation links - Enhanced Design with more height */
 #page-nav .nav-link {
     position: relative;
-    gap: 0.4rem;
-    padding: 0.35rem 0.15rem 0.35rem 0.25rem;
-    border-radius: 0.5rem;
+    gap: 0.5rem;
+    padding: 0.6rem 0.3rem 0.6rem 0.4rem;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: all 0.25s ease;
-    /* Ensure page-level touch targets don't inflate nav items */
-    min-height: 0;
-    min-width: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Navigation indicator (the line) */
+/* Navigation indicator - Beautiful accent */
 #page-nav .nav-indicator {
-    width: 1.1rem;
-    height: 0.18rem;
-    border-radius: 9999px;
-    background-color: rgba(73, 84, 104, 0.35);
-    transition: all 0.3s ease;
+    width: 1.2rem;
+    height: 0.2rem;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(73, 84, 104, 0.4), rgba(73, 84, 104, 0.25));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 #page-nav .nav-link:hover .nav-indicator {
-    width: 1.35rem;
-    background-color: rgba(13, 71, 161, 0.6);
+    width: 1.5rem;
+    background: linear-gradient(90deg, rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5));
+    box-shadow: 0 2px 4px rgba(13, 71, 161, 0.2);
 }
 
 .nav-link.active .nav-indicator {
-    width: 1.6rem;
-    background-color: #0d47a1;
+    width: 1.75rem;
+    background: linear-gradient(90deg, #0d47a1, #1976d2);
+    box-shadow: 0 2px 6px rgba(13, 71, 161, 0.3);
 }
 
-/* Navigation text - CONSISTENT FORMATTING */
+/* Navigation text - Clean & Professional with better sizing */
 #page-nav .nav-text {
-    font-size: 0.8125rem;
-    color: #495468;
-    line-height: 1.2;
+    font-size: 0.875rem;
+    color: #4a5568;
+    line-height: 1.4;
     font-weight: 500;
-    letter-spacing: 0;
-    transition: color 0.25s ease;
+    letter-spacing: -0.01em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 95px;
+    max-width: 100px;
     word-break: normal;
     hyphens: none;
 }
 
 #page-nav .nav-link:hover .nav-text {
     color: #0d47a1;
+    transform: translateX(2px);
 }
 
 .nav-link.active .nav-text {
@@ -124,15 +156,15 @@
     font-weight: 600;
 }
 
-/* Link background on hover/active */
+/* Link background on hover/active - Subtle & Elegant */
 #page-nav .nav-link::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 0.5rem;
-    background: linear-gradient(90deg, rgba(13, 71, 161, 0.08), rgba(13, 71, 161, 0));
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(13, 71, 161, 0.06), rgba(13, 71, 161, 0.02));
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: -1;
 }
@@ -143,32 +175,34 @@
 
 .nav-link.active::before {
     opacity: 1;
-    background: linear-gradient(90deg, rgba(13, 71, 161, 0.12), rgba(13, 71, 161, 0));
+    background: linear-gradient(90deg, rgba(13, 71, 161, 0.1), rgba(13, 71, 161, 0.04));
 }
 
-/* Toggle button */
+/* Toggle button - Modern & Clean - Taller to match */
 #page-nav-toggle {
     position: absolute;
     top: 50%;
-    left: 140px;
+    left: 156px;
     transform: translateY(-50%);
-    width: 28px;
-    height: 50px;
-    border-radius: 0 12px 12px 0;
-    background: rgba(13, 71, 161, 0.08);
+    width: 32px;
+    height: 64px;
+    border-radius: 0 14px 14px 0;
+    background: linear-gradient(135deg, rgba(13, 71, 161, 0.1) 0%, rgba(13, 71, 161, 0.08) 100%);
     color: #0d47a1;
-    border: 1px solid rgba(13, 71, 161, 0.12);
+    border: 1px solid rgba(13, 71, 161, 0.15);
     border-left: none;
-    box-shadow: 4px 4px 16px -8px rgba(13, 71, 161, 0.25);
+    box-shadow: 4px 4px 20px -8px rgba(13, 71, 161, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: left 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
     z-index: 10;
 }
 
@@ -179,10 +213,16 @@
 
 #page-nav-toggle:hover,
 #page-nav-toggle:focus {
-    background: rgba(13, 71, 161, 0.12);
+    background: linear-gradient(135deg, rgba(13, 71, 161, 0.14) 0%, rgba(13, 71, 161, 0.11) 100%);
     color: #0a2c63;
-    border-color: rgba(13, 71, 161, 0.18);
-    box-shadow: 4px 4px 20px -8px rgba(13, 71, 161, 0.35);
+    border-color: rgba(13, 71, 161, 0.22);
+    box-shadow: 4px 4px 24px -8px rgba(13, 71, 161, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.02);
+}
+
+#page-nav-toggle:active {
+    transform: translateY(-50%) scale(0.98);
 }
 
 #page-nav-toggle:focus-visible {
@@ -190,12 +230,13 @@
     outline-offset: 2px;
 }
 
-/* Toggle icon (arrow) */
+/* Toggle icon (arrow) - Smooth Animation */
 #page-nav-toggle .toggle-icon {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     line-height: 1;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: block;
+    font-weight: 600;
 }
 
 #page-nav.visible:not(.collapsed) #page-nav-toggle .toggle-icon {
@@ -205,7 +246,7 @@
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    scroll-padding-top: 120px;
 }
 
 /* Font smoothing for crisp text */
@@ -215,4 +256,30 @@ html {
 #page-nav *::after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1280px) {
+    #page-nav {
+        left: 0;
+    }
+}
+
+/* Ensure navigation doesn't interfere with content */
+@media (min-width: 1024px) {
+    body {
+        padding-left: 0;
+    }
+}
+
+/* Ensure navigation is properly positioned and doesn't block content */
+@media (max-height: 800px) {
+    #page-nav {
+        max-height: 60vh;
+    }
+    
+    .page-nav-inner {
+        max-height: 60vh;
+    }
 }
