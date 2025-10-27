@@ -255,40 +255,41 @@
 
 
 
-    <section class="relative text-white min-h-[50vh] md:min-h-[65vh] lg:min-h-[85vh] flex items-center py-12 md:py-20" style="z-index: 1; position: relative; isolation: isolate;" data-aos="fade-in">
+    <section class="relative text-white overflow-hidden flex items-center" style="z-index: 1; position: relative; isolation: isolate; aspect-ratio: 19.81 / 9.14; width: 100%; min-height: 400px; max-height: 90vh;" data-aos="fade-in">
         <picture class="absolute inset-0 z-0 block">
             <source srcset="images/PhotoWide.webp" type="image/webp">
             <source srcset="images/PhotoWide.jpeg" type="image/jpeg">
             <img src="images/PhotoWide.jpeg"
                  alt="Expert doctors and primary care providers at Montgomery Medical Clinic urgent care center"
-                 class="w-full h-full object-cover block"
+                 class="w-full h-full block"
+                 style="object-fit: cover; object-position: center;"
                  loading="eager"
                  decoding="sync"
                  fetchpriority="high"
                  width="1426"
                  height="658">
         </picture>
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-dark-gray/80 via-dark-gray/60 via-30% to-transparent" style="z-index: 10;"></div>
-        
-        <div class="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-md lg:max-w-lg text-left">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
+
+        <div class="absolute inset-0 bg-gradient-to-r from-dark-gray/85 via-dark-gray/65 via-30% to-dark-gray/20" style="z-index: 10;"></div>
+
+        <div class="relative z-20 w-full h-full flex items-center" style="padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);">
+            <div class="text-left" style="max-width: clamp(300px, 45%, 600px);">
+                <h1 style="font-size: clamp(1.75rem, 4.5vw, 4rem); line-height: 1.15; font-weight: 900; letter-spacing: -0.02em; margin-bottom: clamp(1rem, 2.5vw, 1.5rem);">
                     Compassionate,
                     <span class="text-brand-orange">Personalized</span>
                     Healthcare.
                 </h1>
-                <p class="mt-4 sm:mt-6 text-gray-200 leading-relaxed text-base sm:text-lg">
+                <p style="color: rgba(229, 231, 235, 1); line-height: 1.6; font-size: clamp(0.875rem, 1.8vw, 1.125rem); margin-bottom: clamp(0.75rem, 1.5vw, 1rem);">
                     Our medical center provides comprehensive services with experienced doctors and primary care providers committed to patient-centered care. Visit our urgent care center for immediate medical attention or schedule an appointment at our clinic in Gaithersburg.
                 </p>
-                <p class="mt-3 text-white/90 text-base sm:text-lg font-semibold">
+                <p style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.8vw, 1.125rem); font-weight: 600; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
                     Proudly serving Gaithersburg, Montgomery County, and the surrounding areas.
                 </p>
-                <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg text-center">
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary text-center" style="padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem); font-size: clamp(0.875rem, 1.6vw, 1.125rem);">
                         Schedule Your Visit
                     </a>
-                    <a href="#services" class="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-dark-gray px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg text-center">
+                    <a href="#services" class="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-dark-gray text-center" style="padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem); font-size: clamp(0.875rem, 1.6vw, 1.125rem);">
                         Explore Services
                     </a>
                 </div>
