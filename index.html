@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dropdown-fix.css">
+    <link rel="stylesheet" href="css/header-fix.css">
     <link rel="preload" href="includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="js/header-footer-loader.js" as="script">
     <link rel="preload" href="js/critical-header.js" as="script">
@@ -255,7 +256,7 @@
 
 
 
-    <section class="relative text-white overflow-hidden flex items-center" style="z-index: 1; position: relative; isolation: isolate; aspect-ratio: 19.81 / 9.14; width: 100%; min-height: 400px; max-height: 90vh;" data-aos="fade-in">
+    <section class="relative text-white flex items-center" style="z-index: 1; position: relative; isolation: isolate; aspect-ratio: 19.81 / 9.14; width: 100%; min-height: 500px; overflow: hidden;" data-aos="fade-in">
         <picture class="absolute inset-0 z-0 block">
             <source srcset="images/PhotoWide.webp" type="image/webp">
             <source srcset="images/PhotoWide.jpeg" type="image/jpeg">
@@ -272,24 +273,24 @@
 
         <div class="absolute inset-0 bg-gradient-to-r from-dark-gray/85 via-dark-gray/65 via-30% to-dark-gray/20" style="z-index: 10;"></div>
 
-        <div class="relative z-20 w-full h-full flex items-center" style="padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);">
+        <div class="relative z-20 w-full h-full flex items-center justify-start" style="padding: clamp(2.5rem, 6vh, 4rem) clamp(1rem, 5vw, 4rem) clamp(2.5rem, 6vh, 4rem) clamp(1rem, 5vw, 4rem);">
             <div class="text-left" style="max-width: clamp(300px, 45%, 600px);">
-                <h1 style="font-size: clamp(1.5rem, 3.5vw, 3.5rem); line-height: 1.15; font-weight: 900; letter-spacing: -0.02em; margin-bottom: clamp(0.875rem, 2vw, 1.25rem); margin-top: clamp(0.5rem, 2vh, 1rem);">
+                <h1 style="font-size: clamp(1.5rem, 3.5vw, 3.5rem); line-height: 1.15; font-weight: 900; letter-spacing: -0.02em; margin-bottom: clamp(0.5rem, 1.5vw, 1rem);">
                     Compassionate,
                     <span class="text-brand-orange">Personalized</span>
                     Healthcare.
                 </h1>
-                <p style="color: rgba(229, 231, 235, 1); line-height: 1.6; font-size: clamp(0.875rem, 1.8vw, 1.125rem); margin-bottom: clamp(0.75rem, 1.5vw, 1rem);">
+                <p style="color: rgba(229, 231, 235, 1); line-height: 1.5; font-size: clamp(0.875rem, 1.8vw, 1.125rem); margin-bottom: clamp(0.4rem, 1vw, 0.75rem);">
                     Our medical center provides comprehensive services with experienced doctors and primary care providers committed to patient-centered care. Visit our urgent care center for immediate medical attention or schedule an appointment at our clinic in Gaithersburg.
                 </p>
-                <p style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.8vw, 1.125rem); font-weight: 600; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
+                <p style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.8vw, 1.125rem); font-weight: 600; margin-bottom: clamp(0.75rem, 2vw, 1.5rem);">
                     Proudly serving Gaithersburg, Montgomery County, and the surrounding areas.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary text-center" style="padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem); font-size: clamp(0.875rem, 1.6vw, 1.125rem);">
+                <div class="flex flex-col sm:flex-row" style="gap: clamp(0.5rem, 1.2vw, 0.75rem);">
+                    <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary text-center" style="padding: clamp(0.5rem, 1.2vw, 0.85rem) clamp(1rem, 2.2vw, 1.75rem); font-size: clamp(0.75rem, 1.3vw, 1rem);">
                         Schedule Your Visit
                     </a>
-                    <a href="#services" class="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-dark-gray text-center" style="padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem); font-size: clamp(0.875rem, 1.6vw, 1.125rem);">
+                    <a href="#services" class="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-dark-gray text-center" style="padding: clamp(0.5rem, 1.2vw, 0.85rem) clamp(1rem, 2.2vw, 1.75rem); font-size: clamp(0.75rem, 1.3vw, 1rem);">
                         Explore Services
                     </a>
                 </div>

@@ -1,0 +1,74 @@
+/* 
+ * CRITICAL HEADER FIX - MAXIMUM PRIORITY
+ * This file ensures the header stays fixed at the top at all times
+ * DO NOT MODIFY OR REMOVE
+ */
+
+/* Ultimate failsafe with maximum CSS specificity */
+html body .site-sticky-header,
+html body div.site-sticky-header,
+body .site-sticky-header,
+div.site-sticky-header,
+.site-sticky-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 999999 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: transform;
+}
+
+/* Ensure the header never moves on scroll */
+@media screen and (min-width: 1px) {
+    .site-sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+    }
+}
+
+/* Mobile specific fix */
+@media screen and (max-width: 1024px) {
+    .site-sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
+
+/* Tablet specific fix */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .site-sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+    }
+}
+
+/* Desktop specific fix */
+@media screen and (min-width: 1025px) {
+    .site-sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+    }
+}
+
+/* Prevent any JavaScript from changing position */
+.site-sticky-header[style*="relative"],
+.site-sticky-header[style*="absolute"],
+.site-sticky-header[style*="static"] {
+    position: fixed !important;
+    top: 0 !important;
+}
+
+/* Force GPU acceleration for smooth performance */
+.site-sticky-header,
+.site-sticky-header * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}

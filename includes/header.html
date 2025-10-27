@@ -1,5 +1,5 @@
 <!-- Combined Sticky Header Wrapper -->
-<div class="site-sticky-header">
+<div class="site-sticky-header" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 999999 !important; width: 100% !important;">
     <!-- Top Contact Bar -->
     <div class="top-contact-bar bg-brand-blue text-white py-1.5 sm:py-2.5 text-sm border-b-4 border-brand-orange overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
@@ -32,8 +32,8 @@
         </div>
     </div>
 
-<!-- Main Navigation Header -->
-    <header class="glass-effect sticky top-0" style="z-index: 10020;">
+    <!-- Main Navigation Header -->
+    <header class="glass-effect">
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 max-w-[1400px]">
             <nav class="main-header-nav py-3">
             <!-- Logo - Left aligned -->
@@ -53,7 +53,7 @@
             </div>
 
             <!-- Center navigation links -->
-            <div class="main-header-links hidden lg:flex items-center justify-center gap-4 xl:gap-5 flex-wrap">
+            <div class="main-header-links hidden xl:flex items-center justify-center gap-4 xl:gap-5 flex-wrap">
                 <a href="#" class="nav-link nav-home">Home</a>
                 <div class="services-dropdown-wrapper relative">
                     <button class="nav-link flex items-center gap-2" id="services-button">
@@ -78,15 +78,15 @@
 
             <!-- Right aligned buttons -->
             <div class="main-header-actions flex items-center gap-2 xl:gap-3 flex-shrink-0">
-                <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="hidden lg:inline-flex btn btn-secondary whitespace-nowrap text-sm px-4 py-2.5">
+                <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="hidden xl:inline-flex btn btn-secondary whitespace-nowrap text-sm px-4 py-2.5">
                     Request Appointment
                 </a>
                 <a href="https://15259-6.portal.athenahealth.com/" target="_blank" class="hidden sm:inline-flex btn btn-primary whitespace-nowrap text-sm px-4 py-2.5">
                     Patient Portal
                 </a>
-                
+
                 <!-- Mobile Menu Button - Clean and minimal -->
-                <button id="mobile-menu-btn" class="lg:hidden mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <button id="mobile-menu-btn" class="xl:hidden mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
@@ -114,6 +114,8 @@
         </div>
     </div>
 </header>
+</div>
+<!-- End of Sticky Header Wrapper -->
 
 <!-- Contact Modal -->
 <div id="contact-modal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-describedby="contact-modal-description">
@@ -220,6 +222,38 @@
 </div>
 
 <script>
+// CRITICAL FAILSAFE: Force header to stay fixed at all times
+(function enforceFixedHeader() {
+    const stickyHeader = document.querySelector('.site-sticky-header');
+    if (stickyHeader) {
+        // Set position fixed with !important via inline style
+        stickyHeader.style.setProperty('position', 'fixed', 'important');
+        stickyHeader.style.setProperty('top', '0', 'important');
+        stickyHeader.style.setProperty('left', '0', 'important');
+        stickyHeader.style.setProperty('right', '0', 'important');
+        stickyHeader.style.setProperty('z-index', '999999', 'important');
+        stickyHeader.style.setProperty('width', '100%', 'important');
+        
+        // Create MutationObserver to prevent any changes
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const currentPos = window.getComputedStyle(stickyHeader).position;
+                    if (currentPos !== 'fixed') {
+                        stickyHeader.style.setProperty('position', 'fixed', 'important');
+                        stickyHeader.style.setProperty('top', '0', 'important');
+                    }
+                }
+            });
+        });
+        
+        observer.observe(stickyHeader, {
+            attributes: true,
+            attributeFilter: ['style', 'class']
+        });
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -279,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         const handleViewportReset = () => {
-            if (window.innerWidth >= 1024) {
+            if (window.innerWidth >= 1280) {
                 closeMenu();
             }
         };
@@ -289,6 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Enhanced sticky header effect: only toggle visual state
+    // CRITICAL: Header must remain position: fixed at all times
     if (header) {
         const contactBar = document.querySelector('.top-contact-bar');
         let ticking = false;
