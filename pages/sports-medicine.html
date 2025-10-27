@@ -18,6 +18,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -40,6 +41,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -65,7 +67,7 @@
     </section>
 
     <!-- INTRO SECTION -->
-    <section class="py-20 lg:py-24 bg-white">
+    <section id="sports-overview" data-page-nav data-page-nav-title="Overview" class="py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
                 <div class="bg-gradient-to-r from-green-50 to-blue-50 p-8 lg:p-12 rounded-3xl mb-12" data-aos="fade-up">
@@ -94,7 +96,7 @@
     </section>
 
     <!-- SERVICES SECTION -->
-    <section class="py-20 lg:py-24 bg-light-blue-bg">
+    <section id="sports-services" data-page-nav data-page-nav-title="Services" class="py-20 lg:py-24 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Services We Provide</h2>
@@ -166,7 +168,7 @@
     </section>
 
     <!-- DOCTORS SECTION -->
-    <section class="py-20 lg:py-24 bg-white">
+    <section id="sports-team" data-page-nav data-page-nav-title="Team" class="py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Our Sports Medicine Team</h2>
@@ -212,7 +214,7 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section class="py-20 lg:py-24 bg-light-blue-bg">
+    <section class="py-20 lg:py-24 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-16 text-center shadow-2xl max-w-4xl mx-auto" data-aos="fade-up">
                 <h2 class="text-3xl lg:text-4xl font-black mb-6">Ready to Get Back in the Game?</h2>
@@ -231,7 +233,7 @@
 
     <!-- FOOTER -->
             <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>

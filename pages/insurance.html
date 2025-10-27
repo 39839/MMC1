@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -59,7 +61,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-white">
+    <section id="plans" data-page-nav data-page-nav-title="Plans" class="py-24 lg:py-32 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-20 max-w-4xl mx-auto" data-aos="fade-up">
                 <h2 class="section-title text-dark-gray mb-6">Insurances We Accept</h2>
@@ -114,7 +116,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-light-blue-bg">
+    <section id="new-patient-guide" data-page-nav data-page-nav-title="New Patients" class="py-24 lg:py-32 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-20 text-center shadow-2xl" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Experience the Difference?</h2>
@@ -127,7 +129,7 @@
     </section>
 
             <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>

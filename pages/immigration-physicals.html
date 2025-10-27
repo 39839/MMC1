@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -63,7 +65,7 @@
 
     <section class="py-24 lg:py-32 bg-white">
         <div class="container mx-auto px-6 lg:px-8 max-w-5xl">
-            <div class="mb-16" data-aos="fade-up">
+            <div id="immigration-overview" data-page-nav data-page-nav-title="Overview" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">What is an Immigration Physical and who needs one?</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     Individuals applying for a green card (lawful permanent residence) must undergo a physical examination by a licensed medical professional who has been authorized by the United States Citizenship and Immigration Service (USCIS). The purpose of this physical is to check green card applicants for pre-existing conditions that would preclude their applications from being approved.
@@ -79,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="mb-16" data-aos="fade-up">
+            <div id="immigration-vaccines" data-page-nav data-page-nav-title="Vaccinations" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">Vaccination Requirements</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     If you are unsure of the current vaccination requirements, you can review the CDC's comprehensive vaccination requirements for civil surgeons.
@@ -92,7 +94,7 @@
                 </a>
             </div>
 
-            <div class="mb-16" data-aos="fade-up">
+            <div id="immigration-checklist" data-page-nav data-page-nav-title="Checklist" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">What should I bring to my Immigration Physical?</h2>
                 <div class="bg-light-blue-bg p-8 rounded-2xl">
                     <ul class="space-y-4">
@@ -112,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="mb-16" data-aos="fade-up">
+            <div id="immigration-timeline" data-page-nav data-page-nav-title="Timeline" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">How long does it take to get the paperwork?</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     If all the test results come back normal, you can typically expect a call within 1-2 weeks to let you know that the paperwork is ready to collect.
@@ -121,7 +123,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-light-blue-bg">
+    <section class="py-24 lg:py-32 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-20 text-center shadow-2xl max-w-4xl mx-auto" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Schedule Your Immigration Physical?</h2>
@@ -139,7 +141,7 @@
     </section>
 
         <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>

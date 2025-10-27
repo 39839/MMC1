@@ -1,0 +1,208 @@
+/* In-Page Navigation Styles - Fixed and Simplified */
+
+/* Main navigation container */
+#page-nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* When visible */
+#page-nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* The actual navigation panel */
+.page-nav-inner {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 0.15rem 0.75rem 0.6rem;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 8px 32px -8px rgba(13, 71, 161, 0.15);
+    border: 1px solid rgba(13, 71, 161, 0.08);
+    border-left: none;
+    width: 140px;
+    transform: translateX(0);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* When collapsed */
+#page-nav.collapsed .page-nav-inner {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0;
+    transform: translateX(-140px);
+    box-shadow: none;
+    background: transparent;
+    backdrop-filter: blur(0);
+}
+
+/* Navigation list */
+#page-nav .page-nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 120px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#page-nav.collapsed .page-nav-list {
+    opacity: 0;
+}
+
+/* Navigation links */
+#page-nav .nav-link {
+    position: relative;
+    gap: 0.4rem;
+    padding: 0.4rem 0.15rem 0.4rem 0.25rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+/* Navigation indicator (the line) */
+#page-nav .nav-indicator {
+    width: 1.1rem;
+    height: 0.18rem;
+    border-radius: 9999px;
+    background-color: rgba(73, 84, 104, 0.35);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+#page-nav .nav-link:hover .nav-indicator {
+    width: 1.35rem;
+    background-color: rgba(13, 71, 161, 0.6);
+}
+
+.nav-link.active .nav-indicator {
+    width: 1.6rem;
+    background-color: #0d47a1;
+}
+
+/* Navigation text */
+#page-nav .nav-text {
+    font-size: 0.8125rem;
+    color: #495468;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.25s ease;
+    display: block;
+    white-space: nowrap;
+    max-width: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#page-nav .nav-link:hover .nav-text {
+    color: #0d47a1;
+}
+
+.nav-link.active .nav-text {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+/* Link background on hover/active */
+#page-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    background: linear-gradient(90deg, rgba(13, 71, 161, 0.08), rgba(13, 71, 161, 0));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#page-nav .nav-link:hover::before {
+    opacity: 1;
+}
+
+.nav-link.active::before {
+    opacity: 1;
+    background: linear-gradient(90deg, rgba(13, 71, 161, 0.12), rgba(13, 71, 161, 0));
+}
+
+/* Toggle button */
+#page-nav-toggle {
+    position: absolute;
+    top: 50%;
+    left: 140px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 50px;
+    border-radius: 0 12px 12px 0;
+    background: rgba(13, 71, 161, 0.08);
+    color: #0d47a1;
+    border: 1px solid rgba(13, 71, 161, 0.12);
+    border-left: none;
+    box-shadow: 4px 4px 16px -8px rgba(13, 71, 161, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: left 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+    z-index: 10;
+}
+
+/* Toggle button when collapsed */
+#page-nav.collapsed #page-nav-toggle {
+    left: 0;
+}
+
+#page-nav-toggle:hover,
+#page-nav-toggle:focus {
+    background: rgba(13, 71, 161, 0.12);
+    color: #0a2c63;
+    border-color: rgba(13, 71, 161, 0.18);
+    box-shadow: 4px 4px 20px -8px rgba(13, 71, 161, 0.35);
+}
+
+#page-nav-toggle:focus-visible {
+    outline: 2px solid #ff8f00;
+    outline-offset: 2px;
+}
+
+/* Toggle icon (arrow) */
+#page-nav-toggle .toggle-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+#page-nav.visible:not(.collapsed) #page-nav-toggle .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* Font smoothing for crisp text */
+#page-nav,
+#page-nav *,
+#page-nav *::before,
+#page-nav *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

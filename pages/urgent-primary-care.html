@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
     <style>
         /* Provider Cards */
         .provider-card {
@@ -120,7 +122,7 @@
     </section>
 
     <!-- INTRO SECTION -->
-    <section class="py-20 lg:py-24 bg-white">
+    <section id="urgent-overview" data-page-nav data-page-nav-title="Overview" class="py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="max-w-5xl mx-auto">
                 <div>
@@ -198,7 +200,7 @@
     </section>
 
     <!-- SERVICES SECTION -->
-    <section class="py-20 lg:py-24 bg-light-blue-bg">
+    <section id="urgent-services" data-page-nav data-page-nav-title="Services" class="py-20 lg:py-24 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Comprehensive Urgent Care and Primary Care Services</h2>
@@ -254,7 +256,7 @@
     </section>
 
     <!-- DOCTORS SECTION -->
-    <section class="py-20 lg:py-24 bg-white">
+    <section id="urgent-providers" data-page-nav data-page-nav-title="Providers" class="py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Our Primary Care Physicians and Primary Doctors</h2>
@@ -328,7 +330,7 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section class="py-20 lg:py-24 bg-light-blue-bg">
+    <section class="py-20 lg:py-24 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-16 text-center shadow-2xl max-w-4xl mx-auto">
                 <h2 class="text-3xl lg:text-4xl font-black mb-6">Ready to Get Started?</h2>
@@ -346,7 +348,7 @@
     </section>
 
     <!-- FOOTER -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="../js/header-footer-loader.js"></script>
     <script src="../js/main.js"></script>

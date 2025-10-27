@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -31,6 +32,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray">
     
@@ -39,7 +41,7 @@
     <script src="../js/critical-header.js"></script>
     
     <!-- Test Content -->
-    <section class="relative text-white min-h-screen flex items-center py-20" style="background: linear-gradient(135deg, #0d47a1 0%, #002171 100%); z-index: 1; position: relative; isolation: isolate;">
+    <section id="dropdown-test-section" data-page-nav data-page-nav-title="Overview" class="relative text-white min-h-screen flex items-center py-20" style="background: linear-gradient(135deg, #0d47a1 0%, #002171 100%); z-index: 1; position: relative; isolation: isolate;">
         <div class="relative z-20 container mx-auto px-6">
             <h1 class="text-5xl font-black mb-6">Dropdown Test Page</h1>
             <p class="text-xl mb-8">Click or hover over "Services" in the navigation to test the dropdown menu.</p>
@@ -48,7 +50,7 @@
     </section>
     
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="../js/header-footer-loader.js"></script>
     <script src="../js/main-simple.js"></script>

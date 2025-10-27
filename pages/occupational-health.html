@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
     <style>
         .occupational-icon {
             width: 64px;
@@ -218,7 +220,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-white">
+    <section id="occupational-overview" data-page-nav data-page-nav-title="Overview" class="py-24 lg:py-32 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 
@@ -310,7 +312,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-light-blue-bg">
+    <section class="py-24 lg:py-32 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl lg:text-4xl font-black text-dark-gray mb-4">Detailed Service Information</h2>
@@ -320,7 +322,7 @@
             <div class="max-w-5xl mx-auto space-y-6">
 
                 <!-- 1. Immigration Physical Section -->
-                <div id="immigration" class="accordion-item bg-gradient-to-br from-green-50 via-white to-green-50 border-2 border-green-200 shadow-lg" data-aos="fade-up">
+                <div id="immigration" data-page-nav data-page-nav-title="Immigration" data-page-nav-accordion class="accordion-item bg-gradient-to-br from-green-50 via-white to-green-50 border-2 border-green-200 shadow-lg" data-aos="fade-up">
                     <div class="accordion-header p-8" onclick="toggleAccordion('immigration')">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-6">
@@ -395,7 +397,7 @@
                 </div>
 
                 <!-- 2. Corporate Care Section -->
-                <div id="corporate" class="accordion-item bg-gradient-to-br from-orange-50 via-white to-orange-50 border-2 border-orange-200 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <div id="corporate" data-page-nav data-page-nav-title="Corporate" data-page-nav-accordion class="accordion-item bg-gradient-to-br from-orange-50 via-white to-orange-50 border-2 border-orange-200 shadow-lg" data-aos="fade-up" data-aos-delay="100">
                     <div class="accordion-header p-8" onclick="toggleAccordion('corporate')">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-6">
@@ -458,7 +460,7 @@
                 </div>
 
                 <!-- 3. FAA Physical Section -->
-                <div id="faa" class="accordion-item bg-gradient-to-br from-blue-50 via-white to-blue-50 border-2 border-blue-200 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div id="faa" data-page-nav data-page-nav-title="FAA" data-page-nav-accordion class="accordion-item bg-gradient-to-br from-blue-50 via-white to-blue-50 border-2 border-blue-200 shadow-lg" data-aos="fade-up" data-aos-delay="200">
                     <div class="accordion-header p-8" onclick="toggleAccordion('faa')">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-6">
@@ -522,7 +524,7 @@
                 </div>
 
                 <!-- 4. MVA Physicals Section -->
-                <div id="mva" class="accordion-item bg-gradient-to-br from-purple-50 via-white to-purple-50 border-2 border-purple-200 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                <div id="mva" data-page-nav data-page-nav-title="MVA" data-page-nav-accordion class="accordion-item bg-gradient-to-br from-purple-50 via-white to-purple-50 border-2 border-purple-200 shadow-lg" data-aos="fade-up" data-aos-delay="300">
                     <div class="accordion-header p-8" onclick="toggleAccordion('mva')">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-6">
@@ -568,7 +570,7 @@
     </section>
 
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>

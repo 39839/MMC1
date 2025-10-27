@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -59,7 +61,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-white">
+    <section id="openings" data-page-nav data-page-nav-title="Openings" class="py-24 lg:py-32 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 max-w-3xl mx-auto" data-aos="fade-up">
                 <h2 class="section-title text-dark-gray mb-6">Current Openings</h2>
@@ -238,7 +240,7 @@
         </div>
     </section>
 
-    <section class="py-16 bg-light-blue-bg">
+    <section id="why-join" data-page-nav data-page-nav-title="Why Join" class="py-16 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
                 <h3 class="text-3xl font-bold text-dark-gray mb-6">Why Join Montgomery Medical Clinic?</h3>
@@ -263,7 +265,7 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
+    <section id="contact" data-page-nav data-page-nav-title="Contact" class="py-16 bg-white">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
                 <h3 class="text-2xl font-bold text-dark-gray mb-4">Have Questions?</h3>
@@ -289,7 +291,7 @@
     </section>
 
             <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>

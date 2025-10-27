@@ -24,6 +24,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -46,6 +47,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -69,8 +71,8 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-white">
-        <div class="container mx-auto px-6 lg:px-8 max-w-6xl">
+    <section id="welcome" data-page-nav data-page-nav-title="Welcome" class="py-24 lg:py-32 bg-white">
+        <div class="container mx-auto px-6 lg:px-8 max-w-6xl relative">
             <!-- Welcome Section -->
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-black text-brand-blue mb-6">Welcome To Five Elements Acupuncture & Wellness</h2>
@@ -80,7 +82,7 @@
             </div>
 
             <!-- Our Providers Section -->
-            <div class="mb-20">
+            <div id="providers" data-page-nav data-page-nav-title="Providers" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Meet Our Expert Acupuncture Providers</h2>
                 <p class="text-xl text-center text-medium-gray mb-12 max-w-3xl mx-auto">
                     Our experienced team of traditional Chinese medicine practitioners is dedicated to providing exceptional <strong>acupuncture</strong> care tailored to your unique health needs.
@@ -182,7 +184,7 @@
                 </div>
             </div>
 
-            <div class="mb-20">
+            <div id="services" data-page-nav data-page-nav-title="Services" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Our Acupuncture Services</h2>
                 <p class="text-xl text-center text-medium-gray mb-12 max-w-3xl mx-auto">
                     At Five Elements Acupuncture & Wellness, Dr. Lu provides a wide range of <strong>acupuncture</strong> and Chinese medicine services, including cupping therapy, moxibustion, massage therapy, and stress management to help you achieve optimal wellness.
@@ -270,7 +272,7 @@
                 </div>
             </div>
 
-            <div class="mb-20">
+            <div id="conditions" data-page-nav data-page-nav-title="Conditions" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Conditions We Treat</h2>
                 <p class="text-xl text-center text-medium-gray mb-12 max-w-3xl mx-auto">
                     Dr. Lu provides specialized care for a wide range of conditions, combining traditional Chinese medicine with modern functional health practices.
@@ -376,7 +378,7 @@
             </div>
 
             <!-- Holistic Care Journey Section -->
-            <div class="mb-20">
+            <div id="care-journey" data-page-nav data-page-nav-title="Care Journey" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Personalized Acupuncture Care Journey</h2>
                 <p class="text-xl text-center text-medium-gray mb-12 max-w-3xl mx-auto">
                     Every acupuncture visit begins with thoughtful listening, collaborative goal-setting, and a tailored treatment plan that integrates traditional Chinese medicine, bodywork, and lifestyle guidance for lasting wellness.
@@ -410,7 +412,7 @@
             </div>
 
             <!-- Insurance Section -->
-            <div class="mb-20">
+            <div id="insurance" data-page-nav data-page-nav-title="Insurance" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Insurance & Payment Options</h2>
                 <div class="bg-white p-8 lg:p-12 rounded-2xl shadow-lg text-center">
                     <p class="text-xl text-medium-gray mb-6">
@@ -427,7 +429,7 @@
 
 
             <!-- Preparing for Treatment Section -->
-            <div class="mb-20">
+            <div id="preparation" data-page-nav data-page-nav-title="Preparation" class="mb-20">
                 <h2 class="text-4xl font-black text-brand-blue mb-8 text-center">Preparing for Your Acupuncture Treatment</h2>
                 <p class="text-xl text-center text-medium-gray mb-12 max-w-3xl mx-auto">
                     Simple habits before and after each acupuncture appointment help you feel relaxed, supported, and ready to embrace the healing process Dr. Lu designs for you.
@@ -490,7 +492,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-light-blue-bg">
+    <section class="py-24 lg:py-32 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-20 text-center shadow-2xl max-w-4xl mx-auto">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Begin Your Acupuncture Healing Journey?</h2>
@@ -508,7 +510,7 @@
     </section>
 
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
 
     <script src="../js/header-footer-loader.js"></script>
     <script src="../js/main.js"></script>

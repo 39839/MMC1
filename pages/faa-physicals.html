@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/in-page-nav.css">
     <link rel="preload" href="../includes/header.html" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../js/header-footer-loader.js" as="script">
     <link rel="preload" href="../js/critical-header.js" as="script">
@@ -36,6 +37,7 @@
             }
         }
     </script>
+    <script src="../js/in-page-nav.js" defer></script>
 </head>
 <body class="bg-light-gray text-dark-gray">
 
@@ -63,7 +65,7 @@
 
     <section class="py-24 lg:py-32 bg-white">
         <div class="container mx-auto px-6 lg:px-8 max-w-5xl">
-            <div class="mb-16" data-aos="fade-up">
+            <div id="faa-overview" data-page-nav data-page-nav-title="Overview" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">What is an FAA Physical and who needs one?</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     In order to determine that you are fit to pilot an aircraft, the Federal Aviation Administration requires that pilots take an FAA physical. This physical will inspect your physical and mental health and look at your medical history.
@@ -91,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="mb-16" data-aos="fade-up">
+            <div id="faa-preparation" data-page-nav data-page-nav-title="Preparation" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">How should I prepare for my FAA physical?</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     To ensure that your physical goes smoothly, you'll want to register an account on the FAA's MedXPress system and complete the appropriate electronic form. During the physical, you can expect to take a hearing test, a vision test, and an echocardiogram (for a first class physical over a certain age). You will also be asked to provide a urine sample.
@@ -101,14 +103,14 @@
                 </p>
             </div>
 
-            <div class="mb-16" data-aos="fade-up">
+            <div id="faa-renewal" data-page-nav data-page-nav-title="Renewal" class="mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-black text-brand-blue mb-8">How often does my FAA physical need to be repeated?</h2>
                 <p class="text-lg leading-relaxed mb-6">
                     Depending on your age and the type of medical certificate that you have, you will need to repeat the FAA physical anywhere from every 6 months to every 60 months. Find the expiration period for your certificate.
                 </p>
             </div>
 
-            <div class="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-2xl" data-aos="fade-up">
+            <div id="faa-partnership" data-page-nav data-page-nav-title="Partnership" class="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-2xl" data-aos="fade-up">
                 <h3 class="text-2xl font-bold text-brand-blue mb-4">Our Partnership</h3>
                 <p class="text-lg leading-relaxed">
                     Montgomery Medical Clinic is proud to work with the Washington International Flight Academy in Washington, DC.
@@ -117,7 +119,7 @@
         </div>
     </section>
 
-    <section class="py-24 lg:py-32 bg-light-blue-bg">
+    <section class="py-24 lg:py-32 bg-light-blue-bg" data-page-nav-stop="cta">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="bg-gradient-blue text-white rounded-3xl p-12 lg:p-20 text-center shadow-2xl max-w-4xl mx-auto" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-6">Ready to Schedule Your FAA Physical?</h2>
@@ -135,7 +137,7 @@
     </section>
 
         <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" data-page-nav-stop="footer"></div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/header-footer-loader.js"></script>
