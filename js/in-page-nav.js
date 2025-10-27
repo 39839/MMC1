@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         pageNav.classList.toggle('collapsed', isCollapsed);
         toggleButton.setAttribute('aria-expanded', String(!isCollapsed));
         toggleButton.setAttribute('aria-label', isCollapsed ? 'Expand in-page navigation' : 'Collapse in-page navigation');
-        // icon rotation handled in CSS
         updateLinkAccessibility();
     };
 
@@ -230,13 +229,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth',
             });
 
+            // Enhanced accordion handling - open the accordion if it exists
             if (dest.hasAttribute('data-page-nav-accordion')) {
-                const header = dest.querySelector('.accordion-header');
-                if (header) {
-                    setTimeout(() => {
-                        header.click();
-                    }, 300);
-                }
+                setTimeout(() => {
+                    const accordionContent = document.getElementById(targetId + '-content');
+                    const accordionHeader = dest.querySelector('.accordion-header');
+                    const accordionIcon = accordionHeader ? accordionHeader.querySelector('.accordion-icon') : null;
+                    
+                    if (accordionContent && accordionHeader) {
+                        // Close all other accordions first
+                        document.querySelectorAll('.accordion-content').forEach(item => {
+                            if (item.id !== targetId + '-content') {
+                                item.classList.remove('active');
+                            }
+                        });
+                        
+                        document.querySelectorAll('.accordion-icon').forEach(item => {
+                            if (item !== accordionIcon) {
+                                item.classList.remove('active');
+                            }
+                        });
+                        
+                        // Open the target accordion
+                        accordionContent.classList.add('active');
+                        if (accordionIcon) {
+                            accordionIcon.classList.add('active');
+                        }
+                    }
+                }, 600); // Increased timeout to account for scroll animation
             }
         });
     });
