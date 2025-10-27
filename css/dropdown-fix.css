@@ -29,6 +29,27 @@ header.glass-effect {
     max-width: 100vw;
 }
 
+/* Unified sticky wrapper to keep blue bar + white nav together */
+.site-sticky-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 11000 !important;
+    width: 100%;
+    max-width: 100vw;
+    overflow: visible !important;
+    isolation: isolate;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Inside the unified wrapper, use static positioning for children */
+.site-sticky-header .top-contact-bar,
+.site-sticky-header header.glass-effect {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+}
+
 /* Ensure all header containers allow dropdown overflow */
 #header-placeholder,
 header.glass-effect .container,

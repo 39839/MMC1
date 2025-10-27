@@ -100,7 +100,7 @@ body {
     background: var(--off-white);
     font-size: 16px;
     position: relative;
-    padding-top: var(--top-contact-bar-height, 56px);
+    padding-top: 0;
 }
 
 img {
@@ -139,11 +139,12 @@ section[data-aos], div[data-aos] {
 
 /* ===== STICKY TOP CONTACT BAR ===== */
 .top-contact-bar {
-    position: fixed;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 99998;
+    z-index: 99999;
     width: 100%;
     background: #0d47a1; /* Brand blue fallback */
     box-shadow: 0 2px 8px rgba(13, 71, 161, 0.15);
@@ -171,10 +172,10 @@ section[data-aos], div[data-aos] {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: var(--top-contact-bar-height, 56px);
-    z-index: 99999;
+    z-index: 99998;
     overflow: visible !important;
     box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
-    transition: box-shadow 0.3s ease, background 0.3s ease;
+    transition: box-shadow 0.3s ease, background 0.3s ease, top 0.3s ease;
     will-change: transform;
 }
 
