@@ -1690,3 +1690,248 @@ html {
         max-width: 340px;
     }
 }
+
+/* ===== MOBILE ONLY: Replace PhotoWide with Gradient ===== */
+/* Hide the photo on mobile and use a beautiful gradient instead */
+@media (max-width: 767px) {
+    /* Target the hero section with PhotoWide */
+    section[data-aos="fade-in"] picture {
+        display: none !important;
+    }
+
+    /* Add beautiful gradient background to the section */
+    section[data-aos="fade-in"] {
+        background: linear-gradient(135deg, #0d47a1 0%, #1565c0 25%, #1976d2 50%, #42a5f5 75%, #64b5f6 100%);
+        position: relative;
+    }
+
+    /* Adjust the overlay gradient for better text readability */
+    section[data-aos="fade-in"] > div.absolute.inset-0 {
+        background: linear-gradient(to right, rgba(13, 71, 161, 0.7) 0%, rgba(13, 71, 161, 0.4) 50%, rgba(13, 71, 161, 0.2) 100%) !important;
+    }
+
+    /* ===== APPLE-STYLE MOBILE BANNER - PREMIUM DESIGN ===== */
+
+    /* Clean spacious container with perfect proportions */
+    .slideshow-container {
+        padding: 2rem 1rem 1.5rem !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        background: #fbfbfd !important;
+        box-shadow: none !important;
+        border-top: 1px solid #e5e5ea !important;
+        border-bottom: 1px solid #e5e5ea !important;
+    }
+
+    /* Perfectly structured slide with Apple spacing */
+    .slide {
+        min-height: auto !important;
+        padding: 0 2.5rem !important;
+        gap: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Hide icons for ultra-clean look */
+    .slide .shrink-0 {
+        display: none !important;
+    }
+
+    /* Refined small badge - Apple style */
+    .slide span.inline-flex.items-center.gap-2.bg-gradient-to-r {
+        font-size: 0.625rem !important;
+        padding: 0.25rem 0.6rem !important;
+        margin-bottom: 0.75rem !important;
+        gap: 0 !important;
+        letter-spacing: 0.08em !important;
+        box-shadow: none !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+    }
+
+    /* Beautiful headline - Apple typography */
+    .slide h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.75rem !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        padding: 0 !important;
+        letter-spacing: -0.015em !important;
+        color: #1d1d1f !important;
+    }
+
+    /* Premium gradient text */
+    .slide h3 .text-transparent,
+    .slide h3 span[class*="bg-gradient"],
+    .slide h3 span[class*="bg-clip-text"] {
+        font-weight: 700 !important;
+    }
+
+    /* Clean body text - perfect readability */
+    .slide p.text-medium-gray {
+        font-size: 0.875rem !important;
+        line-height: 1.47 !important;
+        margin-bottom: 1.25rem !important;
+        padding: 0 !important;
+        text-align: center !important;
+        color: #6e6e73 !important;
+        font-weight: 400 !important;
+        max-width: 90% !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    /* Premium Apple-style buttons */
+    .slide a.inline-flex {
+        padding: 0.625rem 1.25rem !important;
+        font-size: 0.875rem !important;
+        gap: 0.375rem !important;
+        border-radius: 980px !important;
+        font-weight: 500 !important;
+        box-shadow: none !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .slide a.inline-flex svg {
+        width: 0.875rem !important;
+        height: 0.875rem !important;
+    }
+
+    /* Main CTA button - Apple blue style */
+    .slide a[href="#services"] {
+        background: #0071e3 !important;
+        color: white !important;
+        border: none !important;
+    }
+
+    .slide a[href="#services"]:active {
+        background: #0077ed !important;
+        transform: scale(0.98) !important;
+    }
+
+    /* Secondary buttons - white with border */
+    .slide a.bg-brand-blue,
+    .slide a.bg-white {
+        background: transparent !important;
+        color: #0071e3 !important;
+        border: 1px solid #d2d2d7 !important;
+    }
+
+    /* List items with checkmarks - clean spacing */
+    .slide .flex.items-center {
+        justify-content: center !important;
+        margin-bottom: 0.375rem !important;
+    }
+
+    .slide .flex.items-center span {
+        font-size: 0.75rem !important;
+        line-height: 1.4 !important;
+        color: #6e6e73 !important;
+        font-weight: 400 !important;
+    }
+
+    .slide .flex.items-center svg {
+        width: 0.875rem !important;
+        height: 0.875rem !important;
+        flex-shrink: 0 !important;
+        margin-right: 0.375rem !important;
+    }
+
+    /* Ultra-minimal navigation arrows */
+    .slideshow-container button[aria-label="Previous slide"],
+    .slideshow-container button[aria-label="Next slide"] {
+        padding: 0 !important;
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 50% !important;
+        border: 0.5px solid rgba(0, 0, 0, 0.04) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+
+    .slideshow-container button[aria-label="Previous slide"]:active,
+    .slideshow-container button[aria-label="Next slide"]:active {
+        background: rgba(255, 255, 255, 0.8) !important;
+        transform: scale(0.95) !important;
+    }
+
+    .slideshow-container button[aria-label="Previous slide"] {
+        left: 0.5rem !important;
+    }
+
+    .slideshow-container button[aria-label="Next slide"] {
+        right: 0.5rem !important;
+    }
+
+    .slideshow-container button svg {
+        width: 1.125rem !important;
+        height: 1.125rem !important;
+        color: #1d1d1f !important;
+    }
+
+    /* Perfect spacing throughout */
+    .slide .flex.flex-col {
+        gap: 0.375rem !important;
+        align-items: center !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .slide .flex.items-center.gap-2,
+    .slide .flex.items-center.gap-3 {
+        gap: 0.375rem !important;
+    }
+
+    /* Pristine centering */
+    .slide .flex-1 {
+        text-align: center !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* Apple-style indicator dots */
+    .slideshow-dots {
+        margin-top: 1.25rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+    }
+
+    .slideshow-dot {
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+        margin: 0 !important;
+        background: #d2d2d7 !important;
+        border-radius: 50% !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .slideshow-dot.active {
+        background: #1d1d1f !important;
+        width: 1.25rem !important;
+        border-radius: 4px !important;
+    }
+
+    /* ===== Center-align Hero Section Text on Mobile ===== */
+    section[data-aos="fade-in"] .relative.z-20 {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    section[data-aos="fade-in"] .text-left {
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+
+    section[data-aos="fade-in"] .flex.flex-col.sm\:flex-row {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
