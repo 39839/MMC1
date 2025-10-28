@@ -5,13 +5,36 @@
             return;
         }
 
-        const pathName = window.location.pathname;
-        const pathSegments = pathName.split('/').filter(Boolean);
-        const currentFile = pathSegments[pathSegments.length - 1] || 'index.html';
+        const script = document.currentScript || document.querySelector('script[src*="critical-header.js"]');
+        let basePath = '';
 
-        const isHomePage = currentFile === 'index.html';
-        const isInPagesDirectory = pathSegments.includes('pages');
-        const basePath = isHomePage ? '' : (isInPagesDirectory ? '../' : '');
+        if (script && script.src) {
+            try {
+                const scriptUrl = new URL(script.src, window.location.href);
+                const baseUrl = new URL('..', scriptUrl);
+                const href = baseUrl.href;
+                basePath = href.endsWith('/') ? href : href + '/';
+            } catch (error) {
+                console.warn('MMC critical header: unable to resolve base path from script.', error);
+            }
+        }
+
+        if (!basePath) {
+            try {
+                const pathName = window.location.pathname;
+                const pathSegments = pathName.split('/').filter(Boolean);
+                const inBlogPosts = pathSegments.includes('blog-posts');
+                const inPages = pathSegments.includes('pages');
+                const depth = inBlogPosts ? 2 : (inPages ? 1 : 0);
+                const relativeFallback = depth > 0 ? '../'.repeat(depth) : '';
+                const fallbackUrl = new URL(relativeFallback || './', window.location.href);
+                const href = fallbackUrl.href;
+                basePath = href.endsWith('/') ? href : href + '/';
+            } catch (error) {
+                console.warn('MMC critical header: falling back to root.', error);
+                basePath = '/';
+            }
+        }
 
         const request = new XMLHttpRequest();
         request.open('GET', basePath + 'includes/header.html', false);

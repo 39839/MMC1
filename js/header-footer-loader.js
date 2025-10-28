@@ -1,3 +1,40 @@
+const MMC_SCRIPT_BASE_HREF = (() => {
+    try {
+        const script = document.currentScript || document.querySelector('script[src*="header-footer-loader.js"]');
+        if (script && script.src) {
+            const scriptUrl = new URL(script.src, window.location.href);
+            const baseUrl = new URL('..', scriptUrl);
+            const href = baseUrl.href;
+            return href.endsWith('/') ? href : href + '/';
+        }
+    } catch (error) {
+        console.warn('MMC header loader: unable to derive script base URL.', error);
+    }
+
+    try {
+        const origin = window.location.origin || '';
+        const pathname = window.location.pathname || '/';
+        const normalizedPath = pathname.endsWith('/') ? pathname : pathname.slice(0, pathname.lastIndexOf('/') + 1);
+        return `${origin}${normalizedPath}`;
+    } catch (error) {
+        console.warn('MMC header loader: falling back to root.', error);
+        return '/';
+    }
+})();
+
+function resolveBasePath(explicitBase) {
+    if (explicitBase && explicitBase.trim()) {
+        try {
+            const absoluteUrl = new URL(explicitBase, window.location.href);
+            const href = absoluteUrl.href;
+            return href.endsWith('/') ? href : href + '/';
+        } catch (error) {
+            console.warn('MMC header loader: invalid explicit base path provided.', error);
+        }
+    }
+    return MMC_SCRIPT_BASE_HREF;
+}
+
 let contactBarResizeObserver = null;
 let resizeListenerAttached = false;
 let resizeDebounceTimer = null;
@@ -10,10 +47,10 @@ function initHeaderFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
     const isHomePage = currentFile === 'index.html';
-    const inferredBasePath = isHomePage ? '' : (pathSegments.includes('pages') ? '../' : '');
-    const basePath = (headerPlaceholder && typeof headerPlaceholder.dataset.mmcHeaderBasePath === 'string')
+    const explicitBase = (headerPlaceholder && typeof headerPlaceholder.dataset.mmcHeaderBasePath === 'string')
         ? headerPlaceholder.dataset.mmcHeaderBasePath
-        : inferredBasePath;
+        : '';
+    const basePath = resolveBasePath(explicitBase);
 
     if (headerPlaceholder) {
         headerPlaceholder.dataset.mmcHeaderBasePath = basePath;
@@ -117,6 +154,7 @@ function updateHeaderLinks(basePath, isHomePage) {
         'nav-acupuncture': 'pages/five-elements-acupuncture.html',
         'nav-wellness': 'pages/nutrition-wellness.html',
         'nav-occupational': 'pages/occupational-health.html',
+        'nav-blog': 'pages/blog.html',
         'nav-about': 'pages/about.html',
         'nav-insurance': 'pages/insurance.html'
     };
@@ -202,11 +240,18 @@ function setActiveNavLink() {
         'five-elements-acupuncture.html': 'nav-acupuncture',
         'nutrition-wellness.html': 'nav-wellness',
         'occupational-health.html': 'nav-occupational',
+        'blog.html': 'nav-blog',
         'about.html': 'nav-about',
         'insurance.html': 'nav-insurance'
     };
     
-    const navClass = pageToNavClass[currentPage];
+    let navClass = pageToNavClass[currentPage];
+    if (!navClass) {
+        const fullPath = window.location.pathname;
+        if (fullPath.includes('/blog-posts/')) {
+            navClass = 'nav-blog';
+        }
+    }
     if (navClass) {
         const activeLink = document.querySelector('.' + navClass);
         if (activeLink) {
