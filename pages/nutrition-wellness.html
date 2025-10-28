@@ -141,6 +141,19 @@
             margin-top: 1.5rem;
             border-left: 4px solid #0d47a1;
         }
+
+        .provider-photo {
+            aspect-ratio: 10.19 / 12.74;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+
+        .provider-photo-wrapper {
+            max-width: clamp(220px, 70%, 340px);
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body class="bg-light-gray text-dark-gray">
@@ -353,7 +366,7 @@
     </section>
 
     <!-- WELLNESS TEAM -->
-    <section id="wellness-team" data-page-nav data-page-nav-title="Wellness Team" class="py-20 lg:py-24 bg-light-blue-bg">
+    <section id="wellness-team" data-page-nav data-page-nav-title="Our Team" class="py-20 lg:py-24 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black mb-5 text-brand-blue">Meet Our Wellness Team</h2>
@@ -364,8 +377,8 @@
 
             <div class="grid gap-10 lg:grid-cols-2">
                 <div class="bg-white rounded-3xl shadow-xl p-8 flex flex-col h-full" data-aos="fade-up">
-                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
-                        <img src="../images/Hodaya.jpg" alt="Hodaya Cohen" class="w-full h-72 object-cover">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6 provider-photo-wrapper">
+                        <img src="../images/Hodaya.jpg" alt="Hodaya Cohen" class="provider-photo">
                     </div>
                     <span class="text-sm font-semibold uppercase tracking-widest text-brand-blue mb-2">Nutrition Coach</span>
                     <h3 class="text-2xl font-bold mb-4">Hodaya Cohen</h3>
@@ -375,8 +388,8 @@
                 </div>
 
                 <div class="bg-white rounded-3xl shadow-xl p-8 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
-                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
-                        <img src="../images/Kevin.jpg" alt="Kevin Cedellios" class="w-full h-72 object-cover">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6 provider-photo-wrapper">
+                        <img src="../images/Kevin.jpg" alt="Kevin Cedellios" class="provider-photo">
                     </div>
                     <span class="text-sm font-semibold uppercase tracking-widest text-brand-orange mb-2">Personal Trainer</span>
                     <h3 class="text-2xl font-bold mb-4">Kevin Cedellios</h3>
