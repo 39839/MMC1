@@ -42,21 +42,6 @@
     <script src="../js/in-page-nav.js" defer></script>
     <style>
         /* Enhanced Doctor Cards */
-        .doctor-card-enhanced {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(13, 71, 161, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .doctor-card-enhanced:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
-            border-color: #ff8f00;
-        }
 
         .doctor-image-container {
             position: relative;
@@ -73,57 +58,222 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .doctor-card-enhanced:hover .doctor-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .doctor-info-enhanced {
-            padding: 2rem;
+            padding: 1.75rem;
         }
 
         .doctor-name-enhanced {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.375rem;
+            font-weight: 700;
             color: #0d47a1;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
+            margin-bottom: 0.375rem;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .doctor-title-enhanced {
             color: #ff8f00;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            margin-bottom: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(255, 143, 0, 0.15);
+            width: 100%;
         }
 
         .doctor-bio-enhanced {
             color: #5a6474;
-            line-height: 1.7;
-            font-size: 0.95rem;
+            line-height: 1.65;
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
         }
 
         .specialty-badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            background: rgba(13, 71, 161, 0.1);
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.75rem;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.08) 0%, rgba(13, 71, 161, 0.12) 100%);
             color: #0d47a1;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin: 0.25rem;
             letter-spacing: 0.03em;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(13, 71, 161, 0.08);
+        }
+
+        .specialty-badge:hover {
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.12) 0%, rgba(13, 71, 161, 0.16) 100%);
+            transform: translateY(-1px);
         }
 
         .specialty-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+        }
+
+        /* Tab Styles - Modern & Integrated */
+        .provider-tabs-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 0 auto 4rem;
+            max-width: 1200px;
+            box-shadow: 0 2px 16px rgba(13, 71, 161, 0.08);
+            border: 1px solid rgba(13, 71, 161, 0.08);
+        }
+
+        .provider-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .tab-button {
+            padding: 0.875rem 1.75rem;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #5a6474;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            z-index: 0;
+        }
+
+        .tab-button > span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-button:hover {
+            transform: translateY(-1px);
+            background: #e8eef5;
+            border-color: rgba(13, 71, 161, 0.2);
+            color: #0d47a1;
+        }
+
+        .tab-button.active {
+            background: transparent;
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.25);
+        }
+
+        .tab-button.active::before {
+            opacity: 1;
+        }
+
+        .tab-button.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.35);
+        }
+
+        .provider-card {
+            display: none;
+        }
+
+        .provider-card.active {
+            display: block;
+            animation: slideUpFade 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .provider-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(13, 71, 161, 0.12);
+            color: #0d47a1;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            min-width: 24px;
+            transition: all 0.25s ease;
+        }
+
+        .tab-button.active .provider-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        #providers-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            min-height: 400px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Ensure smooth grid reflow */
+        @media (min-width: 768px) {
+            #providers-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #providers-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Enhanced card styling */
+        .doctor-card-enhanced {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(13, 71, 161, 0.06);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(13, 71, 161, 0.06);
+            position: relative;
+        }
+
+        .doctor-card-enhanced:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(13, 71, 161, 0.15);
+            border-color: rgba(255, 143, 0, 0.4);
         }
     </style>
 </head>
@@ -215,15 +365,39 @@
     
     <section id="providers" data-page-nav data-page-nav-title="Providers" class="py-24 lg:py-32 bg-light-blue-bg">
         <div class="container mx-auto px-6 lg:px-8">
-            <div class="text-center mb-20 max-w-3xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up">
                 <h2 class="section-title text-dark-gray mb-6">Meet Our Expert Providers</h2>
                 <p class="section-subtitle">Our team consists of board-certified physicians and healthcare professionals with extensive experience and a shared passion for patient-centered care.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            <!-- Provider Filter Tabs -->
+            <div class="provider-tabs-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <div class="provider-tabs">
+                    <button class="tab-button active" data-filter="all">
+                        <span>All Providers<span class="provider-count">8</span></span>
+                    </button>
+                    <button class="tab-button" data-filter="primary-care">
+                        <span>Primary Care<span class="provider-count">2</span></span>
+                    </button>
+                    <button class="tab-button" data-filter="dermatology">
+                        <span>Dermatology<span class="provider-count">2</span></span>
+                    </button>
+                    <button class="tab-button" data-filter="acupuncture">
+                        <span>Acupuncture<span class="provider-count">1</span></span>
+                    </button>
+                    <button class="tab-button" data-filter="wellness">
+                        <span>Wellness Center<span class="provider-count">1</span></span>
+                    </button>
+                    <button class="tab-button" data-filter="sports-medicine">
+                        <span>Sports Medicine<span class="provider-count">2</span></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto" id="providers-container">
 
                 <!-- Dr. Efi Kessous - Primary Care -->
-                <div class="doctor-card-enhanced" data-aos="fade-up">
+                <div class="doctor-card-enhanced provider-card active" data-category="primary-care" data-aos="fade-up">
                     <div class="doctor-image-container">
                         <img src="../images/Efi.jpg" alt="Dr. Efi Kessous" class="doctor-image">
                     </div>
@@ -243,7 +417,7 @@
                 </div>
 
                 <!-- Dr. Bertha Velandia - Primary Care -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="100">
+                <div class="doctor-card-enhanced provider-card active" data-category="primary-care" data-aos="fade-up" data-aos-delay="100">
                     <div class="doctor-image-container">
                         <img src="../images/Bertha.jpg" alt="Dr. Bertha Velandia" class="doctor-image">
                     </div>
@@ -262,7 +436,7 @@
                 </div>
 
                 <!-- Dr. Eran Kessous - Sports Medicine -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="200">
+                <div class="doctor-card-enhanced provider-card active" data-category="sports-medicine" data-aos="fade-up" data-aos-delay="200">
                     <div class="doctor-image-container">
                         <img src="../images/Eran.jpg" alt="Dr. Eran Kessous" class="doctor-image">
                     </div>
@@ -281,7 +455,7 @@
                 </div>
 
                 <!-- Dr. Jonathan Lawless - Sports Medicine & Primary Care -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="300">
+                <div class="doctor-card-enhanced provider-card active" data-category="sports-medicine" data-aos="fade-up" data-aos-delay="300">
                     <div class="doctor-image-container">
                         <img src="../images/LawLess.png" alt="Dr. Jonathan Lawless" class="doctor-image">
                     </div>
@@ -301,7 +475,7 @@
                 </div>
 
                 <!-- Dr. Sara Brooks - Dermatology -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="400">
+                <div class="doctor-card-enhanced provider-card active" data-category="dermatology" data-aos="fade-up" data-aos-delay="400">
                     <div class="doctor-image-container">
                         <img src="../images/Brooks.jpg" alt="Dr. Sara Brooks" class="doctor-image">
                     </div>
@@ -320,7 +494,7 @@
                 </div>
 
                 <!-- Dr. Marsha Mitchum - Dermatology -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="500">
+                <div class="doctor-card-enhanced provider-card active" data-category="dermatology" data-aos="fade-up" data-aos-delay="500">
                     <div class="doctor-image-container">
                         <img src="../images/Mitchum.jpg" alt="Dr. Marsha Mitchum" class="doctor-image">
                     </div>
@@ -339,8 +513,8 @@
                     </div>
                 </div>
 
-                <!-- Dr. Heon Y Jang - Physical Therapy -->
-                <div class="doctor-card-enhanced" data-aos="fade-up" data-aos-delay="600">
+                <!-- Dr. Heon Y Jang - Physical Therapy / Wellness -->
+                <div class="doctor-card-enhanced provider-card active" data-category="wellness" data-aos="fade-up" data-aos-delay="600">
                     <div class="doctor-image-container">
                         <img src="../images/Heon.jpeg" alt="Dr. Heon Y Jang" class="doctor-image">
                     </div>
@@ -357,6 +531,28 @@
                             <span class="specialty-badge">Spinal Manipulation</span>
                             <span class="specialty-badge">Dry Needling</span>
                             <span class="specialty-badge">Scoliosis Treatment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr. Min Lu - Acupuncture -->
+                <div class="doctor-card-enhanced provider-card active" data-category="acupuncture" data-aos="fade-up" data-aos-delay="700">
+                    <div class="doctor-image-container">
+                        <img src="../images/Lu.jpeg" alt="Dr. Min Lu" class="doctor-image">
+                    </div>
+                    <div class="doctor-info-enhanced">
+                        <h3 class="doctor-name-enhanced">Dr. Min Lu</h3>
+                        <p class="doctor-title-enhanced">L.Ac., DAOM (candidate)</p>
+                        <p class="doctor-bio-enhanced">
+                            Dr. Min Lu is a licensed acupuncturist dedicated to providing exceptional acupuncture care tailored to your unique health needs. She integrates traditional Chinese medicine with modern biomedical knowledge to offer comprehensive holistic wellness solutions. Dr. Lu specializes in pain management, fertility treatment, stress management, and a variety of traditional Chinese medicine therapies including cupping and moxibustion. Her approach focuses on treating the whole person, addressing both symptoms and root causes to achieve optimal health and wellbeing.
+                        </p>
+                        <div class="specialty-badges">
+                            <span class="specialty-badge">Acupuncture</span>
+                            <span class="specialty-badge">Chinese Medicine</span>
+                            <span class="specialty-badge">Pain Management</span>
+                            <span class="specialty-badge">Fertility Treatment</span>
+                            <span class="specialty-badge">Cupping Therapy</span>
+                            <span class="specialty-badge">Moxibustion</span>
                         </div>
                     </div>
                 </div>
@@ -413,6 +609,45 @@
         AOS.init({
             duration: 800,
             once: true,
+        });
+
+        // Provider filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const providerCards = document.querySelectorAll('.provider-card');
+            const container = document.getElementById('providers-container');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Prevent double-click on active tab
+                    if (this.classList.contains('active')) return;
+
+                    // Update active tab button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // First, fade out all cards
+                    providerCards.forEach(card => {
+                        card.classList.remove('active');
+                    });
+
+                    // Then fade in matching cards with a slight delay
+                    setTimeout(() => {
+                        providerCards.forEach((card, index) => {
+                            const category = card.getAttribute('data-category');
+
+                            if (filter === 'all' || category === filter) {
+                                // Stagger the animation slightly for each card
+                                setTimeout(() => {
+                                    card.classList.add('active');
+                                }, index * 50);
+                            }
+                        });
+                    }, 150);
+                });
+            });
         });
     </script>
 
