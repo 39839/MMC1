@@ -195,7 +195,8 @@
 
 <!-- Blog Grid -->
 <section class="py-16 sm:py-20 bg-gradient-to-b from-white to-light-blue-bg">
-    <div class="container mx-auto px-6 lg:px-8">
+    <div class="container mx-auto px-6 lg:px-8 space-y-6">
+        <div id="dynamic-feed-status" class="hidden border border-brand-blue/20 bg-light-blue-bg text-brand-blue text-sm font-medium px-4 py-3 rounded-xl shadow-sm" data-tone="info"></div>
         <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- Blog Post 1 - Primary Care -->
@@ -532,6 +533,8 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="../js/header-footer-loader.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/blog-feed.js"></script>
 <script>
     AOS.init({
         duration: 800,
@@ -541,10 +544,12 @@
     // Blog Filter Functionality
     document.addEventListener('DOMContentLoaded', function() {
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
         const blogGrid = document.getElementById('blog-grid');
         const hideTimeouts = new WeakMap();
         const filterTransitionMs = 300;
+        let activeFilter = 'all';
+
+        const getCards = () => Array.from(blogGrid.querySelectorAll('.blog-card'));
 
         const showCard = (card) => {
             if (hideTimeouts.has(card)) {
@@ -575,6 +580,7 @@
         };
 
         const applyFilter = (filter) => {
+            activeFilter = filter;
             // Update active button state
             filterBtns.forEach(button => {
                 if (button.dataset.filter === filter) {
@@ -585,7 +591,7 @@
             });
 
             // Filter cards with smooth animation
-            blogCards.forEach((card, index) => {
+            getCards().forEach((card, index) => {
                 const category = card.getAttribute('data-category');
                 const matches = filter === 'all' || category === filter;
 
@@ -609,6 +615,8 @@
 
         // Initialize with "all" filter
         applyFilter('all');
+
+        document.addEventListener('blog-posts-updated', () => applyFilter(activeFilter));
     });
 </script>
 

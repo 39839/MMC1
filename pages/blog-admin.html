@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Private blog studio for Montgomery Medical Clinic team members.">
+    <title>Blog Studio | Montgomery Medical Clinic</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        'brand-blue': '#0d47a1',
+                        'brand-orange': '#ff8f00',
+                        'light-gray': '#fafafa',
+                        'dark-gray': '#212121',
+                        'medium-gray': '#616161',
+                        'light-blue-bg': '#f5f9ff',
+                        'deep-blue': '#002171',
+                        'light-blue': '#1976d2',
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/header-fix.css">
+    <link rel="stylesheet" href="../css/contact-modal.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        #admin-status[data-tone="success"] {
+            background: rgba(34, 197, 94, 0.12);
+            color: #166534;
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+        #admin-status[data-tone="error"] {
+            background: rgba(239, 68, 68, 0.12);
+            color: #7f1d1d;
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+        #admin-status[data-tone="info"] {
+            background: rgba(59, 130, 246, 0.12);
+            color: #1d4ed8;
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-light-gray text-dark-gray min-h-screen">
+
+<div id="header-placeholder"></div>
+
+<main class="pb-20">
+    <section class="bg-gradient-to-br from-brand-blue to-deep-blue text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 lg:px-10 relative z-10">
+            <div class="max-w-3xl">
+                <p class="uppercase tracking-wide text-white/80 mb-3 text-xs font-semibold">Private Workspace</p>
+                <h1 class="text-4xl sm:text-5xl font-black leading-tight mb-4">
+                    Montgomery Blog Studio
+                </h1>
+                <p class="text-lg text-white/85">
+                    Invite-only space for clinic storytellers. Sign in to craft polished articles, embed visuals, and publish instantly to the public blog.
+                </p>
+            </div>
+        </div>
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.4),_transparent_60%)] pointer-events-none"></div>
+    </section>
+
+    <div class="container mx-auto px-6 lg:px-10 mt-10 space-y-8">
+        <div id="admin-status" class="hidden border rounded-xl px-5 py-4 text-sm font-medium shadow-sm"></div>
+
+        <section id="admin-login" class="max-w-xl bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <div class="px-6 py-6 bg-slate-50 border-b border-slate-200">
+                <h2 class="text-2xl font-semibold text-dark-gray">Team Access Only</h2>
+                <p class="text-sm text-medium-gray mt-2">
+                    Use your clinic email credentials configured in Firebase Authentication.
+                </p>
+            </div>
+            <form id="login-form" class="px-6 py-6 space-y-5">
+                <div>
+                    <label for="login-email" class="block text-sm font-semibold text-medium-gray mb-2 uppercase tracking-wide">Email</label>
+                    <input id="login-email" type="email" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none bg-white/90 backdrop-blur" placeholder="team@montgomeryclinic.com">
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-semibold text-medium-gray mb-2 uppercase tracking-wide">Password</label>
+                    <input id="login-password" type="password" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none bg-white/90 backdrop-blur" placeholder="••••••••">
+                </div>
+                <button id="login-btn" type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue text-white font-semibold px-4 py-3 hover:bg-deep-blue transition-all">
+                    Sign In
+                </button>
+                <p class="text-sm text-medium-gray">
+                    Need an account? Add clinic emails in <span class="font-semibold text-brand-blue">Firebase Authentication</span> and share this URL with trusted staff only.
+                </p>
+            </form>
+        </section>
+
+        <section id="admin-editor" class="hidden bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <div class="px-6 lg:px-10 py-6 bg-slate-50 border-b border-slate-200 flex flex-wrap gap-4 items-center justify-between">
+                <div>
+                    <p class="uppercase text-xs font-semibold text-medium-gray tracking-wide">Blog Studio</p>
+                    <h2 class="text-2xl font-bold text-dark-gray">Create a New Story</h2>
+                    <p class="text-sm text-medium-gray flex items-center gap-2 mt-1">
+                        <span id="last-saved-badge" class="inline-flex items-center px-3 py-1 rounded-full bg-light-blue-bg text-brand-blue text-xs font-semibold uppercase tracking-wide"></span>
+                    </p>
+                </div>
+                <button id="logout-btn" type="button" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-medium-gray hover:border-brand-blue hover:text-brand-blue transition-colors">
+                    Sign Out
+                </button>
+            </div>
+
+            <form id="post-form" class="px-6 lg:px-10 py-10 space-y-10">
+                <div class="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label for="post-title" class="block text-sm font-semibold text-medium-gray mb-2 uppercase tracking-wide">Post Title</label>
+                            <input id="post-title" type="text" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="Headline that grabs attention">
+                        </div>
+                        <div>
+                            <label for="post-summary" class="block text-sm font-semibold text-medium-gray mb-2 uppercase tracking-wide">Hero Summary</label>
+                            <textarea id="post-summary" rows="3" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="One or two sentences that tease the story."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-medium-gray mb-2 uppercase tracking-wide">Body Content</label>
+                            <div class="rounded-xl border border-slate-200">
+                                <div class="bg-slate-50 border-b border-slate-200 px-4 py-2 text-xs uppercase tracking-wide font-semibold text-medium-gray">Visual Editor</div>
+                                <div id="editor" class="h-[420px]"></div>
+                            </div>
+                            <p class="text-xs text-medium-gray mt-2">
+                                Tip: Use the image, video, and font dropdowns in the toolbar to make your article feel premium.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-5 space-y-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <div>
+                                    <label for="post-slug" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Post URL Slug</label>
+                                    <input id="post-slug" type="text" required readonly class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none bg-white" placeholder="health-benefits-of-acupuncture">
+                                </div>
+                                <label class="flex items-center gap-2 text-xs font-semibold text-medium-gray mt-6">
+                                    <input id="autoslug-toggle" type="checkbox" checked class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue">
+                                    Auto-generate
+                                </label>
+                            </div>
+                            <div>
+                                <label for="post-image" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Hero Image URL</label>
+                                <input id="post-image" type="url" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="https://images.unsplash.com/...">
+                            </div>
+                            <div>
+                                <label for="post-category" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Category</label>
+                                <select id="post-category" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                    <option value="primary-care">Primary Care</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="occupational">Occupational Health</option>
+                                    <option value="acupuncture">Acupuncture</option>
+                                    <option value="wellness">Wellness</option>
+                                    <option value="sports-medicine">Sports Medicine</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label for="post-readtime" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Read Time</label>
+                                    <input id="post-readtime" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="6 min read">
+                                </div>
+                                <div>
+                                    <label for="post-date" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Publish Date</label>
+                                    <input id="post-date" type="date" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label for="post-author" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Author Name</label>
+                                    <input id="post-author" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="Dr. Jane Smith">
+                                </div>
+                                <div>
+                                    <label for="post-initials" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Author Initials</label>
+                                    <input id="post-initials" type="text" maxlength="3" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="JS">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="post-author-title" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Author Credentials / Title</label>
+                                <input id="post-author-title" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="MD, MPH — Board-Certified Family Medicine">
+                            </div>
+                            <div>
+                                <label for="post-author-bio" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Author Bio</label>
+                                <textarea id="post-author-bio" rows="3" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="Short introduction that appears below the article."></textarea>
+                            </div>
+                            <div>
+                                <label for="post-status" class="block text-xs font-semibold uppercase tracking-wide text-medium-gray mb-2">Visibility</label>
+                                <select id="post-status" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                    <option value="published">Publish now</option>
+                                    <option value="draft">Save as draft</option>
+                                </select>
+                            </div>
+                            <label class="flex items-center gap-2 text-xs font-semibold text-medium-gray uppercase tracking-wide">
+                                <input id="post-featured" type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue">
+                                Feature on hero strip
+                            </label>
+                        </div>
+                        <div class="bg-gradient-to-br from-brand-blue/10 to-light-blue-bg border border-brand-blue/20 rounded-xl px-4 py-5">
+                            <h3 class="text-sm font-semibold text-brand-blue uppercase tracking-wide mb-2">Publishing Checklist</h3>
+                            <ul class="space-y-2 text-sm text-medium-gray">
+                                <li>• Double-check spelling, medical facts, and compliance.</li>
+                                <li>• Confirm image usage rights (Unsplash or licensed assets).</li>
+                                <li>• Drafts stay hidden until you flip the visibility to “Publish”.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-end gap-4">
+                    <button id="reset-form-btn" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-medium-gray hover:border-brand-blue hover:text-brand-blue transition-colors">
+                        Reset Form
+                    </button>
+                    <button id="submit-post-btn" type="submit" class="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-blue transition-colors">
+                        Publish Post
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="../js/header-footer-loader.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<script src="../js/blog-admin.js"></script>
+
+</body>
+</html>
