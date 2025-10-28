@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Montgomery Medical Clinic Blog - Expert health insights from our medical professionals">
+    <title>Health Blog | Montgomery Medical Clinic</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dropdown-fix.css">
+    <link rel="stylesheet" href="../css/header-fix.css">
+    <link rel="stylesheet" href="../css/contact-modal.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        'brand-blue': '#0d47a1',
+                        'brand-orange': '#ff8f00',
+                        'light-gray': '#fafafa',
+                        'dark-gray': '#212121',
+                        'medium-gray': '#616161',
+                        'light-blue-bg': '#f5f9ff',
+                        'deep-blue': '#002171',
+                        'light-blue': '#1976d2',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .blog-card {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 1;
+            transform: translateY(0);
+            will-change: transform, opacity, box-shadow;
+        }
+
+        .blog-card.is-hiding {
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-blue), var(--brand-orange));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
+        }
+
+        .blog-card:hover .blog-image {
+            transform: scale(1.08);
+        }
+
+        .blog-image-container {
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f9ff 0%, #e8f2ff 100%);
+        }
+
+        .blog-image {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .department-badge {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .filter-btn {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: white;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .filter-btn:hover {
+            background: #f8f9fa;
+            border-color: #0d47a1;
+            color: #0d47a1;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            color: white;
+            border-color: #0d47a1;
+            font-weight: 600;
+        }
+
+        .filter-btn.active:hover {
+            background: linear-gradient(135deg, #002171 0%, #0d47a1 100%);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile optimizations for filter buttons */
+        @media (max-width: 640px) {
+            .filter-btn {
+                font-size: 0.8125rem;
+                padding: 0.625rem 1rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* Ensure smooth transitions */
+        .filter-btn * {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-light-gray text-dark-gray">
+
+<!-- Header Placeholder -->
+<div id="header-placeholder"></div>
+
+<!-- Blog Header -->
+<section class="page-header bg-gradient-blue text-white py-20 relative overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="breadcrumb mb-6" data-aos="fade-right">
+            <a href="../index.html" class="hover:text-brand-orange transition-colors">Home</a>
+            <span class="mx-2">/</span>
+            <span>Health Blog</span>
+        </nav>
+        <div class="max-w-3xl" data-aos="fade-up">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+                Health Insights & Wellness Tips
+            </h1>
+            <p class="text-lg sm:text-xl text-white/90 leading-relaxed">
+                Expert medical advice and health information from Montgomery Medical Clinic's board-certified physicians and specialists. Stay informed about your health and wellness.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Department Filter -->
+<section class="py-10 bg-white border-b border-gray-200 sticky top-[140px] z-40" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3 justify-center items-center py-2" data-aos="fade-up">
+            <button class="filter-btn active px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="all">
+                All Posts
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="primary-care">
+                Primary Care
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="dermatology">
+                Dermatology
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="occupational">
+                Occupational Health
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="acupuncture">
+                Acupuncture
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="wellness">
+                Wellness
+            </button>
+            <button class="filter-btn px-6 py-2.5 rounded-full border-2 border-gray-300 font-semibold text-sm transition-all" data-filter="sports-medicine">
+                Sports Medicine
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Grid -->
+<section class="py-16 sm:py-20 bg-gradient-to-b from-white to-light-blue-bg">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Blog Post 1 - Primary Care -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="primary-care" data-aos="fade-up">
+                <a href="blog-posts/flu-season-guide.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1579154392429-0e6b4e850ad2?auto=format&fit=crop&w=1600&q=80" alt="Healthcare professional preparing a flu vaccination in a clinic." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue text-xs font-bold rounded-full uppercase tracking-wider">Primary Care</span>
+                            <span class="text-sm text-medium-gray">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Your Complete Guide to Flu Season 2024
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Everything you need to know about flu shots, symptoms, and prevention strategies for this year's flu season.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-light-blue flex items-center justify-center text-white font-bold text-xs">
+                                    EK
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Efi Kessous</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 28, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 2 - Dermatology -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="dermatology" data-aos="fade-up" data-aos-delay="100">
+                <a href="blog-posts/winter-skin-care.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1600&q=80" alt="Woman applying moisturizer to protect her skin during winter." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-brand-orange/10 text-brand-orange text-xs font-bold rounded-full uppercase tracking-wider">Dermatology</span>
+                            <span class="text-sm text-medium-gray">4 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Winter Skin Care: Protecting Your Skin in Cold Weather
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Learn essential tips to keep your skin healthy and moisturized during the harsh winter months.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-yellow-500 flex items-center justify-center text-white font-bold text-xs">
+                                    SB
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Sara Brooks</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 25, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 3 - Sports Medicine -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="sports-medicine" data-aos="fade-up" data-aos-delay="200">
+                <a href="blog-posts/injury-prevention.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80" alt="Athlete stretching legs on a track before training." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-light-blue/10 text-light-blue text-xs font-bold rounded-full uppercase tracking-wider">Sports Medicine</span>
+                            <span class="text-sm text-medium-gray">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            5 Essential Injury Prevention Tips for Athletes
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Discover proven strategies to prevent common sports injuries and maintain peak performance.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-light-blue to-blue-400 flex items-center justify-center text-white font-bold text-xs">
+                                    EK
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Eran Kessous</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 22, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 4 - Occupational Health -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="occupational" data-aos="fade-up">
+                <a href="blog-posts/workplace-ergonomics.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1600&q=80" alt="Ergonomic workstation with adjustable chair and monitor setup." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-deep-blue/10 text-deep-blue text-xs font-bold rounded-full uppercase tracking-wider">Occupational Health</span>
+                            <span class="text-sm text-medium-gray">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Workplace Ergonomics: Setting Up Your Perfect Workspace
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Create a healthy work environment that prevents pain and boosts productivity with proper ergonomics.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-deep-blue to-brand-blue flex items-center justify-center text-white font-bold text-xs">
+                                    HJ
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Heon Y Jang</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 20, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 5 - Acupuncture -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="acupuncture" data-aos="fade-up" data-aos-delay="100">
+                <a href="blog-posts/acupuncture-benefits.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=80" alt="Acupuncturist placing fine needles along a patient's back." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wider">Acupuncture</span>
+                            <span class="text-sm text-medium-gray">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Understanding Acupuncture: Ancient Wisdom for Modern Health
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Explore how traditional Chinese medicine and acupuncture can complement your wellness journey.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-bold text-xs">
+                                    ML
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Min Lu</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 18, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 6 - Wellness -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="wellness" data-aos="fade-up" data-aos-delay="200">
+                <a href="blog-posts/nutrition-basics.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80" alt="Colorful assortment of healthy foods arranged on a table." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full uppercase tracking-wider">Wellness</span>
+                            <span class="text-sm text-medium-gray">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Nutrition Basics: Building a Balanced Diet for Optimal Health
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Master the fundamentals of nutrition and learn how to fuel your body for better health and energy.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center text-white font-bold text-xs">
+                                    HC
+                                </div>
+                                <span class="font-semibold text-dark-gray">Hodaya Cohen</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 15, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 7 - Primary Care -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="primary-care" data-aos="fade-up">
+                <a href="blog-posts/diabetes-management.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80" alt="Person checking blood glucose with a digital glucometer." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue text-xs font-bold rounded-full uppercase tracking-wider">Primary Care</span>
+                            <span class="text-sm text-medium-gray">10 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Living Well with Diabetes: A Comprehensive Management Guide
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Expert strategies for managing diabetes, maintaining blood sugar levels, and living a full, healthy life.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-light-blue flex items-center justify-center text-white font-bold text-xs">
+                                    BV
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Bertha Velandia</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 12, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 8 - Dermatology -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="dermatology" data-aos="fade-up" data-aos-delay="100">
+                <a href="blog-posts/skin-cancer-prevention.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1600&q=80" alt="Woman wearing a sun hat and protective clothing on a bright beach day." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-brand-orange/10 text-brand-orange text-xs font-bold rounded-full uppercase tracking-wider">Dermatology</span>
+                            <span class="text-sm text-medium-gray">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Skin Cancer Prevention: Early Detection Saves Lives
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Learn the ABCDEs of melanoma detection and how to protect your skin from harmful UV radiation.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-yellow-500 flex items-center justify-center text-white font-bold text-xs">
+                                    MM
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Marsha Mitchum</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 10, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 9 - Sports Medicine -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="sports-medicine" data-aos="fade-up" data-aos-delay="200">
+                <a href="blog-posts/recovery-strategies.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=1600&q=80" alt="Athlete stretching on a gym floor with recovery tools nearby." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-light-blue/10 text-light-blue text-xs font-bold rounded-full uppercase tracking-wider">Sports Medicine</span>
+                            <span class="text-sm text-medium-gray">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Post-Workout Recovery: Science-Backed Strategies
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Maximize your athletic performance with evidence-based recovery techniques and proper rest protocols.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-light-blue to-blue-400 flex items-center justify-center text-white font-bold text-xs">
+                                    JL
+                                </div>
+                                <span class="font-semibold text-dark-gray">Dr. Jonathan Lawless</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 8, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Post 10 - Wellness -->
+            <article class="blog-card bg-white rounded-2xl shadow-md overflow-hidden" data-category="wellness" data-aos="fade-up">
+                <a href="blog-posts/stress-management.html" class="block">
+                    <div class="blog-image-container aspect-video">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1600&q=80" alt="Person practicing mindful breathing outdoors at sunrise." class="blog-image w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="department-badge inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full uppercase tracking-wider">Wellness</span>
+                            <span class="text-sm text-medium-gray">9 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-gray mb-3 leading-tight hover:text-brand-blue transition-colors">
+                            Stress Management: Practical Techniques for Daily Life
+                        </h3>
+                        <p class="text-medium-gray text-sm leading-relaxed mb-4">
+                            Discover effective mindfulness and stress-reduction techniques to improve mental health and well-being.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs">
+                                    KC
+                                </div>
+                                <span class="font-semibold text-dark-gray">Kevin Cedellios</span>
+                            </div>
+                            <span class="text-medium-gray">•</span>
+                            <span class="text-medium-gray">Oct 5, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 sm:py-20 bg-gradient-blue text-white">
+    <div class="container mx-auto px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
+            Have Health Questions?
+        </h2>
+        <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Our expert medical team is here to help. Schedule an appointment or visit our clinic for personalized care.
+        </p>
+        <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary inline-flex px-8 py-4 text-lg">
+            Schedule Appointment
+        </a>
+    </div>
+</section>
+
+<!-- Footer Placeholder -->
+<div id="footer-placeholder"></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="../js/header-footer-loader.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+    });
+
+    // Blog Filter Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+        const blogGrid = document.getElementById('blog-grid');
+        const hideTimeouts = new WeakMap();
+        const filterTransitionMs = 300;
+
+        const showCard = (card) => {
+            if (hideTimeouts.has(card)) {
+                clearTimeout(hideTimeouts.get(card));
+                hideTimeouts.delete(card);
+            }
+            card.style.display = '';
+            requestAnimationFrame(() => {
+                card.classList.remove('is-hiding');
+            });
+        };
+
+        const hideCard = (card) => {
+            if (hideTimeouts.has(card)) {
+                clearTimeout(hideTimeouts.get(card));
+                hideTimeouts.delete(card);
+            }
+            if (card.style.display === 'none') {
+                return;
+            }
+            card.classList.add('is-hiding');
+            const timeoutId = setTimeout(() => {
+                card.style.display = 'none';
+                card.classList.remove('is-hiding');
+                hideTimeouts.delete(card);
+            }, filterTransitionMs);
+            hideTimeouts.set(card, timeoutId);
+        };
+
+        const applyFilter = (filter) => {
+            // Update active button state
+            filterBtns.forEach(button => {
+                if (button.dataset.filter === filter) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+
+            // Filter cards with smooth animation
+            blogCards.forEach((card, index) => {
+                const category = card.getAttribute('data-category');
+                const matches = filter === 'all' || category === filter;
+
+                if (matches) {
+                    setTimeout(() => {
+                        showCard(card);
+                    }, index * 30); // Stagger the show animation
+                } else {
+                    hideCard(card);
+                }
+            });
+        };
+
+        // Add click listeners to filter buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                applyFilter(filter);
+            });
+        });
+
+        // Initialize with "all" filter
+        applyFilter('all');
+    });
+</script>
+
+</body>
+</html>
