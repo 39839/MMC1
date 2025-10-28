@@ -978,26 +978,10 @@ body.mobile-menu-open {
     /* Fallback for older browsers */
     background: #0d47a1;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #002171 100%);
+    background: -webkit-linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
     /* W3C, IE 10+, Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #002171 100%);
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
     position: relative;
-}
-
-.bg-gradient-blue::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40%;
-    height: 100%;
-    /* Fallback */
-    background: rgba(255, 143, 0, 0.08);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(135deg, transparent 0%, rgba(255, 143, 0, 0.08) 100%);
-    /* W3C, IE 10+, Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(135deg, transparent 0%, rgba(255, 143, 0, 0.08) 100%);
-    pointer-events: none;
 }
 
 .gradient-blue {

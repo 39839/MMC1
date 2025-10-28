@@ -32,13 +32,41 @@
     });
 
     const categoryMeta = {
-        'primary-care': { label: 'Primary Care', badgeClass: 'bg-brand-blue/10 text-brand-blue' },
-        'dermatology': { label: 'Dermatology', badgeClass: 'bg-pink-100 text-pink-600' },
-        'occupational': { label: 'Occupational Health', badgeClass: 'bg-deep-blue/10 text-deep-blue' },
-        'acupuncture': { label: 'Acupuncture', badgeClass: 'bg-emerald-100 text-emerald-700' },
-        'wellness': { label: 'Wellness', badgeClass: 'bg-yellow-100 text-yellow-700' },
-        'sports-medicine': { label: 'Sports Medicine', badgeClass: 'bg-orange-100 text-brand-orange' },
-        default: { label: 'Clinic Updates', badgeClass: 'bg-brand-blue/10 text-brand-blue' }
+        'primary-care': {
+            label: 'Primary Care',
+            badgeClass: 'bg-brand-blue/10 text-brand-blue',
+            avatarClass: 'bg-gradient-to-br from-brand-blue to-light-blue'
+        },
+        'dermatology': {
+            label: 'Dermatology',
+            badgeClass: 'bg-yellow-100 text-yellow-700',
+            avatarClass: 'bg-gradient-to-br from-yellow-500 to-amber-500'
+        },
+        'occupational': {
+            label: 'Occupational Health',
+            badgeClass: 'bg-deep-blue/10 text-deep-blue',
+            avatarClass: 'bg-gradient-to-br from-deep-blue to-brand-blue'
+        },
+        'acupuncture': {
+            label: 'Acupuncture',
+            badgeClass: 'bg-purple-100 text-purple-700',
+            avatarClass: 'bg-gradient-to-br from-purple-500 to-purple-600'
+        },
+        'wellness': {
+            label: 'Wellness',
+            badgeClass: 'bg-green-100 text-green-700',
+            avatarClass: 'bg-gradient-to-br from-green-500 to-green-600'
+        },
+        'sports-medicine': {
+            label: 'Sports Medicine',
+            badgeClass: 'bg-sky-100 text-sky-700',
+            avatarClass: 'bg-gradient-to-br from-sky-500 to-sky-600'
+        },
+        default: {
+            label: 'Clinic Updates',
+            badgeClass: 'bg-brand-blue/10 text-brand-blue',
+            avatarClass: 'bg-gradient-to-br from-brand-blue to-light-blue'
+        }
     };
 
     const formatDate = (input) => {
@@ -98,7 +126,7 @@
                     </p>
                     <div class="flex items-center gap-3 text-sm">
                         <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-light-blue flex items-center justify-center text-white font-bold text-xs">
+                            <div class="w-8 h-8 rounded-full ${category.avatarClass} flex items-center justify-center text-white font-bold text-xs">
                                 ${authorInitials}
                             </div>
                             <span class="font-semibold text-dark-gray">${authorName}</span>

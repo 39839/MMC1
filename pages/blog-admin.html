@@ -221,6 +221,9 @@
                 </div>
 
                 <div class="flex flex-wrap items-center justify-end gap-4">
+                    <button id="cancel-edit-btn" type="button" class="hidden inline-flex items-center gap-2 rounded-lg border border-rose-200 px-4 py-2 text-sm font-semibold text-rose-600 hover:border-rose-300 hover:text-rose-700 transition-colors">
+                        Cancel Editing
+                    </button>
                     <button id="reset-form-btn" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-medium-gray hover:border-brand-blue hover:text-brand-blue transition-colors">
                         Reset Form
                     </button>
@@ -229,6 +232,24 @@
                     </button>
                 </div>
             </form>
+        </section>
+
+        <section id="my-posts" class="hidden bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <div class="px-6 py-5 bg-slate-50 border-b border-slate-200 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h2 class="text-2xl font-semibold text-dark-gray">My Posts</h2>
+                    <p class="text-sm text-medium-gray">Review, edit, or remove articles you have published.</p>
+                </div>
+                <div class="text-xs uppercase tracking-wide font-semibold text-medium-gray">
+                    <span id="my-posts-count">0 posts</span>
+                </div>
+            </div>
+            <div class="p-6 space-y-4" id="my-posts-shell">
+                <div id="my-posts-empty" class="text-sm text-medium-gray rounded-xl border border-dashed border-slate-200 px-4 py-5 text-center">
+                    You have not published any posts yet. Draft your first story above!
+                </div>
+                <div id="my-posts-list" class="space-y-4"></div>
+            </div>
         </section>
 
     </div>

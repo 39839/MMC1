@@ -26,38 +26,73 @@
     const categoryMeta = {
         'primary-care': {
             label: 'Primary Care',
-            heroClass: 'bg-white/20 text-white border border-white/25',
-            cardClass: 'bg-brand-blue/10 text-brand-blue'
+            heroClass: 'bg-brand-blue/30 text-white border border-white/25',
+            heroBannerGradient: 'linear-gradient(135deg, #0d47a1 0%, #1976d2 100%)',
+            cardClass: 'bg-brand-blue/10 text-brand-blue',
+            primaryColor: '#0d47a1',
+            secondaryColor: '#1976d2',
+            lightBg: '#f5f9ff',
+            borderColor: '#0d47a1'
         },
         'dermatology': {
             label: 'Dermatology',
-            heroClass: 'bg-pink-500/20 text-white border border-white/20',
-            cardClass: 'bg-pink-100 text-pink-600'
+            heroClass: 'bg-yellow-500/30 text-white border border-white/20',
+            heroBannerGradient: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)',
+            cardClass: 'bg-yellow-100 text-yellow-700',
+            primaryColor: '#b45309',
+            secondaryColor: '#eab308',
+            lightBg: '#fef3c7',
+            borderColor: '#eab308'
         },
         'occupational': {
             label: 'Occupational Health',
-            heroClass: 'bg-emerald-400/20 text-white border border-white/20',
-            cardClass: 'bg-deep-blue/10 text-deep-blue'
+            heroClass: 'bg-deep-blue/30 text-white border border-white/20',
+            heroBannerGradient: 'linear-gradient(135deg, #002171 0%, #0d47a1 100%)',
+            cardClass: 'bg-deep-blue/10 text-deep-blue',
+            primaryColor: '#002171',
+            secondaryColor: '#0d47a1',
+            lightBg: '#e8f2ff',
+            borderColor: '#002171'
         },
         'acupuncture': {
             label: 'Acupuncture',
-            heroClass: 'bg-amber-400/25 text-white border border-white/20',
-            cardClass: 'bg-emerald-100 text-emerald-700'
+            heroClass: 'bg-purple-500/25 text-white border border-white/20',
+            heroBannerGradient: 'linear-gradient(135deg, #9333ea 0%, #c084fc 100%)',
+            cardClass: 'bg-purple-100 text-purple-700',
+            primaryColor: '#7e22ce',
+            secondaryColor: '#9333ea',
+            lightBg: '#f3e8ff',
+            borderColor: '#9333ea'
         },
         'wellness': {
             label: 'Wellness',
-            heroClass: 'bg-brand-orange/30 text-white border border-white/20',
-            cardClass: 'bg-yellow-100 text-yellow-700'
+            heroClass: 'bg-green-500/25 text-white border border-white/20',
+            heroBannerGradient: 'linear-gradient(135deg, #22c55e 0%, #4ade80 100%)',
+            cardClass: 'bg-green-100 text-green-700',
+            primaryColor: '#15803d',
+            secondaryColor: '#22c55e',
+            lightBg: '#dcfce7',
+            borderColor: '#22c55e'
         },
         'sports-medicine': {
             label: 'Sports Medicine',
-            heroClass: 'bg-sky-400/20 text-white border border-white/20',
-            cardClass: 'bg-orange-100 text-brand-orange'
+            heroClass: 'bg-sky-500/25 text-white border border-white/20',
+            heroBannerGradient: 'linear-gradient(135deg, #0ea5e9 0%, #7dd3fc 100%)',
+            cardClass: 'bg-sky-100 text-sky-700',
+            primaryColor: '#0369a1',
+            secondaryColor: '#0ea5e9',
+            lightBg: '#e0f2fe',
+            borderColor: '#0ea5e9'
         },
         default: {
             label: 'Clinic Updates',
             heroClass: 'bg-white/20 text-white border border-white/25',
-            cardClass: 'bg-brand-blue/10 text-brand-blue'
+            heroBannerGradient: 'linear-gradient(135deg, #0d47a1 0%, #1976d2 100%)',
+            cardClass: 'bg-brand-blue/10 text-brand-blue',
+            primaryColor: '#0d47a1',
+            secondaryColor: '#1976d2',
+            lightBg: '#f5f9ff',
+            borderColor: '#0d47a1'
         }
     };
 
@@ -125,11 +160,70 @@
         metaDescriptionTag?.setAttribute('content', description);
     };
 
+    const applyDepartmentColors = (category) => {
+        const style = document.createElement('style');
+        style.id = 'department-colors';
+
+        // Remove existing department color styles
+        const existingStyle = document.getElementById('department-colors');
+        if (existingStyle) {
+            existingStyle.remove();
+        }
+
+        style.textContent = `
+            .blog-content h2 {
+                color: ${category.primaryColor} !important;
+            }
+            .blog-content h3 {
+                color: ${category.secondaryColor} !important;
+            }
+            .blog-content strong {
+                color: ${category.primaryColor} !important;
+            }
+            .blog-content a {
+                color: ${category.primaryColor} !important;
+            }
+            .blog-content blockquote {
+                border-left-color: ${category.primaryColor} !important;
+                color: ${category.secondaryColor} !important;
+            }
+            .blog-content img {
+                box-shadow: 0 18px 50px rgba(${hexToRgb(category.primaryColor)}, 0.12) !important;
+            }
+            .author-bio {
+                background: linear-gradient(135deg, ${category.lightBg} 0%, ${hexToRgb(category.lightBg, 0.5)} 100%) !important;
+                border-left-color: ${category.primaryColor} !important;
+            }
+            #entry-highlight {
+                color: ${category.primaryColor} !important;
+                background-color: ${category.lightBg} !important;
+                border-color: ${category.borderColor} !important;
+            }
+            #author-bio-title {
+                color: ${category.primaryColor} !important;
+            }
+            #author-bio-avatar {
+                background: linear-gradient(135deg, ${category.primaryColor} 0%, ${category.secondaryColor} 100%) !important;
+            }
+        `;
+
+        document.head.appendChild(style);
+    };
+
+    const hexToRgb = (hex, alpha = 1) => {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        if (!result) return '0, 0, 0';
+        const r = parseInt(result[1], 16);
+        const g = parseInt(result[2], 16);
+        const b = parseInt(result[3], 16);
+        return alpha === 1 ? `${r}, ${g}, ${b}` : `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
     const decorateLinks = (root) => {
         root.querySelectorAll('a').forEach(link => {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.classList.add('text-brand-blue', 'font-semibold', 'underline', 'underline-offset-4');
+            link.classList.add('font-semibold', 'underline', 'underline-offset-4');
         });
         root.querySelectorAll('img').forEach(img => {
             if (!img.hasAttribute('loading')) {
@@ -229,6 +323,15 @@
         const heroImg = post.heroImage || 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80';
         const summary = post.summary || '';
         const authorBio = post.authorBio || post.authorDescription || '';
+
+        // Apply department-specific banner gradient
+        const headerElement = document.querySelector('.page-header');
+        if (headerElement && category.heroBannerGradient) {
+            headerElement.style.background = category.heroBannerGradient;
+        }
+
+        // Apply department-specific colors to content
+        applyDepartmentColors(category);
 
         titleEl.textContent = post.title || 'Untitled Story';
         badgeEl.textContent = category.label;
