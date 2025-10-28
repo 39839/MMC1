@@ -126,34 +126,60 @@
         /* Tab Styles - Modern & Integrated */
         .provider-tabs-wrapper {
             background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 0 auto 4rem;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0 auto 3rem;
             max-width: 1200px;
             box-shadow: 0 2px 16px rgba(13, 71, 161, 0.08);
             border: 1px solid rgba(13, 71, 161, 0.08);
+        }
+
+        @media (min-width: 768px) {
+            .provider-tabs-wrapper {
+                padding: 1.5rem;
+                margin-bottom: 4rem;
+                border-radius: 16px;
+            }
         }
 
         .provider-tabs {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .provider-tabs {
+                gap: 0.75rem;
+            }
         }
 
         .tab-button {
-            padding: 0.875rem 1.75rem;
+            padding: 0.75rem 1.25rem;
             background: #f8f9fa;
             border: 2px solid transparent;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: #5a6474;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             letter-spacing: 0.02em;
             position: relative;
             overflow: hidden;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .tab-button {
+                padding: 0.875rem 1.75rem;
+                border-radius: 12px;
+                font-size: 0.875rem;
+            }
         }
 
         .tab-button::before {
@@ -223,13 +249,23 @@
             justify-content: center;
             background: rgba(13, 71, 161, 0.12);
             color: #0d47a1;
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.6875rem;
             font-weight: 700;
-            margin-left: 0.5rem;
-            min-width: 24px;
+            margin-left: 0.4rem;
+            min-width: 20px;
             transition: all 0.25s ease;
+        }
+
+        @media (min-width: 768px) {
+            .provider-count {
+                padding: 0.2rem 0.6rem;
+                border-radius: 10px;
+                font-size: 0.75rem;
+                margin-left: 0.5rem;
+                min-width: 24px;
+            }
         }
 
         .tab-button.active .provider-count {
@@ -286,74 +322,74 @@
 
 
     <section class="page-header">
-        <div class="container mx-auto px-6 lg:px-8 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="breadcrumb" data-aos="fade-right">
                 <a href="../index.html">Home</a>
                 <span>/</span>
                 <span>About Us</span>
             </div>
-            <h1 class="text-5xl lg:text-6xl font-black mb-6" data-aos="fade-up">About Montgomery Medical Clinic</h1>
-            <p class="text-xl lg:text-2xl text-white/90 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight" data-aos="fade-up">About Montgomery Medical Clinic</h1>
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                 Your trusted healthcare partner.
             </p>
         </div>
     </section>
 
-    <section id="mission" data-page-nav data-page-nav-title="Mission" class="py-24 lg:py-32 bg-white overflow-visible">
-        <div class="container mx-auto px-6 lg:px-8">
+    <section id="mission" data-page-nav data-page-nav-title="Mission" class="py-16 sm:py-20 md:py-24 lg:py-32 bg-white overflow-visible">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header Section -->
-            <div class="text-center mb-16 max-w-4xl mx-auto" data-aos="fade-up">
-                <span class="text-brand-blue font-bold uppercase tracking-widest text-sm">OUR MISSION</span>
-                <h2 class="text-4xl lg:text-5xl font-black mt-4 mb-8 pb-2">A Legacy of Compassionate Care</h2>
+            <div class="text-center mb-12 sm:mb-14 md:mb-16 max-w-4xl mx-auto" data-aos="fade-up">
+                <span class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm">OUR MISSION</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mt-3 sm:mt-4 mb-6 sm:mb-8 pb-2 leading-tight">A Legacy of Compassionate Care</h2>
             </div>
 
             <!-- Content Section -->
-            <div class="max-w-6xl mx-auto space-y-8" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-lg text-medium-gray leading-relaxed">
+            <div class="max-w-6xl mx-auto space-y-6 sm:space-y-8" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-sm sm:text-base md:text-lg text-medium-gray leading-relaxed">
                     When it comes to your health, you deserve exceptional care from a team you can trust. At Montgomery Medical Clinic, our experienced physicians are dedicated to keeping you and your family healthy—today and for years to come. With over five decades of combined experience, our team provides compassionate, comprehensive care tailored to your unique needs.
                 </p>
-                <p class="text-lg text-medium-gray leading-relaxed">
+                <p class="text-sm sm:text-base md:text-lg text-medium-gray leading-relaxed">
                     Whether you need immediate medical attention, a routine vaccination, or your yearly annual, we're here when you need us most. In addition to our outstanding primary care services, our Dermatology Department offers specialized expertise in diagnosing and treating a wide range of skin conditions. With a wealth of knowledge and experience, our dermatology specialists are committed to helping you achieve healthy, confident skin.
                 </p>
             </div>
 
             <!-- Image and Benefits Section -->
-            <div class="mt-16 max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-5 gap-12 items-center">
+            <div class="mt-10 sm:mt-12 md:mt-14 lg:mt-16 max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 items-center">
                     <!-- Image Column -->
                     <div class="lg:col-span-2" data-aos="fade-right" data-aos-delay="200">
-                        <img src="../images/CurrentPhoto1.png" alt="Team of doctors at Montgomery Medical Clinic" class="rounded-3xl shadow-2xl w-full h-auto">
+                        <img src="../images/CurrentPhoto1.png" alt="Team of doctors at Montgomery Medical Clinic" class="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto">
                     </div>
 
                     <!-- Benefits Column -->
-                    <div class="lg:col-span-3 flex flex-col justify-center" data-aos="fade-left" data-aos-delay="200">
-                        <p class="text-lg text-medium-gray leading-relaxed font-semibold mb-4">
+                    <div class="lg:col-span-3 flex flex-col justify-center mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
+                        <p class="text-base sm:text-lg text-medium-gray leading-relaxed font-semibold mb-4">
                             By choosing one of our physicians as your primary care provider, you'll benefit from:
                         </p>
                         <ul class="space-y-3">
-                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
-                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-base text-dark-gray font-medium">Personalized attention and continuity of care</span>
+                            <li class="flex items-start gap-2.5 sm:gap-3 bg-light-blue-bg p-3 sm:p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-sm sm:text-base text-dark-gray font-medium">Personalized attention and continuity of care</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
-                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-base text-dark-gray font-medium">Advanced treatments using the latest medical technology</span>
+                            <li class="flex items-start gap-2.5 sm:gap-3 bg-light-blue-bg p-3 sm:p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-sm sm:text-base text-dark-gray font-medium">Advanced treatments using the latest medical technology</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
-                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-base text-dark-gray font-medium">Expert dermatology care for all your skin health needs</span>
+                            <li class="flex items-start gap-2.5 sm:gap-3 bg-light-blue-bg p-3 sm:p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-sm sm:text-base text-dark-gray font-medium">Expert dermatology care for all your skin health needs</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
-                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-base text-dark-gray font-medium">A lasting relationship with trusted healthcare professionals</span>
+                            <li class="flex items-start gap-2.5 sm:gap-3 bg-light-blue-bg p-3 sm:p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-sm sm:text-base text-dark-gray font-medium">A lasting relationship with trusted healthcare professionals</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-light-blue-bg p-4 rounded-xl transition-all hover:shadow-md">
-                                <svg class="w-6 h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-base text-dark-gray font-medium">Convenient access to a full range of medical services</span>
+                            <li class="flex items-start gap-2.5 sm:gap-3 bg-light-blue-bg p-3 sm:p-4 rounded-xl transition-all hover:shadow-md">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="text-sm sm:text-base text-dark-gray font-medium">Convenient access to a full range of medical services</span>
                             </li>
                         </ul>
-                        <div class="mt-6 p-5 bg-gradient-to-r from-brand-blue to-blue-600 rounded-2xl">
-                            <p class="text-lg text-white font-bold text-center">
+                        <div class="mt-5 sm:mt-6 p-4 sm:p-5 bg-gradient-to-r from-brand-blue to-blue-600 rounded-xl sm:rounded-2xl">
+                            <p class="text-base sm:text-lg text-white font-bold text-center">
                                 At Montgomery Medical Clinic, your health—and your confidence—are our top priorities.
                             </p>
                         </div>
@@ -522,7 +558,7 @@
                         <h3 class="doctor-name-enhanced">Dr. Heon Y Jang</h3>
                         <p class="doctor-title-enhanced">PT, DPT</p>
                         <p class="doctor-bio-enhanced">
-                            Dr. Heon Y Jang, PT, DPT is a graduate of Medical College of Virginia Campus, Virginia Commonwealth University. Prior to attending Doctor of Physical Therapy program, he attended South Western University in the Philippines and Won kang Health science college in Korea. He served in the Korean Air Force as a medic contributing to the Air Force Military health and readiness and was discharged honorably after 30 months of service. He has had over two decades of clinical experience as a Physical Therapy Practitioner focusing on orthopedic conditions and sports injuries. His academic and clinical training includes spinal manipulation through studies at Wonkang Health Science, and Functional Dry Needling through advanced training at Kinetacore Institute for Pain Management and sports Injuries. His approach is unique in that he tries to focus on the origin of the clinical symptoms even for extremity overuse syndromes and acute injuries. This comes from his own treatment for the injuries he sustained while practicing Martial arts and practicing manual therapy for diverse spinal patients. He has practiced Martial arts in Taekwondo, Kickboxing, kendo, boxing and has seen various martial arts associated injuries. He also has worked on diverse scoliosis patients helping them relieve pain and lead their lives at their full strength. He is currently working at Montgomery Medical Clinic as a senior staff physical therapist. His previous work includes a senior physical therapist at Montgomery Sports Medicine Center in MD and a clinical Director at Pain and Rehab Clinic in DC.
+                            Dr. Heon Y Jang, PT, DPT is a graduate of Medical College of Virginia Campus, Virginia Commonwealth University. Prior to attending Doctor of Physical Therapy program, he attended South Western University in the Philippines and Won kang Health science college in Korea. He served in the Korean Air Force as a medic contributing to the Air Force Military health and readiness and was discharged honorably after 30 months of service. He has had over two decades of clinical experience as a Physical Therapy Practitioner focusing on orthopedic conditions and sports injuries. His academic and clinical training includes spinal manipulation through studies at Wonkang Health Science, and Functional Dry Needling through advanced training at Kinetacore Institute for Pain Management and sports Injuries. His approach is unique in that he tries to focus on the origin of the clinical symptoms even for extremity overuse syndromes and acute injuries. This comes from his own treatment for the injuries he sustained while practicing Martial arts and practicing manual therapy for diverse spinal patients. He has practiced Martial arts in Taekwondo, Kickboxing, kendo, boxing and has seen various martial arts associated injuries. He also has worked on diverse scoliosis patients helping them relieve pain and lead their lives at their full strength.
                         </p>
                         <div class="specialty-badges">
                             <span class="specialty-badge">Physical Therapy</span>
