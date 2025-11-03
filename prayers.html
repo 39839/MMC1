@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Prayers & Readings - A Letter in the Scroll</title>
+    <link rel="icon" type="image/png" href="Icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prayers-style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white shadow-2xl border-b-4 border-blue-600">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <!-- Logo/Title Section -->
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-4 mb-2">
+                        <img src="Icon.png" alt="A Letter in the Scroll Logo" class="h-12 w-12 sm:h-16 sm:w-16 rounded-lg shadow-lg">
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide leading-tight">A Letter in the Scroll</h1>
+                    </div>
+                    <p class="text-blue-200 text-sm md:text-base leading-relaxed">Important Prayers & Readings</p>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="flex flex-wrap gap-3 flex-shrink-0">
+                    <a href="index.html" class="px-5 py-3 bg-white text-blue-900 rounded-lg font-semibold shadow-lg hover:bg-blue-50 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap flex-1 sm:flex-initial justify-center">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Torah Study</span>
+                        <span class="sm:hidden">Home</span>
+                    </a>
+                    <span aria-current="page" class="px-5 py-3 bg-blue-50 text-blue-900 rounded-lg font-semibold shadow-lg border border-blue-200 flex items-center gap-2 whitespace-nowrap flex-1 sm:flex-initial justify-center">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-6 4h10m2 5H5a2 2 0 01-2-2V5a2 2 0 012-2h9l5 5v14a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Important Prayers/Readings</span>
+                        <span class="sm:hidden">Prayers</span>
+                    </span>
+                    <a href="about.html" class="px-5 py-3 bg-blue-700 text-white rounded-lg font-semibold shadow-lg hover:bg-blue-600 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap flex-1 sm:flex-initial justify-center">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">About</span>
+                        <span class="sm:hidden">Info</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Prayer List Navigation -->
+        <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-8 border border-gray-200">
+            <div class="md:flex md:items-center md:justify-between gap-6 mb-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Important Prayers & Readings</h2>
+                    <p class="text-blue-800 mt-2 max-w-2xl">
+                        Choose a focus area to quickly find the prayer you need. Every entry links straight to the
+                        full English, Hebrew, and transliteration text below.
+                    </p>
+                </div>
+            </div>
+            <div id="category-cards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-8 border border-gray-200">
+            <div class="flex flex-col gap-2 mb-4">
+                <h3 class="text-xl font-semibold text-blue-900">Complete Prayer Directory</h3>
+                <p class="text-blue-800 text-sm">
+                    Tap any title to scroll to its section. The list follows the order shown in the navigation.
+                </p>
+            </div>
+            <div id="prayer-directory" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <a href="#" id="back-to-top" class="fixed bottom-8 right-8 bg-blue-700 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-all hidden z-50">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            </svg>
+        </a>
+
+        <!-- Prayer Sections Will Be Loaded by JavaScript -->
+        <div id="prayers-container"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6 mt-12 border-t-4 border-blue-700">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">May your prayers be meaningful</p>
+            <p class="text-xs text-blue-300 mt-2">A Letter in the Scroll</p>
+        </div>
+    </footer>
+
+    <script src="prayers-data.js"></script>
+    <script src="prayers.js"></script>
+    <script src="text-size-control.js"></script>
+</body>
+</html>

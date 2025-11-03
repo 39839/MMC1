@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Significance Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .parsha-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .parsha-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        .significance {
+            color: #333;
+            line-height: 1.6;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status.yes {
+            background: #10b981;
+            color: white;
+        }
+        .status.no {
+            background: #ef4444;
+            color: white;
+        }
+        .summary {
+            background: #3b82f6;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .log {
+            background: #1f2937;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin-top: 30px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Torah Parsha Significance Test</h1>
+    <div class="summary" id="summary">Loading data...</div>
+    <div id="parsha-list"></div>
+    <div class="log" id="log"></div>
+
+    <script>
+        async function testSignificance() {
+            const log = [];
+            const logEl = document.getElementById('log');
+            const summaryEl = document.getElementById('summary');
+            const listEl = document.getElementById('parsha-list');
+
+            function addLog(msg) {
+                log.push(msg);
+                logEl.textContent = log.join('\n');
+                console.log(msg);
+            }
+
+            addLog('Starting significance test...');
+
+            try {
+                // Load data.json
+                addLog('Fetching data.json...');
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                addLog(`✅ data.json loaded successfully`);
+                addLog(`Total parshas: ${data.parshas?.length || 0}`);
+
+                // Check Genesis parshas
+                const genesisParshas = [
+                    'Bereshit', 'Noah', 'Lech Lecha', 'Vayera',
+                    'Chayei Sara', 'Toldot', 'Vayetzei', 'Vayishlach',
+                    'Vayeshev', 'Miketz', 'Vayigash', 'Vayechi'
+                ];
+
+                let foundCount = 0;
+                let withSignificance = 0;
+
+                summaryEl.innerHTML = `
+                    <h2>Loading Status</h2>
+                    <p>Testing ${genesisParshas.length} Genesis parshas...</p>
+                `;
+
+                genesisParshas.forEach(name => {
+                    const parsha = data.parshas?.find(p => p.name === name);
+
+                    if (parsha) {
+                        foundCount++;
+                        const hasSig = parsha.significance && parsha.significance.trim().length > 0;
+                        if (hasSig) withSignificance++;
+
+                        const card = document.createElement('div');
+                        card.className = 'parsha-card';
+
+                        const hasNewFormat = hasSig &&
+                            parsha.significance.includes('Parsha Summary:') &&
+                            parsha.significance.includes('Significance & Takeaway:');
+
+                        card.innerHTML = `
+                            <div class="parsha-name">
+                                ${name}
+                                <span class="status ${hasSig ? 'yes' : 'no'}">
+                                    ${hasSig ? '✓ Has Significance' : '✗ No Significance'}
+                                </span>
+                                ${hasNewFormat ? '<span class="status yes">✓ New Format</span>' : ''}
+                            </div>
+                            <div class="significance">
+                                ${hasSig ? parsha.significance : '<em>No significance data</em>'}
+                            </div>
+                        `;
+                        listEl.appendChild(card);
+
+                        addLog(`✓ ${name}: ${hasSig ? 'HAS' : 'MISSING'} significance (${parsha.significance?.length || 0} chars)`);
+                    } else {
+                        addLog(`✗ ${name}: NOT FOUND in data.json`);
+                    }
+                });
+
+                // Update summary
+                const allGood = foundCount === genesisParshas.length && withSignificance === genesisParshas.length;
+                summaryEl.innerHTML = `
+                    <h2>${allGood ? '✅' : '⚠️'} Test Results</h2>
+                    <p><strong>Parshas found:</strong> ${foundCount} / ${genesisParshas.length}</p>
+                    <p><strong>With significance:</strong> ${withSignificance} / ${genesisParshas.length}</p>
+                    <p><strong>Status:</strong> ${allGood ? 'All Genesis parshas have significance!' : 'Some parshas missing significance'}</p>
+                `;
+
+                addLog('\n=== TEST COMPLETE ===');
+                addLog(`Parshas found: ${foundCount}/${genesisParshas.length}`);
+                addLog(`With significance: ${withSignificance}/${genesisParshas.length}`);
+
+            } catch (error) {
+                addLog(`❌ ERROR: ${error.message}`);
+                summaryEl.innerHTML = `
+                    <h2>❌ Error</h2>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+
+        // Run test on load
+        testSignificance();
+    </script>
+</body>
+</html>

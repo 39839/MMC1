@@ -1,956 +1,381 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Montgomery Medical Clinic - Premier urgent care center and medical center in Gaithersburg, MD. Our primary care providers and doctors offer comprehensive healthcare services.">
-    <title>Urgent Care Center & Medical Center | Montgomery Medical Clinic - Primary Care Doctors in Gaithersburg</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter in the Scroll</title>
+    <link rel="icon" type="image/png" href="Icon.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Mobile-only overrides for subtle online friends bar -->
+    <link rel="stylesheet" href="mobile-overrides.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dropdown-fix.css">
-    <link rel="stylesheet" href="css/header-fix.css">
-    <link rel="stylesheet" href="css/contact-modal.css">
-    <link rel="preload" href="includes/header.html" as="fetch" crossorigin="anonymous">
-    <link rel="preload" href="js/header-footer-loader.js" as="script">
-    <link rel="preload" href="js/critical-header.js" as="script">
-    <link rel="preload" href="images/Logo-fast.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="preload" href="images/PhotoWide.webp" as="image" type="image/webp" fetchpriority="high">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        'brand-blue': '#0d47a1',
-                        'brand-orange': '#ff8f00',
-                        'light-gray': '#fafafa',
-                        'dark-gray': '#212121',
-                        'medium-gray': '#616161',
-                        'light-blue-bg': '#f5f9ff',
-                        'deep-blue': '#002171',
-                        'light-blue': '#1976d2',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Prevent horizontal overflow at all zoom levels */
-        html, body {
-            max-width: 100vw;
-            overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        /* Mobile-first responsive design */
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Ensure touch targets are at least 44x44px */
-        button, a, input, select, textarea {
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        /* Critical: Only show one slide at a time */
-        .slideshow-container .slide {
-            display: none !important;
-            animation: fadeIn 1.5s;
-        }
-        .slideshow-container .slide.active {
-            display: flex !important;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Enhanced Mobile Responsiveness */
-        @media (max-width: 768px) {
-            /* Prevent text from being too small */
-            body {
-                font-size: 16px;
-            }
-
-            /* Hero section mobile optimization */
-            .page-header h1 {
-                font-size: 2rem !important;
-                line-height: 1.2 !important;
-            }
-
-            /* Slideshow mobile adjustments */
-            .slideshow-container {
-                padding: 0.75rem !important;
-                margin: 0 -1rem;
-            }
-            
-            .slide {
-                padding: 1rem !important;
-                min-height: 180px !important;
-                flex-direction: column;
-            }
-            
-            .slide h3 {
-                font-size: 1.125rem !important;
-                line-height: 1.3 !important;
-                text-align: center;
-            }
-            
-            .slide .inline-flex {
-                font-size: 0.75rem !important;
-                padding: 0.5rem 0.75rem !important;
-                white-space: normal;
-                text-align: center;
-            }
-            
-            /* Navigation arrows mobile */
-            .slideshow-container button {
-                width: 36px;
-                height: 36px;
-                padding: 0.5rem;
-            }
-            
-            .slideshow-container button svg {
-                width: 16px;
-                height: 16px;
-            }
-            
-            /* Better touch targets */
-            .btn {
-                min-height: 48px;
-                touch-action: manipulation;
-                padding: 0.875rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            /* Service cards mobile spacing */
-            #services .grid {
-                gap: 1rem;
-                grid-template-columns: 1fr;
-            }
-
-            /* Stats section mobile */
-            .stat-number {
-                font-size: 2.5rem !important;
-            }
-
-            /* Cards on mobile */
-            .card {
-                padding: 1.5rem !important;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            /* Mobile Banner Container - Clean Apple-Style Design */
-            .slideshow-container {
-                padding: 0 1rem !important;
-                margin: 0 auto;
-                border: none !important;
-                box-shadow: none !important;
-                background: transparent !important;
-                max-width: 100%;
-            }
-
-            /* Hide navigation arrows on mobile */
-            .slideshow-container button {
-                display: none;
-            }
-
-            /* Mobile Slide Card - Clean & Simple */
-            .slideshow-container .slide {
-                position: relative;
-                padding: 2rem 1.5rem !important;
-                border-radius: 18px;
-                align-items: center !important;
-                justify-content: center;
-                flex-direction: column !important;
-                gap: 1rem;
-                text-align: center !important;
-
-                /* Simple solid gradient - no complex effects */
-                background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
-
-                /* Clean, minimal shadow */
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-
-                min-height: 360px !important;
-                overflow: hidden;
-            }
-
-            /* No ambient effects - keep it clean */
-
-            /* Simple gradient variations per slide */
-            .slideshow-container .slide:nth-of-type(1) {
-                background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
-            }
-
-            .slideshow-container .slide:nth-of-type(2) {
-                background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
-            }
-
-            .slideshow-container .slide:nth-of-type(3) {
-                background: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
-            }
-
-            .slideshow-container .slide:nth-of-type(4) {
-                background: linear-gradient(135deg, #1976d2 0%, #64b5f6 100%);
-            }
-
-            /* Icon Container - Centered Above Content */
-            .slideshow-container .slide .shrink-0.relative {
-                position: relative;
-                top: auto;
-                right: auto;
-                width: 64px;
-                height: 64px;
-                border-radius: 16px;
-                background: rgba(255, 255, 255, 0.2);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: none;
-                box-shadow: none;
-                margin: 0 auto 1rem auto;
-            }
-
-            /* Hide gradient blur background behind icon */
-            .slideshow-container .slide .shrink-0.relative > .absolute {
-                display: none;
-            }
-
-            /* Inner icon container - simplified */
-            .slideshow-container .slide .shrink-0.relative > div:last-child {
-                width: 48px !important;
-                height: 48px !important;
-                border-radius: 12px;
-                background: rgba(255, 255, 255, 0.25);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: none;
-            }
-
-            /* Icon sizing */
-            .slideshow-container .slide .shrink-0.relative svg,
-            .slideshow-container .slide .shrink-0.relative img {
-                width: 28px !important;
-                height: 28px !important;
-                color: #ffffff;
-                filter: none;
-            }
-
-            /* Badge/Label Styling - Cleaner */
-            .slideshow-container .slide span.inline-flex {
-                background: rgba(255, 255, 255, 0.2);
-                border: none;
-                color: #ffffff;
-                font-size: 0.6875rem;
-                font-weight: 600;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                padding: 0.4rem 0.85rem;
-                border-radius: 100px;
-                box-shadow: none;
-                backdrop-filter: none;
-                display: inline-block;
-                margin: 0 auto;
-            }
-
-            /* Heading Styling - Better Typography */
-            .slideshow-container .slide h3 {
-                font-size: 1.5rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700 !important;
-                color: #ffffff;
-                margin-top: 0.5rem;
-                margin-bottom: 0.75rem;
-                letter-spacing: -0.01em;
-                text-shadow: none;
-                text-align: center !important;
-            }
-
-            /* Accent text in headings - Softer color */
-            .slideshow-container .slide h3 span {
-                color: rgba(255, 255, 255, 0.95);
-                background: none;
-                font-weight: 700;
-            }
-
-            /* Description text - Better readability */
-            .slideshow-container .slide p {
-                color: rgba(255, 255, 255, 0.85) !important;
-                font-size: 0.9375rem !important;
-                line-height: 1.5 !important;
-                margin-bottom: 1.25rem !important;
-                font-weight: 400;
-                text-align: center !important;
-            }
-
-            /* Content wrapper adjustments */
-            .slideshow-container .slide .flex.items-center {
-                width: 100%;
-                justify-content: center !important;
-                flex-direction: column !important;
-            }
-
-            /* Feature list styling */
-            .slideshow-container .slide .flex.items-center.flex-wrap {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 0.75rem !important;
-                margin-bottom: 0.5rem !important;
-            }
-
-            /* Individual feature items with checkmarks */
-            .slideshow-container .slide .flex.items-center.flex-wrap > div {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
-                justify-content: center !important;
-            }
-
-            .slideshow-container .slide .flex.items-center.flex-wrap svg {
-                flex-shrink: 0 !important;
-                width: 18px !important;
-                height: 18px !important;
-            }
-
-            .slideshow-container .slide .flex.items-center.flex-wrap span {
-                color: rgba(255, 255, 255, 0.85) !important;
-                font-size: 0.875rem !important;
-                text-align: left !important;
-                line-height: 1.4 !important;
-                flex: 1 !important;
-            }
-
-            /* CTA Button - Clean iOS Style */
-            .slideshow-container .slide .flex.items-center a,
-            .slideshow-container .slide a {
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-                display: inline-flex;
-                gap: 0.5rem;
-
-                border-radius: 12px !important;
-                background: #ffffff !important;
-                color: #0d47a1 !important;
-                border: none !important;
-
-                font-size: 0.9375rem !important;
-                font-weight: 600 !important;
-                padding: 0.875rem 1.25rem !important;
-
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
-                transition: all 0.2s ease;
-            }
-
-            /* Button icon */
-            .slideshow-container .slide a svg {
-                width: 16px !important;
-                height: 16px !important;
-            }
-
-            /* Slideshow dots - Clean minimal design */
-            .slideshow-dots {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                gap: 8px !important;
-                margin-top: 1.5rem !important;
-                padding: 0.5rem 1rem !important;
-                position: relative !important;
-                z-index: 10 !important;
-            }
-
-            .slideshow-dot {
-                width: 8px !important;
-                height: 8px !important;
-                border-radius: 50% !important;
-                background: rgba(13, 71, 161, 0.3) !important;
-                cursor: pointer !important;
-                transition: all 0.2s ease !important;
-                min-width: 8px !important;
-                min-height: 8px !important;
-                flex-shrink: 0 !important;
-            }
-
-            .slideshow-dot.active {
-                background: #0d47a1 !important;
-                transform: scale(1.25) !important;
-                box-shadow: none !important;
-            }
-
-            /* Breadcrumb text sizing */
-            .breadcrumb {
-                font-size: 0.875rem;
-            }
-
-            /* Slide content wrapper for proper spacing */
-            .slideshow-container .slide .flex-1 {
-                padding-right: 0;
-                max-width: 100%;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            /* Center all child divs in flex-1 */
-            .slideshow-container .slide .flex-1 > * {
-                text-align: center;
-                width: 100%;
-            }
-        }
-        
-        /* Clean & Aesthetic Slideshow Container */
-        .slideshow-container {
-            background: white;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            max-width: 100%;
-            overflow: hidden;
-        }
-        
-        /* Slideshow Navigation Dots */
-        .slideshow-dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 1rem;
-        }
-        
-        @media (min-width: 768px) {
-            .slideshow-dots {
-                gap: 8px;
-            }
-        }
-        
-        .slideshow-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #d1d5db;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 10px;
-            min-height: 10px;
-        }
-        
-        @media (min-width: 768px) {
-            .slideshow-dot {
-                width: 12px;
-                height: 12px;
-                min-width: 12px;
-                min-height: 12px;
-            }
-        }
-        
-        .slideshow-dot.active {
-            background: #0d47a1;
-            transform: scale(1.2);
-        }
-        
-        .slideshow-dot:hover {
-            background: #1976d2;
-        }
-        
-        /* Fix service cards hover cutoff */
-        #services {
-            overflow: visible;
-        }
-        
-        #services .container {
-            overflow: visible;
-        }
-        
-        #services .grid {
-            padding: 1.5rem 0;
-            overflow: visible;
-        }
-        
-        /* Individual cards need room for hover effects */
-        #services .card {
-            margin: 0.75rem;
-        }
-
-        /* Mobile menu improvements */
-        @media (max-width: 1024px) {
-            .mobile-menu-button {
-                min-width: 48px;
-                min-height: 48px;
-            }
-        }
-    </style>
 </head>
-<body class="bg-light-gray text-dark-gray">
+<body class="bg-gray-50 min-h-screen">
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full overflow-hidden">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8">
+                <h2 class="text-2xl font-bold text-white">Torah Study Portal</h2>
+                <p class="text-blue-100 text-sm mt-2">Sign in with your email to save bookmarks and participate in discussions</p>
+            </div>
 
-<!-- Header Placeholder -->
-<div id="header-placeholder"></div>
-<script src="js/critical-header.js"></script>
-
-
-
-
-    <section class="relative text-white flex items-center" style="z-index: 1; position: relative; isolation: isolate; aspect-ratio: 19.81 / 9.14; width: 100%; min-height: 500px; overflow: hidden;" data-aos="fade-in">
-        <picture class="absolute inset-0 z-0 block">
-            <source srcset="images/PhotoWide.webp" type="image/webp">
-            <source srcset="images/PhotoWide.jpeg" type="image/jpeg">
-            <img src="images/PhotoWide.jpeg"
-                 alt="Expert doctors and primary care providers at Montgomery Medical Clinic urgent care center"
-                 class="w-full h-full block"
-                 style="object-fit: cover; object-position: center;"
-                 loading="eager"
-                 decoding="sync"
-                 fetchpriority="high"
-                 width="1426"
-                 height="658">
-        </picture>
-
-        <div class="absolute inset-0 bg-gradient-to-r from-dark-gray/85 via-dark-gray/65 via-30% to-dark-gray/20" style="z-index: 10;"></div>
-
-        <div class="relative z-20 w-full h-full flex items-center justify-start" style="padding: clamp(2.5rem, 6vh, 4rem) clamp(1rem, 5vw, 4rem) clamp(2.5rem, 6vh, 4rem) clamp(1rem, 5vw, 4rem);">
-            <div class="text-left" style="max-width: clamp(300px, 45%, 600px);">
-                <h1 style="font-size: clamp(1.5rem, 3.5vw, 3.5rem); line-height: 1.15; font-weight: 900; letter-spacing: -0.02em; margin-bottom: clamp(0.5rem, 1.5vw, 1rem);">
-                    Compassionate,
-                    <span class="text-brand-orange">Personalized</span>
-                    Healthcare.
-                </h1>
-                <p style="color: rgba(229, 231, 235, 1); line-height: 1.5; font-size: clamp(0.875rem, 1.8vw, 1.125rem); margin-bottom: clamp(0.4rem, 1vw, 0.75rem);">
-                    Our medical center provides comprehensive services with experienced doctors and primary care providers committed to patient-centered care. Visit our urgent care center for immediate medical attention or schedule an appointment at our clinic in Gaithersburg.
-                </p>
-                <p style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.875rem, 1.8vw, 1.125rem); font-weight: 600; margin-bottom: clamp(0.75rem, 2vw, 1.5rem);">
-                    Proudly serving Gaithersburg, Montgomery County, and the surrounding areas.
-                </p>
-                <div class="flex flex-col sm:flex-row" style="gap: clamp(0.5rem, 1.2vw, 0.75rem);">
-                    <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary text-center" style="padding: clamp(0.5rem, 1.2vw, 0.85rem) clamp(1rem, 2.2vw, 1.75rem); font-size: clamp(0.75rem, 1.3vw, 1rem);">
-                        Schedule Your Visit
-                    </a>
-                    <a href="#services" class="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-dark-gray text-center" style="padding: clamp(0.5rem, 1.2vw, 0.85rem) clamp(1rem, 2.2vw, 1.75rem); font-size: clamp(0.75rem, 1.3vw, 1rem);">
-                        Explore Services
-                    </a>
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4">
+                <!-- Email Input -->
+                <div>
+                    <label for="login-email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        class="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+                    />
+                    <p class="text-xs text-gray-600 mt-2">Use the email from the Dvar Torah weekly newsletter</p>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <!-- Password Input -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="login-password" class="block text-sm font-semibold text-gray-700">Password</label>
+                        <button type="button" id="forgot-password-btn" class="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                            Forgot password?
+                        </button>
+                    </div>
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="••••••••"
+                        autocomplete="current-password"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        class="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+                    />
+                </div>
 
-    <section class="py-12 bg-gradient-to-b from-white to-light-blue-bg">
-        <div class="container mx-auto px-6 lg:px-8" data-aos="fade-up">
-            <div class="slideshow-container relative overflow-hidden rounded-2xl p-8 lg:p-12 max-w-6xl mx-auto">
-                
-                <!-- Navigation Arrows -->
-                <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-brand-blue/80 hover:bg-brand-blue text-white rounded-full p-2.5 shadow-md transition-all hover:scale-105" aria-label="Previous slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
+                <!-- Error Message -->
+                <div id="login-error" class="bg-red-50 border border-red-400 text-red-700 px-3 py-2 rounded text-sm hidden"></div>
+
+                <!-- Sign In Button -->
+                <button id="login-btn" class="w-full px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg">
+                    Sign In
                 </button>
-                <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-brand-blue/80 hover:bg-brand-blue text-white rounded-full p-2.5 shadow-md transition-all hover:scale-105" aria-label="Next slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+
+                <!-- Account Request Notice -->
+                <div class="bg-blue-50 border border-blue-300 rounded-lg p-4 text-center">
+                    <p class="text-sm text-gray-700 mb-2">If you would like an account, please reach out to <span class="font-semibold text-blue-900">Yair</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Reset Modal -->
+    <div id="reset-password-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full overflow-hidden">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8">
+                <h2 class="text-2xl font-bold text-white">Reset Password</h2>
+                <p class="text-blue-100 text-sm mt-2">Enter your email to receive a password reset link</p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4">
+                <!-- Email Input -->
+                <div>
+                    <label for="reset-email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        id="reset-email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        class="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+                    />
+                </div>
+
+                <!-- Error Message -->
+                <div id="reset-error" class="bg-red-50 border border-red-400 text-red-700 px-3 py-2 rounded text-sm hidden"></div>
+
+                <!-- Success Message -->
+                <div id="reset-success" class="bg-green-50 border border-green-400 text-green-700 px-3 py-2 rounded text-sm hidden"></div>
+
+                <!-- Send Reset Email Button -->
+                <button id="send-reset-btn" class="w-full px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg">
+                    Send Reset Email
                 </button>
-                
-                <div class="slide active flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-10 relative z-10 text-center lg:text-left min-h-[200px] px-4 sm:px-8 lg:px-12">
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-300 to-purple-300 rounded-full blur-lg opacity-50"></div>
-                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-md">
-                            <img src="icons/syringe.png" class="h-8 w-8 sm:h-10 sm:w-10" alt="Flu vaccination services at urgent care center"/>
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <span class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-orange to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 shadow-md">Available Today</span>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-dark-gray mb-2 sm:mb-3 leading-tight">
-                            Seasonal <span class="text-brand-blue">Flu Shots</span> Are Here
-                        </h3>
-                        <div class="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 flex-wrap">
-                            <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="inline-flex items-center gap-2 bg-brand-blue text-white font-bold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm shadow-md hover:bg-deep-blue transition-all cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                Walk-ins Welcome at Our Clinic
-                            </a>
-                            <span class="text-medium-gray font-medium text-xs sm:text-sm">Protect yourself this season</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="slide flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-10 relative z-10 text-center lg:text-left min-h-[200px] px-4 sm:px-8 lg:px-12">
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-green-300 to-teal-300 rounded-full blur-lg opacity-50"></div>
-                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center shadow-md p-3 sm:p-4">
-                            <img src="icons/OccupationalHealth.png" class="h-10 w-10 sm:h-12 sm:w-12 object-contain" alt="Specialized medical services at medical center"/>
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <span class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-orange to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 shadow-md">Specialized Services</span>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-dark-gray mb-2 sm:mb-3 leading-tight">
-                            <span class="text-brand-blue">FAA Physical Examinations</span> & Immigration Physicals
-                        </h3>
-                        <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-3 flex-wrap">
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-medium-gray font-medium text-xs sm:text-sm">Authorized Aviation Medical Examiner - All Three Classes</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-medium-gray font-medium text-xs sm:text-sm">USCIS-Authorized Civil Surgeon</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Back to Login Button -->
+                <button id="back-to-login-btn" class="w-full px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all font-semibold border border-gray-300">
+                    Back to Login
+                </button>
+            </div>
+        </div>
+    </div>
 
-                <div class="slide flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-10 relative z-10 text-center lg:text-left min-h-[200px] px-4 sm:px-8 lg:px-12">
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-sky-300 to-indigo-300 rounded-full blur-lg opacity-50"></div>
-                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-full flex items-center justify-center shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 sm:h-10 sm:w-10 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM7 11h5v5H7z"/>
-                            </svg>
-                        </div>
+    <!-- Professional Responsive Header -->
+    <header class="header-main relative z-30 text-blue-950">
+        <div class="header-container">
+            <!-- Logo/Title Section -->
+            <div class="header-branding-section">
+                <button id="home-branding" type="button" aria-label="Return to this week's parsha" class="header-branding-button">
+                    <img src="Icon.png" alt="A Letter in the Scroll Logo" class="header-logo">
+                    <div class="header-text">
+                        <h1 class="header-title">A Letter in the Scroll</h1>
+                        <p class="header-subtitle">Interactive Weekly Portion Study & Discussion</p>
                     </div>
-                    <div class="flex-1">
-                        <span class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-orange to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 shadow-md">Available Today</span>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-dark-gray mb-2 sm:mb-3 leading-tight">
-                            Same Day <span class="text-brand-blue">Urgent Care Center</span> Appointments
-                        </h3>
-                        <div class="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 flex-wrap">
-                            <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="inline-flex items-center gap-2 bg-brand-blue text-white font-bold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm shadow-md hover:bg-deep-blue transition-all cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                Walk-In Basis
-                            </a>
-                            <span class="text-medium-gray font-medium text-xs sm:text-sm">No appointment needed at our medical center</span>
-                        </div>
-                    </div>
-                </div>
+                </button>
+            </div>
 
-                <div class="slide flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-10 relative z-10 text-center lg:text-left min-h-[200px] px-4 sm:px-8 lg:px-12">
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-300 to-amber-200 rounded-full blur-lg opacity-50"></div>
-                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-deep-blue rounded-full flex items-center justify-center shadow-md">
-                            <img src="icons/hospital.png" class="h-8 w-8 sm:h-10 sm:w-10" alt="Comprehensive medical care at clinic and urgent care center"/>
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-dark-gray mb-2 sm:mb-3 leading-tight">
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-orange">One Stop</span> For All Your Medical Needs
-                        </h3>
-                        <p class="text-medium-gray font-medium text-sm sm:text-base mb-3 sm:mb-4">Our medical center offers comprehensive multi-specialty care with expert doctors and primary care providers under one roof.</p>
-                        <div class="flex items-center justify-center lg:justify-start">
-                            <a href="#services" class="inline-flex items-center gap-2 bg-white text-dark-gray font-bold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm shadow-md border border-gray-300 hover:bg-gray-100 transition-all">
-                                Explore Our Services
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slideshow-dots relative z-10 mt-4">
-                    <span class="slideshow-dot active" onclick="currentSlide(1)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(2)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(3)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(4)"></span>
+            <!-- Quick Actions -->
+            <div class="header-actions-wrapper">
+                <div id="header-actions" class="header-actions">
+                    <button id="go-to-weekly" class="header-btn header-btn-primary" title="Go to this week's parsha">
+                        <svg class="header-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="header-btn-text">This Week's Parsha</span>
+                    </button>
+                    <a href="prayers.html" class="header-btn header-btn-secondary" title="Important Prayers and Readings">
+                        <svg class="header-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        <span class="header-btn-text">Prayers</span>
+                    </a>
+                    <a href="about.html" class="header-btn header-btn-secondary" title="About this project">
+                        <svg class="header-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="header-btn-text">About</span>
+                    </a>
+                    <button id="my-bookmarks-btn" class="header-btn header-btn-secondary" title="View your saved verses">
+                        <svg class="header-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h6a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                        </svg>
+                        <span class="header-btn-text">My Bookmarks</span>
+                    </button>
+                    <button id="logout-btn" class="header-btn header-btn-secondary" title="Sign out">
+                        <svg class="header-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        <span class="header-btn-text">Sign Out</span>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="bg-gradient-blue text-white py-12 sm:py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center">
-                <div class="stat-card" data-aos="fade-up">
-                    <div class="stat-number text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">70+</div>
-                    <div class="stat-label text-white/90 text-xs sm:text-sm md:text-base">Patients Seen Daily at Our Medical Center</div>
+    <!-- Community Status Bar (Subtle Header Bar) -->
+    <div id="community-status-bar" class="hidden bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-200">
+        <div class="container mx-auto">
+            <div id="community-status-content" class="flex flex-wrap items-center gap-4 text-sm text-gray-700">
+                <!-- Online Users Section -->
+                <div id="header-online-section" class="status-section hidden flex items-center gap-1.5">
+                    <div class="flex items-center gap-1">
+                        <div class="status-leading-dot bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-xs font-medium text-gray-700">Online:</span>
+                    </div>
+                    <div id="header-online-users-list" class="status-scroll flex flex-nowrap items-center gap-1.5 overflow-x-auto">
+                        <!-- Online users will be listed here -->
+                    </div>
                 </div>
-                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-number text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">7</div>
-                    <div class="stat-label text-white/90 text-xs sm:text-sm md:text-base">Departments with Expert Doctors</div>
+
+                <!-- Recent Logins Section -->
+                <div id="header-last-login-section" class="status-section hidden flex items-center gap-1.5">
+                    <span class="text-xs font-medium text-gray-600">Recent:</span>
+                    <div id="header-last-login-list" class="status-scroll flex flex-nowrap items-center gap-1.5 overflow-x-auto"></div>
                 </div>
-                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">10K+</div>
-                    <div class="stat-label text-white/90 text-xs sm:text-sm md:text-base">Patients Served Annually</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="services" class="py-16 sm:py-20 md:py-24 lg:py-32 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto" data-aos="fade-up">
-                <h2 class="section-title text-dark-gray mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl">Our Departments</h2>
-                <p class="section-subtitle text-sm sm:text-base">Comprehensive healthcare services delivered by board-certified doctors and primary care providers at our medical center and urgent care center.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                <a href="pages/urgent-primary-care.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="primary" data-aos="fade-up">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/PrimaryCare.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Urgent care center and primary care provider services"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Urgent & Primary Care</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Your foundation for lifelong health from our experienced primary care providers, with urgent care center services for immediate medical needs at our clinic.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Urgent Care
-                    </span>
-                </a>
-
-                <a href="pages/dermatology.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="derma" data-aos="fade-up" data-aos-delay="50">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/Dermatology.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Dermatology skin care services icon"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Dermatology</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Advanced solutions for skin health, from managing conditions to aesthetic treatments.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Dermatology
-                    </span>
-                </a>
-
-                <a href="pages/occupational-health.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="occupational" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/OccupationalHealth.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Occupational Health and workplace safety services icon"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Occupational Health</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Partnering with businesses to ensure a safe, healthy and compliant workforce- offering expert occupational health and immigration medical services.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Occupational Health
-                    </span>
-                </a>
-
-                <a href="pages/five-elements-acupuncture.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="acupuncture" data-aos="fade-up" data-aos-delay="150">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/Accupuncture.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Five Elements Acupuncture and wellness services icon"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Five Elements Acupuncture</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Traditional Chinese medicine and acupuncture for holistic healing, pain management, and women's health.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Acupuncture
-                    </span>
-                </a>
-
-                <a href="pages/nutrition-wellness.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="nutrition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/Nutrition.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Nutrition and Wellness Center services icon"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Wellness Center</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Nutrition and personal training to fuel your body and mind for optimal performance.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Wellness
-                    </span>
-                </a>
-
-                <a href="pages/sports-medicine.html" class="card p-5 sm:p-6 md:p-8 lg:p-10 text-center flex flex-col group" data-service="sports" data-aos="fade-up" data-aos-delay="250">
-                    <div class="icon-wrap-new bg-white p-4 sm:p-5 md:p-6 rounded-2xl mb-4 sm:mb-6 md:mb-8 mx-auto flex items-center justify-center shadow-md">
-                        <img src="icons/PhysicalTherapy.png" class="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain" alt="Sports medicine doctors at medical center"/>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Sports Medicine & Physical Therapy</h3>
-                    <p class="text-xs sm:text-sm md:text-base text-medium-gray mb-4 sm:mb-5 md:mb-6 flex-grow leading-relaxed">Comprehensive rehabilitation and sports injury care from our specialized doctors to get you back in the game stronger than before.</p>
-                    <span class="btn btn-outline border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all">
-                        Explore Sports Medicine
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-light-blue-bg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-20 lg:items-center">
-                <div class="floating" data-aos="fade-right">
-                    <img src="images/Clinic.jpeg"
-                         alt="Montgomery Medical Clinic urgent care center and medical center facility in Gaithersburg with primary care providers"
-                         class="rounded-2xl sm:rounded-3xl shadow-2xl w-full"
-                         loading="eager"
-                         fetchpriority="high">
-                </div>
-                <div class="mt-8 sm:mt-10 lg:mt-0 space-y-3 sm:space-y-4 md:space-y-6" data-aos="fade-left">
-                    <span class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm">WHO WE ARE</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">About Our Medical Center</h2>
-                    <p class="text-sm sm:text-base md:text-lg text-medium-gray leading-relaxed">
-                        Our medical center and urgent care center serve the Gaithersburg community with compassionate, patient-focused healthcare. Our clinic houses modern diagnostic equipment, including radiology services and physical therapy facilities, allowing our doctors and primary care providers to deliver coordinated care conveniently under one roof.
-                    </p>
-                    <p class="text-sm sm:text-base md:text-lg text-medium-gray leading-relaxed">
-                        With decades of combined medical experience, our board-certified doctors and primary care physicians are dedicated to building trusted, long-term relationships with patients at our urgent care center and medical center. Every patient receives personalized attention from our primary care providers who truly understand your health journey.
-                    </p>
-                    <a href="pages/about.html" class="btn btn-primary inline-flex mt-4 sm:mt-6 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">Learn More About Our Clinic</a>
+                <!-- Your Status Section -->
+                <div id="header-your-status" class="status-section hidden flex items-center gap-1 ml-auto">
+                    <span id="header-your-username" class="text-xs font-medium text-gray-800"></span>
+                    <span class="text-xs text-gray-400">•</span>
+                    <span id="header-your-login-time" class="text-xs text-gray-600">just now</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="insurance" class="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12 md:mb-16 max-w-4xl mx-auto" data-aos="fade-up">
-                <h2 class="section-title text-dark-gray mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Insurance Information for Our Clinic</h2>
-                <p class="section-subtitle text-sm sm:text-base leading-relaxed">Our medical center and urgent care center accept a wide variety of insurance plans to make quality healthcare from our doctors and primary care providers accessible to everyone in our community.</p>
-                <a href="pages/insurance.html" class="btn btn-primary mt-6 sm:mt-8 inline-flex text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
-                    View All Accepted Insurance Plans at Our Medical Center
-                </a>
+    <!-- Improved Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-10 border-b-2 border-gray-200">
+        <div class="container mx-auto px-4 py-4">
+            <!-- Desktop Layout -->
+            <div id="nav-desktop" class="hidden md:flex items-center justify-between gap-4">
+                <!-- Parsha Selector -->
+                <div class="flex items-center gap-3 flex-1 max-w-xl">
+                    <label for="parsha-selector" class="font-semibold text-gray-700 whitespace-nowrap text-sm">Torah Portion:</label>
+                    <select id="parsha-selector" class="flex-1 px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white text-gray-900 font-medium shadow-sm hover:border-blue-400 transition-colors">
+                        <option value="">Loading portions...</option>
+                    </select>
+                </div>
+
+                <!-- Navigation Buttons and Text Size Control -->
+                <div class="flex items-center gap-2">
+                    <div id="nav-header-actions" class="flex items-center gap-2"></div>
+                    <button id="general-parsha-chat" class="px-4 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-md hover:shadow-lg flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        Parsha Chat
+                    </button>
+                    <button id="show-significance" class="px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-medium shadow-md hover:shadow-lg flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Significance
+                    </button>
+                    <button id="prev-parsha" class="group px-4 py-2.5 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-300 font-medium shadow-sm flex items-center gap-2">
+                        <svg class="w-4 h-4 group-hover:translate-x-[-2px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Previous
+                    </button>
+                    <button id="next-parsha" class="group px-4 py-2.5 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-300 font-medium shadow-sm flex items-center gap-2">
+                        Next
+                        <svg class="w-4 h-4 group-hover:translate-x-[2px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-light-blue-bg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-blue text-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-16 xl:p-20 text-center shadow-2xl" data-aos="fade-up">
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-3 sm:mb-4 md:mb-6 leading-tight">Ready to Experience Quality Care at Our Medical Center?</h2>
-                <p class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mb-5 sm:mb-6 md:mb-8 lg:mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">Join thousands of satisfied patients who trust our urgent care center, primary care providers, and doctors at Montgomery Medical Clinic for their healthcare needs. Our clinic offers comprehensive services from experienced primary care physicians at our medical center.</p>
-                <a href="https://nextpatient.co/p/montgomerymedclinic/schedule" target="_blank" class="btn btn-secondary px-5 sm:px-6 md:px-8 lg:px-12 py-2.5 sm:py-3 md:py-4 lg:py-5 text-xs sm:text-sm md:text-base lg:text-lg inline-flex">
-                    Schedule Appointment at Our Clinic
-                </a>
-            </div>
-        </div>
-    </section>
-
-            <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
-
-
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/header-footer-loader.js"></script>
-    <script src="js/main-simple.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
-
-        // Enhanced Slideshow functionality with dots
-        const SLIDE_INTERVAL = 12000;
-        let slideIndex = 1; // Track currently visible slide (1-based)
-        let slideTimeout;
-
-        function normalizeIndex(index, total) {
-            if (total === 0) {
-                return 0;
-            }
-            return (index % total + total) % total;
-        }
-
-        function setSlide(targetIndex, slides, dots) {
-            const totalSlides = slides.length;
-            if (!totalSlides) {
-                return;
-            }
-
-            const normalizedIndex = normalizeIndex(targetIndex, totalSlides);
-
-            for (let i = 0; i < totalSlides; i++) {
-                slides[i].classList.remove("active");
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active");
-            }
-
-            slides[normalizedIndex].classList.add("active");
-            if (dots[normalizedIndex]) {
-                dots[normalizedIndex].classList.add("active");
-            }
-
-            slideIndex = normalizedIndex + 1;
-        }
-
-        function getCurrentSlideIndex(slides) {
-            if (!slides.length) {
-                return -1;
-            }
-
-            const presumedIndex = slideIndex - 1;
-            if (presumedIndex >= 0 && presumedIndex < slides.length && slides[presumedIndex].classList.contains("active")) {
-                return presumedIndex;
-            }
-
-            for (let i = 0; i < slides.length; i++) {
-                if (slides[i].classList.contains("active")) {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        function showSlides() {
-            const slides = document.querySelectorAll(".slideshow-container .slide");
-            const dots = document.querySelectorAll(".slideshow-dot");
-
-            if (!slides.length) {
-                return;
-            }
-
-            clearTimeout(slideTimeout);
-
-            const currentIndex = getCurrentSlideIndex(slides);
-            const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % slides.length;
-
-            setSlide(nextIndex, slides, dots);
-
-            slideTimeout = setTimeout(showSlides, SLIDE_INTERVAL);
-        }
-        
-        function currentSlide(n) {
-            const slides = document.querySelectorAll(".slideshow-container .slide");
-            const dots = document.querySelectorAll(".slideshow-dot");
-
-            if (!slides.length) {
-                return;
-            }
-
-            clearTimeout(slideTimeout);
-            setSlide(n - 1, slides, dots);
-            slideTimeout = setTimeout(showSlides, SLIDE_INTERVAL);
-        }
-        
-        function changeSlide(direction) {
-            const slides = document.querySelectorAll(".slideshow-container .slide");
-            const dots = document.querySelectorAll(".slideshow-dot");
-
-            if (!slides.length) {
-                return;
-            }
-
-            clearTimeout(slideTimeout);
-
-            let currentIndex = getCurrentSlideIndex(slides);
-            if (currentIndex === -1) {
-                currentIndex = 0;
-            }
-
-            const targetIndex = normalizeIndex(currentIndex + direction, slides.length);
-
-            setSlide(targetIndex, slides, dots);
-
-            slideTimeout = setTimeout(showSlides, SLIDE_INTERVAL);
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Initialize slideshow - show first slide immediately
-            let slides = document.querySelectorAll(".slideshow-container .slide");
-            let dots = document.querySelectorAll(".slideshow-dot");
             
-            if (slides.length > 0) {
-                setSlide(0, slides, dots);
-            }
+            <!-- Mobile Layout -->
+            <div id="nav-mobile" class="md:hidden space-y-3">
+                <!-- Text Size Control (Mobile) -->
+                <div id="header-actions-mobile" class="flex justify-end"></div>
 
-            clearTimeout(slideTimeout);
-            slideTimeout = setTimeout(showSlides, SLIDE_INTERVAL);
-        });
-    </script>
+                <!-- Parsha Selector -->
+                <div class="flex flex-col gap-2">
+                    <label for="parsha-selector" class="font-semibold text-gray-700 text-sm">Torah Portion:</label>
+                    <select id="parsha-selector" class="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white text-gray-900 font-medium shadow-sm">
+                        <option value="">Loading portions...</option>
+                    </select>
+                </div>
+                
+                <!-- General Chat Button (Mobile) -->
+                <button id="general-parsha-chat-mobile" class="w-full px-4 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    Parsha Chat
+                </button>
 
+                <button id="show-significance-mobile" class="w-full px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-medium shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Significance
+                </button>
+
+                <!-- Navigation Buttons -->
+                <div class="flex gap-2">
+                    <button id="prev-parsha" class="flex-1 px-4 py-2.5 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed font-medium shadow-sm text-sm flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Previous
+                    </button>
+                    <button id="next-parsha" class="flex-1 px-4 py-2.5 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed font-medium shadow-sm text-sm flex items-center justify-center gap-2">
+                        Next
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8">
+        <div id="content-area" class="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
+            <!-- Parsha Title and Reference -->
+            <h2 id="parsha-title" class="text-2xl md:text-3xl font-bold mb-2 text-blue-900"></h2>
+            <h3 id="parsha-reference" class="text-lg italic mb-6 text-blue-700"></h3>
+            
+            <!-- Loading/Error Messages -->
+            <div id="loading-message" class="text-center py-8 text-gray-500 hidden">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
+                <p>Loading Torah text...</p>
+            </div>
+            <div id="error-message" class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
+                <strong class="font-bold">Error: </strong>
+                <span id="error-text">Something went wrong.</span>
+            </div>
+
+            <!-- Text Display -->
+            <div id="parsha-text" class="space-y-4"></div>
+        </div>
+    </main>
+
+    <!-- Info Panel (Modal) -->
+    <div id="info-panel" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden flex flex-col">
+            <div class="sticky top-0 bg-blue-700 text-white p-6 flex justify-between items-center border-b">
+                <h3 class="text-xl font-bold">Commentary & Insights</h3>
+                <button id="close-panel-button" class="text-white hover:text-gray-200 text-2xl font-bold leading-none">
+                    &times;
+                </button>
+            </div>
+            <div id="info-content" class="p-6 overflow-y-auto flex-1">
+                <!-- Commentary content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Panel Overlay -->
+    <div id="comment-overlay" class="hidden"></div>
+
+    <!-- Comment Panel -->
+    <div id="comment-panel" class="comment-panel">
+        <div class="comment-panel-header">
+            <h3 id="comment-panel-title" class="comment-panel-title">Discussion</h3>
+            <button id="close-comment-panel" class="close-panel-btn">&times;</button>
+        </div>
+        
+        <div class="comment-panel-body">
+            <!-- Display User Name -->
+            <div id="name-display" class="username-display hidden">
+                <span class="username-label">Commenting as:</span>
+                <span id="current-username" class="current-username"></span>
+            </div>
+            
+            <!-- Comments List -->
+            <div id="comments-list" class="comments-list">
+                <div class="loading-comments">Loading comments...</div>
+            </div>
+            
+            <!-- Add Comment Section -->
+            <div class="add-comment-section">
+                <textarea 
+                    id="comment-input" 
+                    placeholder="Share your insights on this verse..."
+                    rows="3"
+                    disabled
+                ></textarea>
+                <button id="submit-comment-btn" class="submit-comment-btn" disabled>
+                    Submit Comment
+                </button>
+                <div id="comment-status" class="comment-status"></div>
+            </div>
+        </div>
+        
+        <!-- Hidden input to store current verse reference -->
+        <input type="hidden" id="current-comment-verse-ref" value="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6 mt-12 border-t-4 border-blue-700">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Torah text provided by <a href="https://www.sefaria.org" target="_blank" class="underline hover:text-blue-300">Sefaria.org</a></p>
+            <p class="text-xs text-blue-300 mt-2">May your study be meaningful</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script src="text-size-control.js"></script>
 </body>
 </html>

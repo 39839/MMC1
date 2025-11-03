@@ -1,0 +1,195 @@
+/* Additional styles for prayers page */
+
+.category-card {
+    background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 100%);
+    border: 2px solid #d0e3ff;
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.category-title {
+    font-weight: 700;
+    color: #1e40af;
+    font-size: 1.2rem;
+}
+
+.category-description {
+    color: #1e3a8a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.category-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.category-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #93c5fd;
+    color: #1e40af;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.category-link:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+}
+
+.directory-link {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 2px solid #93c5fd;
+    border-radius: 8px;
+    color: #1e40af;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.directory-link:hover {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.prayer-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid #e5e7eb;
+    scroll-margin-top: 80px; /* Account for sticky header */
+}
+
+.prayer-title {
+    color: #1e40af;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid #3b82f6;
+}
+
+.prayer-content {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.prayer-summary {
+    background: #eef4ff;
+    border-left: 4px solid #3b82f6;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    color: #1e3a8a;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.text-section {
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.english-section {
+    background: linear-gradient(to right, #f0f9ff 0%, #ffffff 5%);
+    border-left-color: #3b82f6;
+}
+
+.hebrew-section {
+    background: linear-gradient(to right, #eff6ff 0%, #ffffff 5%);
+    border-left-color: #2563eb;
+    direction: rtl;
+    text-align: right;
+}
+
+.transliteration-section {
+    background: linear-gradient(to right, #dbeafe 0%, #ffffff 5%);
+    border-left-color: #60a5fa;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1e40af;
+    margin-bottom: 0.75rem;
+}
+
+.section-text {
+    color: #1e3a8a;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.hebrew-section .section-text {
+    font-family: 'SBL Hebrew', 'Ezra SIL', 'Frank Ruehl CLM', 'David CLM', 'Times New Roman', serif;
+    font-size: 1.3rem;
+    line-height: 2;
+}
+
+#back-to-top {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .prayer-section {
+        padding: 1.5rem;
+    }
+    
+    .prayer-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-text {
+        font-size: 1rem;
+    }
+    
+    .hebrew-section .section-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .category-card,
+    .category-link,
+    .directory-link,
+    #back-to-top,
+    header,
+    footer {
+        display: none !important;
+    }
+    
+    .prayer-section {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #e5e7eb;
+    }
+}

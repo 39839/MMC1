@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Favicon</title>
+</head>
+<body>
+    <h1>Favicon Generator</h1>
+    <p>This page will generate a favicon with white background. Right-click the image below and save it as "favicon.ico" or "favicon.png"</p>
+    <canvas id="canvas" width="64" height="64" style="border: 1px solid black;"></canvas>
+    <br><br>
+    <a id="download" download="favicon.png">
+        <button>Download Favicon</button>
+    </a>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill with white background and add rounded corners
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        
+        // Load the icon and draw it centered with padding
+        const img = new Image();
+        img.onload = function() {
+            // Add some padding (8px on each side)
+            ctx.drawImage(img, 8, 8, 48, 48);
+            
+            // Set up download link
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                document.getElementById('download').href = url;
+            });
+        };
+        img.src = 'Icon.png';
+    </script>
+</body>
+</html>

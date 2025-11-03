@@ -1,0 +1,252 @@
+/* ========================================
+   MOBILE-ONLY OVERRIDES FOR STATUS BAR
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Make the status bar compact on mobile */
+    #community-status-bar {
+        min-height: 48px;
+        padding: 0.35rem 0 !important;
+        margin: 0 !important;
+    }
+
+    #community-status-bar .container {
+        min-height: 48px;
+    }
+
+    #community-status-content {
+        gap: 0.75rem !important;
+        font-size: 0.68rem;
+        min-height: 48px;
+        padding: 0.4rem 1.25rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Online section - stack vertically */
+    #header-online-section {
+        width: 100%;
+        gap: 0.5rem !important;
+        flex-wrap: wrap;
+    }
+
+    #header-online-section > div:first-child {
+        gap: 0.25rem !important;
+        min-width: 100%;
+    }
+
+    #header-online-section > div:first-child .text-xs {
+        font-size: 0.64rem !important;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+
+    #header-online-users-list {
+        gap: 0.3rem !important;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+        padding-bottom: 0.1rem;
+        width: 100%;
+    }
+
+    #header-online-users-list::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    #header-online-users-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    #header-online-users-list::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.25);
+        border-radius: 2px;
+    }
+
+    /* Recent logins section - stack vertically */
+    #header-last-login-section {
+        width: 100%;
+        gap: 0.5rem !important;
+        flex-wrap: wrap;
+    }
+
+    #header-last-login-section > .text-xs {
+        font-size: 0.64rem !important;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        opacity: 0.8;
+        min-width: 100%;
+    }
+
+    #header-last-login-list {
+        gap: 0.3rem !important;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+        padding-bottom: 0.1rem;
+        width: 100%;
+    }
+
+    #header-last-login-list::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    #header-last-login-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    #header-last-login-list::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.25);
+        border-radius: 2px;
+    }
+
+    /* Status badges - optimized for mobile */
+    #header-online-users-list .status-badge,
+    #header-last-login-list .status-badge {
+        gap: 0.3rem;
+        padding: 0.38rem 0.7rem;
+        border-radius: 7px;
+        font-size: 0.66rem;
+        font-weight: 500;
+        line-height: 1.1;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+        border-color: rgba(148, 163, 184, 0.25);
+        background: rgba(255, 255, 255, 0.86);
+    }
+
+    /* Status dots - smaller on mobile */
+    #header-online-users-list .status-dot,
+    #header-last-login-list .status-dot {
+        width: 0.36rem;
+        height: 0.36rem;
+    }
+
+    /* Your status section - one line on mobile */
+    #header-your-status {
+        width: 100%;
+        gap: 0.3rem !important;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 0 !important;
+    }
+
+    #header-your-status .text-xs:first-child {
+        font-size: 0.64rem !important;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        opacity: 0.8;
+    }
+
+    #header-your-username {
+        background: rgba(59, 130, 246, 0.05) !important;
+        padding: 0.24rem 0.48rem !important;
+        border-radius: 0.3rem !important;
+        border: 0.5px solid rgba(59, 130, 246, 0.12) !important;
+        font-size: 0.66rem !important;
+        font-weight: 600 !important;
+        color: #1e40af !important;
+    }
+
+    #header-your-login-time {
+        font-size: 0.62rem !important;
+        opacity: 0.8;
+    }
+
+    /* Mobile tooltip styling - centered bubble */
+    .status-tooltip[data-tooltip] {
+        position: relative;
+    }
+
+    .status-tooltip[data-tooltip]::after {
+        top: calc(100% + 0.4rem) !important;
+        bottom: auto !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translate(-50%, 0) !important;
+        width: min(72vw, 260px) !important;
+        min-width: 180px !important;
+        max-width: calc(100vw - 3rem) !important;
+        padding: 0.55rem 0.85rem !important;
+        font-size: 0.66rem !important;
+        line-height: 1.45 !important;
+        border-radius: 0.65rem !important;
+        text-align: left !important;
+        white-space: normal !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        color: #f8fafc !important;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.35) !important;
+        border: 1px solid rgba(148, 163, 184, 0.25) !important;
+        z-index: 50 !important;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .status-tooltip[data-tooltip]::before {
+        display: none !important;
+    }
+
+    .status-tooltip[data-tooltip]:hover::after,
+    .status-tooltip[data-tooltip]:focus-visible::after,
+    .status-tooltip[data-tooltip]:active::after {
+        opacity: 1 !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    /* Hover effects - more subtle on mobile */
+    #header-online-users-list .status-badge:hover,
+    #header-last-login-list .status-badge:hover {
+        transform: translateY(-0.4px);
+        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Status leading dot - smaller on mobile */
+    .status-leading-dot {
+        width: 0.3rem !important;
+        height: 0.3rem !important;
+        flex-shrink: 0;
+    }
+}
+
+/* Extra small screens - 375px and below */
+@media (max-width: 375px) {
+    #community-status-bar {
+        min-height: 44px;
+        padding: 0.3rem 0 !important;
+    }
+
+    #community-status-content {
+        gap: 0.6rem !important;
+        padding: 0.35rem 1rem;
+        min-height: 44px;
+    }
+
+    #header-online-users-list .status-badge,
+    #header-last-login-list .status-badge {
+        font-size: 0.62rem;
+        padding: 0.34rem 0.62rem;
+    }
+
+    #header-online-users-list .status-dot,
+    #header-last-login-list .status-dot {
+        width: 0.32rem;
+        height: 0.32rem;
+    }
+
+    #header-your-username {
+        font-size: 0.62rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+
+    .status-tooltip[data-tooltip]::after {
+        max-width: 220px !important;
+        font-size: 0.62rem !important;
+        padding: 0.42rem 0.6rem !important;
+    }
+}

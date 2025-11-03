@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Reference - Torah Study</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .color-box {
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1e3a8a; }
+        h2 { color: #3b82f6; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; }
+        code { 
+            background: #f1f5f9; 
+            padding: 2px 6px; 
+            border-radius: 3px; 
+            color: #1e40af;
+        }
+        .example {
+            border: 2px solid #e5e7eb;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Torah Study Website - Color Reference</h1>
+    <p><strong>Design Principle:</strong> Clean, respectful, distraction-free - WHITE and BLUE only</p>
+
+    <div class="section">
+        <h2>Primary Colors</h2>
+        <div class="color-box" style="background: #ffffff; border: 2px solid #e5e7eb; color: #1e3a8a;">
+            White<br>#ffffff
+        </div>
+        <div class="color-box" style="background: #3b82f6; color: white;">
+            Primary Blue<br>#3b82f6
+        </div>
+        <div class="color-box" style="background: #1e3a8a; color: white;">
+            Navy Blue<br>#1e3a8a
+        </div>
+        <div class="color-box" style="background: #1e40af; color: white;">
+            Dark Blue<br>#1e40af
+        </div>
+        <div class="color-box" style="background: #eff6ff; color: #1e3a8a;">
+            Light Blue<br>#eff6ff
+        </div>
+        <div class="color-box" style="background: #dbeafe; color: #1e3a8a;">
+            Sky Blue<br>#dbeafe
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Usage Guide</h2>
+        
+        <h3>Header & Footer</h3>
+        <div class="example" style="background: #1e3a8a; color: white; text-align: center; padding: 20px;">
+            <h2 style="color: white; border: none; margin: 0;">Torah Study Circle</h2>
+            <p style="color: #dbeafe; margin: 5px 0 0 0;">Weekly Torah Portion Study</p>
+        </div>
+        <p>Background: <code>#1e3a8a</code> (Navy Blue)<br>Text: <code>#ffffff</code> (White)</p>
+
+        <h3>Verses with Commentary</h3>
+        <div class="example" style="background: #f8fafc; border-left: 3px solid #3b82f6; padding: 15px;">
+            <strong style="color: white; background: #3b82f6; padding: 5px 10px; border-radius: 6px;">1.</strong>
+            <span style="color: #1e3a8a; margin-left: 10px;">In the beginning God created the heavens and the earth.</span>
+        </div>
+        <p>Background: <code>#f8fafc</code> (Very Light Blue)<br>
+        Border: <code>#3b82f6</code> (Primary Blue)<br>
+        Text: <code>#1e3a8a</code> (Navy Blue)</p>
+
+        <h3>Keywords</h3>
+        <div class="example" style="background: white; padding: 15px;">
+            <span style="color: #1e3a8a;">In the </span>
+            <span style="color: #1e40af; border-bottom: 2px dotted #60a5fa; font-weight: 500; cursor: help;">beginning</span>
+            <span style="color: #1e3a8a;"> God created...</span>
+        </div>
+        <p>Text Color: <code>#1e40af</code> (Dark Blue)<br>
+        Underline: <code>#60a5fa</code> (Dotted Blue)</p>
+
+        <h3>Commentary Modal</h3>
+        <div class="example" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="background: #3b82f6; color: white; padding: 15px; font-weight: bold;">
+                Commentary & Insights
+            </div>
+            <div style="padding: 15px; background: #f8fafc; border-left: 3px solid #3b82f6; margin: 15px;">
+                <div style="color: #1e40af; font-weight: bold; margin-bottom: 10px;">Rashi</div>
+                <div style="color: #1e3a8a; line-height: 1.7;">
+                    Why does the Torah, the guide for Jewish life, commence not with laws, but with the grand narrative of Creation?...
+                </div>
+            </div>
+        </div>
+        <p>Header: <code>#3b82f6</code> (Primary Blue)<br>
+        Commentary Box: <code>#f8fafc</code> (Very Light Blue)<br>
+        Border: <code>#3b82f6</code> (Primary Blue)</p>
+
+        <h3>Buttons</h3>
+        <div class="example" style="background: white; padding: 15px; text-align: center;">
+            <button style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                This Week's Parsha
+            </button>
+            <button style="background: white; color: #1e3a8a; border: 2px solid #e5e7eb; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                Previous
+            </button>
+            <button style="background: white; color: #1e3a8a; border: 2px solid #e5e7eb; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                Next
+            </button>
+        </div>
+        <p>Primary Button: <code>#3b82f6</code> background<br>
+        Secondary Button: <code>#ffffff</code> background with <code>#e5e7eb</code> border</p>
+    </div>
+
+    <div class="section">
+        <h2>What Was Removed</h2>
+        <ul>
+            <li><strong>Orange/Yellow:</strong> No <code>#f59e0b</code>, <code>#fbbf24</code>, <code>#fef3c7</code></li>
+            <li><strong>Green:</strong> No <code>#10b981</code>, <code>#059669</code>, <code>#ecfdf5</code></li>
+            <li><strong>Red/Pink:</strong> No <code>#ef4444</code>, <code>#fee2e2</code></li>
+            <li><strong>Purple:</strong> No <code>#8b5cf6</code>, <code>#ede9fe</code></li>
+            <li><strong>Emojis:</strong> No 💬, 📖, 🔤, ℹ️, or any icons</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Design Philosophy</h2>
+        <p><strong>Goal:</strong> Create a serene, focused environment for Torah study</p>
+        <ul>
+            <li><strong>White:</strong> Represents purity, clarity, and the blank slate of learning</li>
+            <li><strong>Blue:</strong> Represents heaven (shamayim), divine wisdom, and tranquility</li>
+            <li><strong>No distractions:</strong> No bright colors, no emojis, no unnecessary visual elements</li>
+            <li><strong>Respect:</strong> The design honors the sacred nature of Torah study</li>
+            <li><strong>Focus:</strong> Every element serves the text, nothing detracts from it</li>
+        </ul>
+    </div>
+
+    <div class="section" style="background: #eff6ff; border-left: 4px solid #3b82f6;">
+        <h2 style="color: #1e3a8a;">Result</h2>
+        <p style="color: #1e3a8a; font-size: 1.1em; line-height: 1.7;">
+            A clean, professional, distraction-free Torah study environment that honors the sacred text 
+            and creates an atmosphere conducive to deep learning and spiritual growth. The blue and white 
+            palette evokes both the colors of the Israeli flag and the traditional association of blue 
+            with divine wisdom and heavenly matters in Jewish tradition.
+        </p>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px; color: #1e3a8a; font-style: italic;">
+        May your study be meaningful
+    </p>
+</body>
+</html>

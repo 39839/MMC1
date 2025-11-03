@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Torah Study</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #666;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .result {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            border-left: 4px solid #10b981;
+        }
+        .error {
+            border-left: 4px solid #ef4444;
+            background: #fee2e2;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .verse-sample {
+            background: #eff6ff;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 3px solid #3b82f6;
+        }
+        .loading {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Sefaria API Test Suite</h1>
+    <p>Test the Sefaria API endpoints to ensure they're working correctly for your Torah Study website.</p>
+
+    <!-- Test 1: Calendar API -->
+    <div class="test-section">
+        <h2>Test 1: Current Week's Parsha</h2>
+        <p>Tests the calendar API to get the current week's Torah portion.</p>
+        <button onclick="testCalendar()">Run Test</button>
+        <div id="calendar-result"></div>
+    </div>
+
+    <!-- Test 2: V1 API -->
+    <div class="test-section">
+        <h2>Test 2: V1 Texts API (Genesis 1:1-6:8)</h2>
+        <p>Tests the older V1 API endpoint which the website currently uses.</p>
+        <button onclick="testV1API()">Run Test</button>
+        <div id="v1-result"></div>
+    </div>
+
+    <!-- Test 3: V3 API -->
+    <div class="test-section">
+        <h2>Test 3: V3 Texts API (Genesis 1:1-6:8)</h2>
+        <p>Tests the newer V3 API endpoint with enhanced features.</p>
+        <button onclick="testV3API()">Run Test</button>
+        <div id="v3-result"></div>
+    </div>
+
+    <!-- Test 4: Different Parsha -->
+    <div class="test-section">
+        <h2>Test 4: Different Parsha (Noah)</h2>
+        <p>Tests loading a different Torah portion.</p>
+        <button onclick="testNoah()">Run Test</button>
+        <div id="noah-result"></div>
+    </div>
+
+    <!-- Test 5: Local Commentary -->
+    <div class="test-section">
+        <h2>Test 5: Local Commentary Data</h2>
+        <p>Tests loading your local data.json file.</p>
+        <button onclick="testCommentary()">Run Test</button>
+        <div id="commentary-result"></div>
+    </div>
+
+    <script>
+        // Test 1: Calendar API
+        async function testCalendar() {
+            const resultDiv = document.getElementById('calendar-result');
+            resultDiv.innerHTML = '<p class="loading">Testing...</p>';
+            
+            try {
+                const response = await fetch('https://www.sefaria.org/api/calendars');
+                const data = await response.json();
+                
+                const parashatHashavua = data.calendar_items?.find(
+                    item => item.title && item.title.en === 'Parashat Hashavua'
+                );
+                
+                if (parashatHashavua) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Success!</h3>
+                            <p><strong>Current Parsha:</strong> ${parashatHashavua.displayValue.en}</p>
+                            <p><strong>Hebrew:</strong> ${parashatHashavua.displayValue.he}</p>
+                            <p><strong>Reference:</strong> ${parashatHashavua.url || 'N/A'}</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>⚠️ Warning</h3>
+                            <p>Could not find Parashat Hashavua in calendar data.</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Error</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test 2: V1 API
+        async function testV1API() {
+            const resultDiv = document.getElementById('v1-result');
+            resultDiv.innerHTML = '<p class="loading">Testing V1 API...</p>';
+            
+            try {
+                const url = 'https://www.sefaria.org/api/texts/Genesis.1.1-6.8?context=0&commentary=0';
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                const englishVerses = Array.isArray(data.text) ? data.text.flat() : [data.text];
+                const hebrewVerses = Array.isArray(data.he) ? data.he.flat() : [data.he];
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ V1 API Working!</h3>
+                        <p><strong>Book:</strong> ${data.book}</p>
+                        <p><strong>English verses loaded:</strong> ${englishVerses.length}</p>
+                        <p><strong>Hebrew verses loaded:</strong> ${hebrewVerses.length}</p>
+                        <p><strong>First verse (English):</strong></p>
+                        <div class="verse-sample">${englishVerses[0]}</div>
+                        <p><strong>First verse (Hebrew):</strong></p>
+                        <div class="verse-sample" dir="rtl" lang="he">${hebrewVerses[0]}</div>
+                        <details>
+                            <summary>View Full Response</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ V1 API Error</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test 3: V3 API
+        async function testV3API() {
+            const resultDiv = document.getElementById('v3-result');
+            resultDiv.innerHTML = '<p class="loading">Testing V3 API...</p>';
+            
+            try {
+                const url = 'https://www.sefaria.org/api/v3/texts/Genesis.1.1-6.8?version=english&version=hebrew';
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                const englishVersion = data.versions?.find(v => v.languageFamilyName === 'english' || v.language === 'en');
+                const hebrewVersion = data.versions?.find(v => v.languageFamilyName === 'hebrew' || v.language === 'he');
+                
+                const englishText = englishVersion?.text || [];
+                const hebrewText = hebrewVersion?.text || [];
+                
+                const flatEnglish = englishText.flat();
+                const flatHebrew = hebrewText.flat();
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ V3 API Working!</h3>
+                        <p><strong>Index Title:</strong> ${data.indexTitle}</p>
+                        <p><strong>Versions found:</strong> ${data.versions?.length || 0}</p>
+                        <p><strong>English version:</strong> ${englishVersion?.versionTitle || 'Not found'}</p>
+                        <p><strong>Hebrew version:</strong> ${hebrewVersion?.versionTitle || 'Not found'}</p>
+                        <p><strong>English verses loaded:</strong> ${flatEnglish.length}</p>
+                        <p><strong>Hebrew verses loaded:</strong> ${flatHebrew.length}</p>
+                        ${flatEnglish.length > 0 ? `
+                            <p><strong>First verse (English):</strong></p>
+                            <div class="verse-sample">${flatEnglish[0]}</div>
+                        ` : ''}
+                        ${flatHebrew.length > 0 ? `
+                            <p><strong>First verse (Hebrew):</strong></p>
+                            <div class="verse-sample" dir="rtl" lang="he">${flatHebrew[0]}</div>
+                        ` : ''}
+                        <details>
+                            <summary>View Full Response</summary>
+                            <pre>${JSON.stringify(data, null, 2).substring(0, 2000)}...</pre>
+                        </details>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ V3 API Error</h3>
+                        <p>${error.message}</p>
+                        <p><em>Note: V3 API might not be fully supported yet. The website can use V1 as a fallback.</em></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test 4: Noah Parsha
+        async function testNoah() {
+            const resultDiv = document.getElementById('noah-result');
+            resultDiv.innerHTML = '<p class="loading">Testing Noah parsha...</p>';
+            
+            try {
+                const url = 'https://www.sefaria.org/api/texts/Genesis.6.9-11.32?context=0&commentary=0';
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                const englishVerses = Array.isArray(data.text) ? data.text.flat().flat() : [data.text];
+                const hebrewVerses = Array.isArray(data.he) ? data.he.flat().flat() : [data.he];
+                
+                // Filter out empty verses
+                const validEnglish = englishVerses.filter(v => v && v.trim());
+                const validHebrew = hebrewVerses.filter(v => v && v.trim());
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ Noah Parsha Loaded!</h3>
+                        <p><strong>Book:</strong> ${data.book}</p>
+                        <p><strong>Valid English verses:</strong> ${validEnglish.length}</p>
+                        <p><strong>Valid Hebrew verses:</strong> ${validHebrew.length}</p>
+                        <p><strong>First verse (Genesis 6:9):</strong></p>
+                        <div class="verse-sample">${validEnglish[0]}</div>
+                        <div class="verse-sample" dir="rtl" lang="he">${validHebrew[0]}</div>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Error</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test 5: Local Commentary
+        async function testCommentary() {
+            const resultDiv = document.getElementById('commentary-result');
+            resultDiv.innerHTML = '<p class="loading">Testing local commentary...</p>';
+            
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                const totalParshas = data.parshas?.length || 0;
+                let totalVerses = 0;
+                let totalCommentaries = 0;
+                let totalKeywords = 0;
+                
+                data.parshas?.forEach(parsha => {
+                    if (parsha.verses) {
+                        totalVerses += parsha.verses.length;
+                        parsha.verses.forEach(verse => {
+                            totalCommentaries += verse.commentary?.length || 0;
+                            totalKeywords += verse.keywords?.length || 0;
+                        });
+                    }
+                });
+                
+                const sampleVerse = data.parshas?.[0]?.verses?.[0];
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ Commentary Data Loaded!</h3>
+                        <p><strong>Parshas with commentary:</strong> ${totalParshas}</p>
+                        <p><strong>Total verses with commentary:</strong> ${totalVerses}</p>
+                        <p><strong>Total commentaries:</strong> ${totalCommentaries}</p>
+                        <p><strong>Total keywords defined:</strong> ${totalKeywords}</p>
+                        ${sampleVerse ? `
+                            <p><strong>Sample verse:</strong> ${sampleVerse.ref}</p>
+                            <p><strong>Commentaries on this verse:</strong> ${sampleVerse.commentary?.length || 0}</p>
+                            <p><strong>Keywords in this verse:</strong> ${sampleVerse.keywords?.length || 0}</p>
+                        ` : ''}
+                        <details>
+                            <summary>View Structure</summary>
+                            <pre>${JSON.stringify(data, null, 2).substring(0, 1000)}...</pre>
+                        </details>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Error Loading Commentary</h3>
+                        <p>${error.message}</p>
+                        <p><em>Make sure data.json is in the same directory as this test file.</em></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Run calendar test on load
+        window.addEventListener('load', () => {
+            console.log('API Test Suite loaded. Click buttons to run tests.');
+        });
+    </script>
+</body>
+</html>
